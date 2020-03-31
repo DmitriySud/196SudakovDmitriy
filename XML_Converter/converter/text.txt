@@ -1,0 +1,136 @@
+Класс : GlobalMembers - Класс с описанием основных математических методов.
+	Поле : rnd - Генератор случайных чисел.
+
+	Метод : compute_b(System.Collections.Generic.List{System.Double}@,System.Collections.Generic.List{System.Double}@,prog.Matrix) - Метод высчитывающий приближение правого сингулярого вектора из левого.
+	Параметры : 
+		Параметр : a - Левый вектор.
+		Параметр : b - Правый вектор.
+		Параметр : mtrx - Матрица для которой ищется разложение.
+
+	Метод : compute_a(System.Collections.Generic.List{System.Double}@,System.Collections.Generic.List{System.Double}@,prog.Matrix) - Метод высчитывающий приближение левого сингулярого вектора из правого.
+	Параметры : 
+		Параметр : a - Левый вектор.
+		Параметр : b - Правый вектор.
+		Параметр : mtrx - Матрица для которой ищется разложение.
+
+	Метод : compute_singular_vectors(System.Collections.Generic.List{System.Collections.Generic.List{System.Double}}@,System.Collections.Generic.List{System.Collections.Generic.List{System.Double}}@,prog.Matrix@) - Метод вычисляет ненормализованные сингулярные вектора.
+	Параметры : 
+		Параметр : left_singular_vectors - Список, где будут левые сингулярные вектора.
+		Параметр : right_singular_vectors - Список, где будут правые сингулярные вектора.
+		Параметр : mtrx - Матрица, для которой вычисляются сингулярные вектора.
+
+	Метод : compute_singular_values(System.Collections.Generic.List{System.Collections.Generic.List{System.Double}}@,System.Collections.Generic.List{System.Collections.Generic.List{System.Double}}@,System.Collections.Generic.List{System.Double}@,System.Int32,System.Int32) - Метод нормализующий сингулярные вектора и вычисляющий сингулярные значения.
+	Параметры : 
+		Параметр : left_singular_vectors - Массив левых сингулярных векторов.
+		Параметр : right_singular_vectors - Массив правых сингулярных векторов.
+		Параметр : singular_values - Список, где будут лежать сингулярные значения.
+		Параметр : n - Количество строк матрицы.
+		Параметр : m - Количество столбцов матрицы.
+
+	Метод : svd(prog.Matrix@,System.Collections.Generic.List{System.Collections.Generic.List{System.Double}}@,System.Collections.Generic.List{System.Collections.Generic.List{System.Double}}@,System.Collections.Generic.List{System.Double}@) - Метод выполняет SVD-разложение.
+	Параметры : 
+		Параметр : mtrx - Раскладываемая матрица.
+		Параметр : left_singular_vectors - Список, где будут левые сингулярные вектора.
+		Параметр : right_singular_vectors - Список где будут правые сингулярные вектора.
+		Параметр : singular_values - Список, где будут сингулярные числа.
+
+	Метод : normalize_vector(System.Collections.Generic.List{System.Double}) - Метод нормализует вектор.
+	Параметры : 
+		Параметр : v - Вектор заданый списком значений.
+
+	Метод : fill_random_vector(System.Collections.Generic.List{System.Double}) - Метод заполняет вектор случайными числами.
+	Параметры : 
+		Параметр : v - Вектор, который необзодимо звполнить.
+
+	Метод : scalar_composition(System.Collections.Generic.List{System.Double},System.Collections.Generic.List{System.Double}) - Метод осуществляющий скалярное произведение векторов.
+	Параметры : 
+		Параметр : a - Первый вектор.
+		Параметр : b - Второй вектор.
+
+		Возвращаемое значение : Возвращает целое число, равное скалярному произведению векторов.
+
+
+Класс : Matrix - Класс описывающий 2хмерную матрицу размера n*m.
+	Поле : n - Количество строк.
+
+	Поле : m - Количество столбцов.
+
+	Поле : data - 2-х мерный список, хранящий значения матрицы.
+
+	Метод : Конструктор(System.Int32,System.Int32) - Конструктор для создания матрицы из нулей.
+	Параметры : 
+		Параметр : rows_number - Количество строк.
+		Параметр : columns_number - Количество столбцов.
+
+	Метод : Конструктор(System.Collections.Generic.List{System.Collections.Generic.List{System.Double}}) - Конструктор создающий матрицу по двумерному списку.
+	Параметры : 
+		Параметр : lst - Список значений.
+
+	Метод : Конструктор(System.Collections.Generic.List{System.Double}) - Конструктор, создающий матрицу состоящую из одного вескора строки.
+	Параметры : 
+		Параметр : lst - Значения вектора.
+
+	Метод : transpose() - Метод транспонирования матрицы.
+
+	Метод : distance_to_aXb(System.Collections.Generic.List{System.Double},System.Collections.Generic.List{System.Double}) - Метод находит Евклидово расстояние между векторам.
+	Параметры : 
+		Параметр : a - Первый вектор.
+		Параметр : b - Второй вектор.
+
+		Возвращаемое значение : Возвращает целое число -  вычестленное расстояние.
+
+	Метод : substract_aXb(System.Collections.Generic.List{System.Double},System.Collections.Generic.List{System.Double}) - Вычитает из данной матрицы, матрицу a^(T)*b.
+	Параметры : 
+		Параметр : a - Вектор столбец.
+		Параметр : b - вектор строка.
+
+	Метод : ReadMatrix(System.String) - Метод для считывания матрицы из заданного файла.
+	Параметры : 
+		Параметр : path - Путь к файлу, в котором лежит матрица.
+
+	Метод : ReadFromBin(System.String) - Метод читает матрицу из бинарного файла.
+	Параметры : 
+		Параметр : path - Путь к файлу.
+
+	Метод : Print() - Метод печатаем матрицу в консоль.
+
+	Метод : op_Multiply(prog.Matrix,prog.Matrix) - Операция перемножения 2х матриц.
+
+	Метод : op_Multiply(System.Double,prog.Matrix) - Операция умножения матрицы на число.
+
+	Метод : op_Addition(prog.Matrix,prog.Matrix) - Операция сложения 2х матриц.
+
+
+Класс : program - 
+	Метод : Print(System.Collections.Generic.List{System.Collections.Generic.List{System.Double}}) - Метод вывода двумерного списка в консоль.
+
+	Метод : Print(prog.Matrix) - Метод выводв матрицы в консоль.
+
+	Метод : Print(System.Collections.Generic.List{System.Double}) - Метод вывода списка в консоль.
+	Параметры : 
+		Параметр : ls - 
+
+
+Класс : VectorHelper - Класс описывающий дополнительные методы для работы со списками.
+	Метод : Resize``1(System.Collections.Generic.List{``0},System.Int32,``0) - Метод заполняющий список заданым значением.
+	Параметры : 
+		Параметр : list - Список, который надо заполнить.
+		Параметр : newSize - Размер списка.
+		Параметр : value - Значение,если не задано, то берётся значение по умолчанию для типа.
+
+	Метод : InitializedList``1(System.Int32,``0) - Метод инициализирует вектор заданым значением.
+	Параметры : 
+		Параметр : size - Размер вектора.
+		Параметр : value - Значение, которыми будет заполнен вектор.
+
+		Возвращаемое значение : Возвращает проинициализированный вектор.
+
+	Метод : NestedList``1(System.Int32,System.Int32,``0) - Метод заполняющий матрицу заданым значением.
+	Параметры : 
+		Параметр : outerSize - Количество строк.
+		Параметр : innerSize - Количество столбцов.
+		Параметр : value - Значение, которым заполнять.
+
+		Возвращаемое значение : Возварщает заполненныую матрицу.
+
+

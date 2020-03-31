@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>svd</name>
+    </assembly>
+    <members>
+        <member name="T:prog.GlobalMembers">
+            <summary>
+            Класс с описанием основных математических методов.
+            </summary>
+        </member>
+        <member name="F:prog.GlobalMembers.rnd">
+            <summary>
+            Генератор случайных чисел.
+            </summary>
+        </member>
+        <member name="M:prog.GlobalMembers.compute_b(System.Collections.Generic.List{System.Double}@,System.Collections.Generic.List{System.Double}@,prog.Matrix)">
+            <summary>
+            Метод высчитывающий приближение правого сингулярого вектора из левого.
+            </summary>
+            <param name="a"> Левый вектор. </param>
+            <param name="b"> Правый вектор. </param>
+            <param name="mtrx"> Матрица для которой ищется разложение. </param>
+        </member>
+        <member name="M:prog.GlobalMembers.compute_a(System.Collections.Generic.List{System.Double}@,System.Collections.Generic.List{System.Double}@,prog.Matrix)">
+            <summary>
+            Метод высчитывающий приближение левого сингулярого вектора из правого.
+            </summary>
+            <param name="a"> Левый вектор. </param>
+            <param name="b"> Правый вектор. </param>
+            <param name="mtrx"> Матрица для которой ищется разложение. </param>
+        </member>
+        <member name="M:prog.GlobalMembers.compute_singular_vectors(System.Collections.Generic.List{System.Collections.Generic.List{System.Double}}@,System.Collections.Generic.List{System.Collections.Generic.List{System.Double}}@,prog.Matrix@)">
+            <summary>
+            Метод вычисляет ненормализованные сингулярные вектора.
+            </summary>
+            <param name="left_singular_vectors"> Список, где будут левые сингулярные вектора. </param>
+            <param name="right_singular_vectors"> Список, где будут правые сингулярные вектора. </param>
+            <param name="mtrx"> Матрица, для которой вычисляются сингулярные вектора. </param>
+        </member>
+        <member name="M:prog.GlobalMembers.compute_singular_values(System.Collections.Generic.List{System.Collections.Generic.List{System.Double}}@,System.Collections.Generic.List{System.Collections.Generic.List{System.Double}}@,System.Collections.Generic.List{System.Double}@,System.Int32,System.Int32)">
+            <summary>
+            Метод нормализующий сингулярные вектора и вычисляющий сингулярные значения.
+            </summary>
+            <param name="left_singular_vectors"> Массив левых сингулярных векторов. </param>
+            <param name="right_singular_vectors"> Массив правых сингулярных векторов. </param>
+            <param name="singular_values"> Список, где будут лежать сингулярные значения. </param>
+            <param name="n"> Количество строк матрицы. </param>
+            <param name="m"> Количество столбцов матрицы. </param>
+        </member>
+        <member name="M:prog.GlobalMembers.svd(prog.Matrix@,System.Collections.Generic.List{System.Collections.Generic.List{System.Double}}@,System.Collections.Generic.List{System.Collections.Generic.List{System.Double}}@,System.Collections.Generic.List{System.Double}@)">
+            <summary>
+            Метод выполняет SVD-разложение. 
+            </summary>
+            <param name="mtrx"> Раскладываемая матрица. </param>
+            <param name="left_singular_vectors"> Список, где будут левые сингулярные вектора. </param>
+            <param name="right_singular_vectors"> Список где будут правые сингулярные вектора. </param>
+            <param name="singular_values"> Список, где будут сингулярные числа. </param>
+        </member>
+        <member name="M:prog.GlobalMembers.normalize_vector(System.Collections.Generic.List{System.Double})">
+            <summary>
+            Метод нормализует вектор.
+            </summary>
+            <param name="v"> Вектор заданый списком значений. </param>
+        </member>
+        <member name="M:prog.GlobalMembers.fill_random_vector(System.Collections.Generic.List{System.Double})">
+            <summary>
+            Метод заполняет вектор случайными числами. 
+            </summary>
+            <param name="v"> Вектор, который необзодимо звполнить. </param>
+        </member>
+        <member name="M:prog.GlobalMembers.scalar_composition(System.Collections.Generic.List{System.Double},System.Collections.Generic.List{System.Double})">
+            <summary>
+            Метод осуществляющий скалярное произведение векторов. 
+            </summary>
+            <param name="a"> Первый вектор. </param>
+            <param name="b"> Второй вектор. </param>
+            <returns> Возвращает целое число, равное скалярному произведению векторов. </returns>
+        </member>
+        <member name="T:prog.Matrix">
+            <summary>
+            Класс описывающий 2хмерную матрицу размера n*m.
+            </summary>
+        </member>
+        <member name="F:prog.Matrix.n">
+            <summary>
+            Количество строк.
+            </summary>
+        </member>
+        <member name="F:prog.Matrix.m">
+            <summary>
+            Количество столбцов.
+            </summary>
+        </member>
+        <member name="F:prog.Matrix.data">
+            <summary>
+            2-х мерный список, хранящий значения матрицы.
+            </summary>
+        </member>
+        <member name="M:prog.Matrix.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Конструктор для создания матрицы из нулей.
+            </summary>
+            <param name="rows_number"> Количество строк.</param>
+            <param name="columns_number"> Количество столбцов. </param>
+        </member>
+        <member name="M:prog.Matrix.#ctor(System.Collections.Generic.List{System.Collections.Generic.List{System.Double}})">
+            <summary>
+            Конструктор создающий матрицу по двумерному списку.
+            </summary>
+            <param name="lst"> Список значений. </param>
+        </member>
+        <member name="M:prog.Matrix.#ctor(System.Collections.Generic.List{System.Double})">
+            <summary>
+            Конструктор, создающий матрицу состоящую из одного вескора строки.
+            </summary>
+            <param name="lst"> Значения вектора. </param>
+        </member>
+        <member name="M:prog.Matrix.transpose">
+            <summary>
+            Метод транспонирования матрицы.
+            </summary>
+        </member>
+        <member name="M:prog.Matrix.distance_to_aXb(System.Collections.Generic.List{System.Double},System.Collections.Generic.List{System.Double})">
+            <summary>
+            Метод находит Евклидово расстояние между векторам.
+            </summary>
+            <param name="a"> Первый вектор. </param>
+            <param name="b"> Второй вектор. </param>
+            <returns> Возвращает целое число -  вычестленное расстояние. </returns>
+        </member>
+        <member name="M:prog.Matrix.substract_aXb(System.Collections.Generic.List{System.Double},System.Collections.Generic.List{System.Double})">
+            <summary>
+            Вычитает из данной матрицы, матрицу a^(T)*b.
+            </summary>
+            <param name="a"> Вектор столбец. </param>
+            <param name="b"> вектор строка. </param>
+        </member>
+        <member name="P:prog.Matrix.Item(System.Int32)">
+            <summary>
+            Индексатор для обращения к значениям матрицы, минуя поле data.
+            </summary>
+            <param name="i"> Номер строки. </param>
+            <returns> Возвращает заданую строку матрицы. </returns>
+        </member>
+        <member name="M:prog.Matrix.ReadMatrix(System.String)">
+            <summary>
+            Метод для считывания матрицы из заданного файла.
+            </summary>
+            <param name="path"> Путь к файлу, в котором лежит матрица. </param>
+        </member>
+        <member name="M:prog.Matrix.ReadFromBin(System.String)">
+            <summary>
+            Метод читает матрицу из бинарного файла.
+            </summary>
+            <param name="path"> Путь к файлу. </param>
+        </member>
+        <member name="M:prog.Matrix.Print">
+            <summary>
+            Метод печатаем матрицу в консоль.
+            </summary>
+        </member>
+        <member name="P:prog.Matrix.get_rows_number">
+            <summary>
+            Свойство для обращения к количеству строк матрицы.
+            </summary>
+        </member>
+        <member name="P:prog.Matrix.get_columns_number">
+            <summary>
+            Свойство для обращения к количеству столбцов матрицы.
+            </summary>
+        </member>
+        <member name="M:prog.Matrix.op_Multiply(prog.Matrix,prog.Matrix)">
+            <summary>
+            Операция перемножения 2х матриц.
+            </summary>
+        </member>
+        <member name="M:prog.Matrix.op_Multiply(System.Double,prog.Matrix)">
+            <summary>
+            Операция умножения матрицы на число. 
+            </summary>
+        </member>
+        <member name="M:prog.Matrix.op_Addition(prog.Matrix,prog.Matrix)">
+            <summary>
+            Операция сложения 2х матриц.
+            </summary>
+        </member>
+        <member name="M:prog.program.Print(System.Collections.Generic.List{System.Collections.Generic.List{System.Double}})">
+            <summary>
+            Метод вывода двумерного списка в консоль.
+            </summary>
+        </member>
+        <member name="M:prog.program.Print(prog.Matrix)">
+            <summary>
+            Метод выводв матрицы в консоль.
+            </summary>
+        </member>
+        <member name="M:prog.program.Print(System.Collections.Generic.List{System.Double})">
+            <summary>
+            Метод вывода списка в консоль.
+            </summary>
+            <param name="ls"></param>
+        </member>
+        <member name="T:prog.VectorHelper">
+            <summary>
+            Класс описывающий дополнительные методы для работы со списками. 
+            </summary>
+        </member>
+        <member name="M:prog.VectorHelper.Resize``1(System.Collections.Generic.List{``0},System.Int32,``0)">
+            <summary>
+            Метод заполняющий список заданым значением.
+            </summary>
+            <param name="list"> Список, который надо заполнить. </param>
+            <param name="newSize"> Размер списка. </param>
+            <param name="value"> Значение,если не задано, то берётся значение по умолчанию для типа. </param>
+        </member>
+        <member name="M:prog.VectorHelper.InitializedList``1(System.Int32,``0)">
+            <summary>
+            Метод инициализирует вектор заданым значением. 
+            </summary>
+            <param name="size"> Размер вектора. </param>
+            <param name="value"> Значение, которыми будет заполнен вектор. </param>
+            <returns> Возвращает проинициализированный вектор. </returns>
+        </member>
+        <member name="M:prog.VectorHelper.NestedList``1(System.Int32,System.Int32,``0)">
+            <summary>
+            Метод заполняющий матрицу заданым значением.
+            </summary>
+            <param name="outerSize"> Количество строк. </param>
+            <param name="innerSize"> Количество столбцов. </param>
+            <param name="value"> Значение, которым заполнять. </param>
+            <returns> Возварщает заполненныую матрицу. </returns>
+        </member>
+    </members>
+</doc>
