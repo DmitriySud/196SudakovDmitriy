@@ -51,13 +51,11 @@ namespace converter {
 		public override string ToString() {
 			var res = new StringBuilder();
 
-			res.Append($"\tМетод : {name}\t" + summary + Environment.NewLine + (param.Count == 0 ? "" : "\tПараметры : " + Environment.NewLine));
+			string shortName = name.Split('(')[0];
+			string paramList = name.Split('(')[1].Trim(')');
 
-			foreach (var item in param) {
-				res.Append($"\t\tПараметр : {item.name}\t{item.summary}" + Environment.NewLine);
-			}
-			if (returns != "")
-				res.Append(Environment.NewLine + $"\t\tВозвращаемое значение : {returns}" + Environment.NewLine);
+			res.Append($"{mod}\t{type}\t{shortName}\t{paramList}\t{summary}\t{returns}");
+
 
 			return res.ToString();
 		}
@@ -91,6 +89,21 @@ namespace converter {
 			res.Append($"Свойства Класса : {name}\t" + Environment.NewLine);
 
 			foreach (var item in props) {
+				res.Append(item.ToString() + Environment.NewLine);
+			}
+
+			//foreach (var item in meths) {
+			//	res.Append(item.ToString() + Environment.NewLine);
+			//}
+
+			return res.ToString();
+		}
+		public string WriteClassMeths() {
+			var res = new StringBuilder();
+
+			res.Append($"Методы Класса : {name}\t" + Environment.NewLine);
+
+			foreach (var item in meths) {
 				res.Append(item.ToString() + Environment.NewLine);
 			}
 
@@ -162,10 +175,9 @@ namespace converter {
 						string ret = "";
 						if (item.GetElementsByTagName("returns").Count != 0)
 							ret = item.GetElementsByTagName("returns")[0].InnerText.Trim();
-						var meth = new Meth(name, sum, ret, item.GetAttribute("dos"), item.GetAttribute("type"));
+						var meth = new Meth(name, sum, ret, modAttr is null ? "" : modAttr.Value, typeAttr is null ? "" : typeAttr.Value);
 						foreach (XmlElement itemm in item.GetElementsByTagName("param")) {
-							meth.param.Add(new Elem(itemm.Attributes.GetNamedItem("name").Value, itemm.InnerText.Trim(),
-								modAttr is null ? "" : modAttr.Value, typeAttr is null ? "" : typeAttr.Value));
+							meth.param.Add(new Elem(itemm.Attributes.GetNamedItem("name").Value, itemm.InnerText.Trim(),"",""));
 						}
 
 						className = temp[temp.Length - 2];
@@ -187,6 +199,7 @@ namespace converter {
 				foreach (var item in types) {
 					sw.WriteLine(item.Value.WriteClassFields()+Environment.NewLine);
 					sw.WriteLine(item.Value.WriteClassProps()+Environment.NewLine);
+					sw.WriteLine(item.Value.WriteClassMeths()+Environment.NewLine);
 				}
 			}
 		}
