@@ -141,7 +141,7 @@ namespace converter {
 						var claName = temp[temp.Length - 2];
 						modAttr = sumEl.Attributes["dos"];
 						typeAttr = sumEl.Attributes["type"];
-						types[claName].fields.Add(new Field(name, sum, modAttr is null? "" : modAttr.Value, typeAttr is null ? "" : typeAttr.Value));
+						types[claName].props.Add(new Prop(name, sum, modAttr is null? "" : modAttr.Value, typeAttr is null ? "" : typeAttr.Value));
 						break;
 					case 'M':
 						var ttemp = name.Split('(');
