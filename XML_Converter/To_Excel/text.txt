@@ -1,0 +1,158 @@
+Поля Класс : ActTypes	
+
+
+Поля Класс : Act	
+private	ActTypes	actType	Число биты которого отвечают за то, какая анимация будет отображаться.
+public	Vertex	vertex	Вершина, которая будет анимирована на данном шаге.
+public	Edge	edge	Ребро, которое будет анимировано на данном шаге.
+public	List<ALabel>	labels	Список Labael-ов, которые будут анимированы на данном шаге.
+public	ActData	data	Дополнительная информация.
+public	ActTypes	ActType	Свойство для обращения к типу события.
+
+
+Поля Класс : ActData	
+public	int?	newTin	Обновлённое время входа в вершину.
+public	int?	newFup	Обновлённая самая высокая вершина в дереве поиска в глубину, 
+            до которую можно добраться из текущей.
+public	int?	lineNum	Строка кода, которую надо подстветить на данном шаге.
+public	int?	parentNum	Номер родительской вершины.
+public	int?	newChildren	Новое количество детей текущей вершины.
+
+
+Поля Класс : ALabel	
+private	Storyboard	storyboard	Storyboard для неприрывной анимации.
+public	Storyboard	Storyboard	Свойство для обращения к полю storyboard.
+
+
+Поля Класс : Edge	
+public	Color	notBridgeColor	Цвет ребра которое не является мостом. Он же цвет по умолчанию.
+public	Color	bridgeColor	Цвет ребра, которое является мостом.
+public	Color	dfsTreeColor	Цвет ребра, которе является ребром дерева поиска в глубину.
+private	Vertex	vertexA	Первая вершина, которую соединяет ребро.
+private	Vertex	vertexB	Вторая вершина, которую соединяет ребро.
+public	bool	isBridge	Флаг, моста.
+public	Vertex	VertexA	Свойство для обращения к первой вершине.
+public	Vertex	VertexB	Свойство для обращение ко второй вершине.
+public	bool	IsBridge	Свойство для обращения к флагу, который помечает ребро как мост и меняет цвет.
+
+
+Поля Класс : GlobalMembers	
+private	List<Act>	acts	Список событий анимации, промодеоированный для отображённого графа.
+private	bool[]	used	Массив пометок для вершин графа.
+private	int	n	Количество вершин графа.
+private	List<Vertex>	vertices	Список вершин графа.
+private	int	timer	Переменная таймер для поиска в глубину.
+private	int[]	tin	Мессив времени входа в каждую вершину.
+private	int[]	fup	Массив дополнительной характеристики для каждой вершины для поиска в глубину.
+public	ALabel	childrenLabel	Ссылка на Lable отображающий количество детей для текущей вершины.
+private	int	mode	Режим. 0 - поиск мостов, 1 - поиск точек сочленения.
+public	int	prevLine	Номер предыдущей линии кода.
+private	List<Storyboard>	codeStoryboards	Массив Storyboard-ов для каждой строки кода алгоритма.
+public	string[]	bridgesHint	Массив подсказок на каждую строку для алгоритма поиска мостов.
+public	string[]	cutVerticesHint	Массив подсказок на каждую строку для алгоритма поиска точек сочленения.
+public	string[]	bridgeAlgorithm	Массив строк кода алгоритма поиска мостов.
+public	string[]	cutVertexAlgorithm	Массив строк кода алгоритма поиска точек сочленения.
+public	string	childrenTemplate	Шаблон для Label-а отображающего количество детей.
+
+
+Поля Класс : PointExtention	
+
+
+Поля Класс : Graph	
+private	double	width	Ширина окна в котором отрисовывается граф.
+private	double	height	Высота окна в котором отрисовывается граф.
+private	int	n	Количество вершин графа.
+private	List<Vertex>	vertices	Список вершин графа.
+private	List<Edge>	edges	Список рёбер графа.
+private	Random	rnd	Генератор случайных чисел.
+public	double	Width	Свойство для обращения к ширине холста.
+public	double	Height	Свойство для обращения к высоте холста.
+public	List<Vertex>	Vertices	Свойство для обращения к списку вершин графа.
+public	List<Edge>	Edges	Свойство для обращения к списку рёбер графа.
+
+
+Поля Класс : GraphBuilderWindow	
+private	int	vertexNum	Количество вершин графа. По умолчанию 3.
+public	List<List<int>>	result	Сформированный список инцидентности.
+
+
+Поля Класс : GraphException	
+
+
+Поля Класс : DrawableObject	
+public	Color	currentColor	Цвет которым будет подсвечиваться текущий объект.
+private	void	me	Ссылка на объект который отрисовывается на холсте.
+private	Point	position	Кооотдинаты объекта.
+private	Canvas	canvas	Холст на котором будет отображаться объект.
+protected	Color	col	Цвет объекта.
+private	Storyboard	storyboard	Storyboard для неприрывной анимации.
+public	Canvas	Canvas	Свойство для обращения к холсту.
+public	Point	Position	Свойство для обращения к координатам объекта.
+public	Shape	Me	Свойство для обращения к отображаемому объекту.
+public	Storyboard	Storyboard	Свойство для обращения Storyboard.
+public	Color	Col	Свойство для обращения к цвету.
+
+
+Поля Класс : MenuWindow	
+
+
+Поля Класс : Resources	
+		ResourceManager	Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+		Culture	Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+		de	Ищет локализованную строку, похожую на .
+		diskette	Поиск локализованного ресурса типа System.Drawing.Bitmap.
+		load	Поиск локализованного ресурса типа System.Drawing.Bitmap.
+		pen	Поиск локализованного ресурса типа System.Drawing.Bitmap.
+
+
+Поля Класс : State	
+public	int	lineInt	Количество пересечений линий рёбер.
+public	int	circleInt	Количество пересечений рёбер с вершинами.
+public	double	sumDist	Суммарная длина рёбер.
+public	double	ideal	Идельная длина рёбер.
+public	List<Point>	lstVertex	Список координат вершин.
+
+
+Поля Класс : Vertex	
+public	Color	notUsedColor	Цвет ещё не тронутой вершины.
+public	Color	usedColor	Цвет вершины, помеченной, как использованной.
+public	Color	textColor	Цвет текста рядом с вершиной по умолчанию.
+public	Color	textHighlightedColor1	Цвет подстветки текста 1.
+public	Color	textHighlightedColor2	Цвет подстветки текста 2.
+public	Color	cutVertexColor	Цвет вершины, рассматриваемой в данный момент.
+private	double	labelDistance	Расстояние от вершины до Label-ов рядом с веришной.
+private	double	labelHeight	Высота Label-ов рядом с веришной.
+private	double	labelWidth	Ширина Label-ов рядом с веришной.
+public	string	tinTemplate	Шаблон для Label-а с временем входа.
+public	string	fupTemplate	Шаблон для Label-а с характеристикой fup.
+private	List<Edge>	edges	Список рёбер, выходящих из вершины.
+private	ALabel	labelTin	Ссылка на Label с характеристикой tin.
+private	ALabel	labelFup	Ссылка на Label с характеристикой fup.
+private	int	tin	Время входа в вершину.
+private	int	fup	максимальная вершина в дереве поиска в глубину до которой можэно добраться.
+private	bool	used	Пометка уже пройденой вершины поиском в глубину.
+private	bool	isCutVertex	Флаг, отвечающий является ли вершина точкой сочленения.
+private	double	size	Размер вершины.
+private	int	num	Номер вершины в списке инцидентности.
+public	int	Tin	Свойство для обращения к tin.
+public	int	Fup	Свойство для обращения к fup.
+public	bool	Used	Свойство для обращения к прлю used.
+public	double	Size	Свойство для обращения к размеру вершины.
+public	List<Edge>	Edges	Свойство для обращения к списку рёбер, исходящих из вершины.
+public	int	Num	Свойство для обращению к номеру вершины.
+public	ALabel	LabelTin	Свойство для обращения к Label-у отображаюзему tin.
+public	ALabel	LabelFup	Свойство для обращения к Label-у отображаюзему fup`.
+public	bool	IsCutVertex	Свойство для обращения к флагу, отвечающему за статус точки сочленения.
+public	Color	Col	Свойство для обращения к цвету вершины.
+
+
+Поля Класс : App	
+
+
+Поля Класс : MainWindow	
+
+
+Поля Класс : GeneratedInternalTypeHelper	
+
+

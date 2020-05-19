@@ -1,0 +1,296 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/dmitr/source/repos/Works/CurseWork/MainForm",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "iwhDIqIfV5YVCNVTjLBwbA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "oUZDHvIwtGe60zV4S/w7eQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "gB8AESyvNru97tzIZofEEg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "QKVGLc76QKupcReNIWYsYQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/MainForm.ALabel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MainForm.ALabel.html",
+          "hash": "Kkn8rjEVWc5EylrwC5Kd0Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/MainForm.ActTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MainForm.ActTypes.html",
+          "hash": "U3arWAM2eTZ3//qTxkiaOg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/MainForm.App.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MainForm.App.html",
+          "hash": "1blN5BZcwbYScdZSeOj2oQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/MainForm.DrawableObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MainForm.DrawableObject.html",
+          "hash": "3rDdEIeVXc7Mbjh0qez+PA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/MainForm.Edge.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MainForm.Edge.html",
+          "hash": "9yw5YKbsftjyx6/k7wYdKA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/MainForm.GraphBuilderWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MainForm.GraphBuilderWindow.html",
+          "hash": "/jtQ2P/9u4zkufnBsABS3A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/MainForm.GraphException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MainForm.GraphException.html",
+          "hash": "yyjF6weM2UR9pVT4MK/DYg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/MainForm.MainWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MainForm.MainWindow.html",
+          "hash": "VssXdeLg6g6jUNIgzB5Ktw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/MainForm.MenuWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MainForm.MenuWindow.html",
+          "hash": "mwAgnzHKVomigwyavSqNjw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/MainForm.PointExtention.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MainForm.PointExtention.html",
+          "hash": "zuaf3BLHtKWr8E3U0TkyZg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/MainForm.Properties.Resources.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MainForm.Properties.Resources.html",
+          "hash": "dXwiP6LP+wFo6kNzDKjkvA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/MainForm.Properties.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MainForm.Properties.html",
+          "hash": "d8rXs+m/OFC+0T+VPr9XEQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/MainForm.Vertex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MainForm.Vertex.html",
+          "hash": "ItLJ9h3H4jWoL4yKwQq9BQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/MainForm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MainForm.html",
+          "hash": "f2BO5tq6wu4iWunsWC/5Ug=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "obj/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "xcDJa8b3o/lNmXWD37/25A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "G2AoE5T/2VarbHvzLEo4TQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 14,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

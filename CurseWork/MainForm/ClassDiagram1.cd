@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MainForm.Graph">
+    <Position X="11.75" Y="0.75" Width="1.5" />
+    <Members>
+      <Method Name="Area" Hidden="true" />
+      <Method Name="CalcState" Hidden="true" />
+      <Method Name="CreateVertexList" Hidden="true" />
+      <Method Name="Deserialize" Hidden="true" />
+      <Method Name="Distance" Hidden="true" />
+      <Method Name="Draw" Hidden="true" />
+      <Property Name="Edges" Hidden="true" />
+      <Method Name="Graph" Hidden="true" />
+      <Field Name="height" Hidden="true" />
+      <Property Name="Height" Hidden="true" />
+      <Method Name="Intersect1" Hidden="true" />
+      <Method Name="IntersectCircle" Hidden="true" />
+      <Method Name="IntersectLine" Hidden="true" />
+      <Field Name="n" Hidden="true" />
+      <Method Name="PositionedVertexes" Hidden="true" />
+      <Method Name="Redraw" Hidden="true" />
+      <Method Name="Refresh" Hidden="true" />
+      <Field Name="rnd" Hidden="true" />
+      <Method Name="Serialize" Hidden="true" />
+      <Method Name="Swap" Hidden="true" />
+      <Method Name="ThrowVertices" Hidden="true" />
+      <Property Name="Vertices" Hidden="true" />
+      <Field Name="width" Hidden="true" />
+      <Property Name="Width" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAEgACABIBAAgQCQAAAAEAAACBRAAhAEgBAAQAAARE=</HashCode>
+      <FileName>Graph.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainForm.Vertex">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <Members>
+      <Method Name="AddEdgeTo" Hidden="true" />
+      <Property Name="Col" Hidden="true" />
+      <Method Name="CreateEllipse" Hidden="true" />
+      <Field Name="cutVertexColor" Hidden="true" />
+      <Method Name="Draw" Hidden="true" />
+      <Property Name="Edges" Hidden="true" />
+      <Field Name="fup" Hidden="true" />
+      <Property Name="Fup" Hidden="true" />
+      <Field Name="fupTemplate" Hidden="true" />
+      <Method Name="InitLabel" Hidden="true" />
+      <Method Name="IsConnected" Hidden="true" />
+      <Field Name="isCutVertex" Hidden="true" />
+      <Property Name="IsCutVertex" Hidden="true" />
+      <Field Name="labelDistance" Hidden="true" />
+      <Field Name="labelFup" Hidden="true" />
+      <Property Name="LabelFup" Hidden="true" />
+      <Field Name="labelHeight" Hidden="true" />
+      <Field Name="labelTin" Hidden="true" />
+      <Property Name="LabelTin" Hidden="true" />
+      <Field Name="labelWidth" Hidden="true" />
+      <Field Name="notUsedColor" Hidden="true" />
+      <Property Name="Num" Hidden="true" />
+      <Method Name="Refresh" Hidden="true" />
+      <Method Name="SetLabels" Hidden="true" />
+      <Field Name="size" Hidden="true" />
+      <Property Name="Size" Hidden="true" />
+      <Field Name="textColor" Hidden="true" />
+      <Field Name="textHighlightedColor1" Hidden="true" />
+      <Field Name="textHighlightedColor2" Hidden="true" />
+      <Property Name="Tin" Hidden="true" />
+      <Field Name="tinTemplate" Hidden="true" />
+      <Property Name="Used" Hidden="true" />
+      <Field Name="usedColor" Hidden="true" />
+      <Method Name="Vertex" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>KGAAgCgkAIBAogDAAKBAiAACgAUBgIACAIAAQBIAAEA=</HashCode>
+      <FileName>Vertex.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainForm.Edge">
+    <Position X="7" Y="2.75" Width="1.5" />
+    <Members>
+      <Field Name="bridgeColor" Hidden="true" />
+      <Method Name="CreateLine" Hidden="true" />
+      <Field Name="dfsTreeColor" Hidden="true" />
+      <Method Name="Draw" Hidden="true" />
+      <Method Name="Edge" Hidden="true" />
+      <Method Name="GetOther" Hidden="true" />
+      <Field Name="isBridge" Hidden="true" />
+      <Property Name="IsBridge" Hidden="true" />
+      <Field Name="notBridgeColor" Hidden="true" />
+      <Method Name="Refresh" Hidden="true" />
+      <Property Name="VertexA" Hidden="true" />
+      <Property Name="VertexB" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>IAgAAAAAAABAAgDAAAAAwAAAAQABAAAAACAAACAAAAQ=</HashCode>
+      <FileName>Edge.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainForm.DrawableObject">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <Members>
+      <Property Name="Canvas" Hidden="true" />
+      <Property Name="Col" Hidden="true" />
+      <Field Name="currentColor" Hidden="true" />
+      <Method Name="Draw" Hidden="true" />
+      <Method Name="DrawableObject" Hidden="true" />
+      <Property Name="Me" Hidden="true" />
+      <Property Name="Position" Hidden="true" />
+      <Method Name="Refresh" Hidden="true" />
+      <Property Name="Storyboard" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAgAhAAIAIQACgAEAAAAAAAAAEAAAABA=</HashCode>
+      <FileName>DrawableObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

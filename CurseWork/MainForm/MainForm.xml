@@ -1,0 +1,1059 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MainForm</name>
+    </assembly>
+    <members>
+        <member name="T:MainForm.ActTypes">
+            <summary type="" dos="">
+            Перечисление с типами анимируемых действий. Каждый элемент - уникальный флаг-бит. 
+            </summary>
+        </member>
+        <member name="T:MainForm.Act">
+            <summary type="" dos="">
+            Класс события анимации. Хранит информацию об одном анимированном 
+            шаге и ссылки на все анимируемые объекты.
+            </summary>
+        </member>
+        <member name="F:MainForm.Act.actType">
+            <summary type="ActTypes" dos="private">
+            Число биты которого отвечают за то, какая анимация будет отображаться.
+            </summary>
+        </member>
+        <member name="F:MainForm.Act.vertex">
+            <summary type="Vertex" dos="public">
+            Вершина, которая будет анимирована на данном шаге.
+            </summary>
+        </member>
+        <member name="F:MainForm.Act.edge">
+            <summary type="Edge" dos="public">
+            Ребро, которое будет анимировано на данном шаге.
+            </summary>
+        </member>
+        <member name="F:MainForm.Act.labels">
+            <summary type="List{ALabel}" dos="public">
+            Список Labael-ов, которые будут анимированы на данном шаге.
+            </summary>
+        </member>
+        <member name="F:MainForm.Act.data">
+            <summary type="ActData" dos="public">
+            Дополнительная информация.
+            </summary>
+        </member>
+        <member name="M:MainForm.Act.#ctor(MainForm.ActTypes,System.Object[])">
+            <summary type="" dos="public">
+            Конструткор для инициализации полей.
+            </summary>
+            <param name="actType"> Тип анимационного события. </param>
+            <param name="objs"> Список анимируемых объектов. </param>
+        </member>
+        <member name="M:MainForm.Act.#ctor(MainForm.Act)">
+            <summary type="" dos="public">
+            Копирующий конструктор.
+            </summary>
+            <param name="old"> Старый объект данного типа. </param>
+        </member>
+        <member name="P:MainForm.Act.ActType">
+            <summary type="ActTypes" dos="public">
+            Свойство для обращения к типу события.
+            </summary>
+        </member>
+        <member name="M:MainForm.Act.GetReverseAct">
+            <summary type="Act" dos="public">
+            Метод для получения обратного события.
+            </summary>
+            <returns> Возвращает событие, которое отменяет изменение текущего. </returns>
+        </member>
+        <member name="T:MainForm.Act.ActData">
+            <summary type="" dos="public">
+            Вложеный класс с дополнительной информацией анимируемого события.
+            </summary>
+        </member>
+        <member name="F:MainForm.Act.ActData.newTin">
+            <summary type="int?" dos="public">
+            Обновлённое время входа в вершину.
+            </summary>
+        </member>
+        <member name="F:MainForm.Act.ActData.newFup">
+            <summary type="int?" dos="public">
+            Обновлённая самая высокая вершина в дереве поиска в глубину, 
+            до которую можно добраться из текущей.
+            </summary>
+        </member>
+        <member name="F:MainForm.Act.ActData.lineNum">
+            <summary type="int?" dos="public">
+            Строка кода, которую надо подстветить на данном шаге.
+            </summary>
+        </member>
+        <member name="F:MainForm.Act.ActData.parentNum">
+            <summary type="int?" dos="public">
+            Номер родительской вершины.
+            </summary>
+        </member>
+        <member name="F:MainForm.Act.ActData.newChildren">
+            <summary type="int?" dos="public">
+            Новое количество детей текущей вершины.
+            </summary>
+        </member>
+        <member name="M:MainForm.Act.ActData.#ctor(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary type="" dos="public">
+            Конструктор для инициализации всех параметров.
+            </summary>
+            <param name="newTin"> Новое значение tin. </param>
+            <param name="newFup"> Новое значение fup. </param>
+            <param name="lineNum"> Подсвечиваемая строка кода. </param>
+            <param name="parentNum"> Номер вершины родителя. </param>
+            <param name="newChildren"> Новое количество детей текущей вершины. </param>
+        </member>
+        <member name="M:MainForm.Act.ActData.#ctor(MainForm.Act.ActData)">
+            <summary type="" dos="public">
+            Копирующий конструктор.
+            </summary>
+            <param name="old"> Старый экземпляр текущего класса. </param>
+        </member>
+        <member name="T:MainForm.ALabel">
+            <summary type="" dos="">
+            Контрол Label с дополнительным Storyboard для анимации.
+            </summary>
+        </member>
+        <member name="F:MainForm.ALabel.storyboard">
+            <summary type="Storyboard" dos="private">
+            Storyboard для неприрывной анимации.
+            </summary>
+        </member>
+        <member name="M:MainForm.ALabel.#ctor">
+            <summary type="" dos="public">
+            Пустой конструктор для инициализации полей Label-а.
+            </summary>
+        </member>
+        <member name="P:MainForm.ALabel.Storyboard">
+            <summary type="Storyboard" dos="public">
+            Свойство для обращения к полю storyboard.
+            </summary>
+        </member>
+        <member name="T:MainForm.Edge">
+            <summary type="" dos="">
+            Класс для описания ребра графа.
+            </summary>
+        </member>
+        <member name="F:MainForm.Edge.notBridgeColor">
+            <summary type="Color" dos="public">
+            Цвет ребра которое не является мостом. Он же цвет по умолчанию.
+            </summary>
+        </member>
+        <member name="F:MainForm.Edge.bridgeColor">
+            <summary type="Color" dos="public">
+            Цвет ребра, которое является мостом.
+            </summary>
+        </member>
+        <member name="F:MainForm.Edge.dfsTreeColor">
+            <summary type="Color" dos="public">
+            Цвет ребра, которе является ребром дерева поиска в глубину.
+            </summary>
+        </member>
+        <member name="F:MainForm.Edge.vertexA">
+            <summary type="Vertex" dos="private">
+            Первая вершина, которую соединяет ребро.
+            </summary>
+        </member>
+        <member name="F:MainForm.Edge.vertexB">
+            <summary type="Vertex" dos="private">
+            Вторая вершина, которую соединяет ребро.
+            </summary>
+        </member>
+        <member name="F:MainForm.Edge.isBridge">
+            <summary type="bool" dos="">
+            Флаг, моста.
+            </summary>
+        </member>
+        <member name="M:MainForm.Edge.#ctor(MainForm.Vertex,MainForm.Vertex,System.Windows.Controls.Canvas)">
+            <summary type="" dos="public">
+            Конструкотр для инициализации ребра.
+            </summary>
+            <param name="vertexA"> Первая вершина. </param>
+            <param name="vertexB"> Вторая вершина. </param>
+            <param name="canvas"> Холст для отрисовки. </param>
+        </member>
+        <member name="P:MainForm.Edge.VertexA">
+            <summary type="Vertex" dos="public">
+            Свойство для обращения к первой вершине.
+            </summary>
+        </member>
+        <member name="P:MainForm.Edge.VertexB">
+            <summary type="" dos="public">
+            Свойство для обращение ко второй вершине.
+            </summary>
+        </member>
+        <member name="P:MainForm.Edge.IsBridge">
+            <summary type="bool" dos="public">
+            Свойство для обращения к флагу, который помечает ребро как мост и меняет цвет.
+            </summary>
+        </member>
+        <member name="M:MainForm.Edge.Draw">
+            <summary type="void" dos="public">
+            Метод отрисовки ребра графа.
+            </summary>
+        </member>
+        <member name="M:MainForm.Edge.CreateLine">
+            <summary type="Line" dos="public">
+            Метод создания линии, которая будет нарисована.
+            </summary>
+            <returns> Возвращает инициализированную и добавленную на холс линию. </returns>
+        </member>
+        <member name="M:MainForm.Edge.GetOther(MainForm.Vertex)">
+            <summary type="Vertex" dos="public">
+            Метод возвращает вторую вершину ребра.
+            </summary>
+            <param name="cur"> первая вершина ребра. </param>
+        </member>
+        <member name="M:MainForm.Edge.Refresh">
+            <summary type="void" dos="public">
+            Метод возвращения ребра к исходному состоянию.
+            </summary>
+        </member>
+        <member name="T:MainForm.GlobalMembers">
+            <summary type="" dos="">
+            Статический класс с основномными методами визуализации.
+            </summary>
+        </member>
+        <member name="F:MainForm.GlobalMembers.acts">
+            <summary type="List{Act}" dos="private">
+            Список событий анимации, промодеоированный для отображённого графа.
+            </summary>
+        </member>
+        <member name="F:MainForm.GlobalMembers.used">
+            <summary type="bool[]" dos="private">
+            Массив пометок для вершин графа.
+            </summary>
+        </member>
+        <member name="F:MainForm.GlobalMembers.n">
+            <summary type="int" dos="private">
+            Количество вершин графа.
+            </summary>
+        </member>
+        <member name="F:MainForm.GlobalMembers.vertices">
+            <summary type="List{Vertex}" dos="private">
+            Список вершин графа.
+            </summary>
+        </member>
+        <member name="F:MainForm.GlobalMembers.timer">
+            <summary type="int" dos="private">
+            Переменная таймер для поиска в глубину.
+            </summary>
+        </member>
+        <member name="F:MainForm.GlobalMembers.tin">
+            <summary type="int[]" dos="private">
+            Мессив времени входа в каждую вершину.
+            </summary>
+        </member>
+        <member name="F:MainForm.GlobalMembers.fup">
+            <summary type="int[]" dos="private">
+            Массив дополнительной характеристики для каждой вершины для поиска в глубину.
+            </summary>
+        </member>
+        <member name="F:MainForm.GlobalMembers.childrenLabel">
+            <summary type="ALabel" dos="public">
+            Ссылка на Lable отображающий количество детей для текущей вершины.
+            </summary>
+        </member>
+        <member name="F:MainForm.GlobalMembers.mode">
+            <summary type="int" dos="private">
+            Режим. 0 - поиск мостов, 1 - поиск точек сочленения.
+            </summary>
+        </member>
+        <member name="F:MainForm.GlobalMembers.prevLine">
+            <summary type="int" dos="public">
+            Номер предыдущей линии кода.
+            </summary>
+        </member>
+        <member name="F:MainForm.GlobalMembers.codeStoryboards">
+            <summary type="List{Storyboard}" dos="private">
+            Массив Storyboard-ов для каждой строки кода алгоритма.
+            </summary>
+        </member>
+        <member name="F:MainForm.GlobalMembers.bridgesHint">
+            <summary type="string[]" dos="public">
+            Массив подсказок на каждую строку для алгоритма поиска мостов.
+            </summary>
+        </member>
+        <member name="F:MainForm.GlobalMembers.cutVerticesHint">
+            <summary type="string[]" dos="public">
+            Массив подсказок на каждую строку для алгоритма поиска точек сочленения.
+            </summary>
+        </member>
+        <member name="F:MainForm.GlobalMembers.bridgeAlgorithm">
+            <summary type="string[]" dos="public">
+            Массив строк кода алгоритма поиска мостов.
+            </summary>
+        </member>
+        <member name="F:MainForm.GlobalMembers.cutVertexAlgorithm">
+            <summary type="string[]" dos="public">
+            Массив строк кода алгоритма поиска точек сочленения.
+            </summary>
+        </member>
+        <member name="F:MainForm.GlobalMembers.childrenTemplate">
+            <summary type="string" dos="public">
+            Шаблон для Label-а отображающего количество детей.
+            </summary>
+        </member>
+        <member name="M:MainForm.GlobalMembers.GetActsList(System.Collections.Generic.List{MainForm.Vertex},System.Int32)">
+            <summary type="List{Act}" dos="public">
+            Метод моделирует алгоритм на графе.
+            </summary>
+            <param name="v"> Список вершин графа. </param>
+            <param name="mode"> Режим. 0 - поиск мостов, 1 - поиск точек сочлененеия. </param>
+            <returns> Возвращает список анимационных действий типа Act. </returns>
+        </member>
+        <member name="M:MainForm.GlobalMembers.dfsCutVertex(MainForm.Vertex,MainForm.Vertex)">
+            <summary type="void" dos="private">
+            Алгоритм поиска в глубину для поиска точек сочленения. 
+            </summary>
+            <param name="v"> Текущая вершина. </param>
+            <param name="par"> Вершина предка. </param>
+        </member>
+        <member name="M:MainForm.GlobalMembers.dfsBridge(MainForm.Vertex,MainForm.Vertex)">
+            <summary type="void" dos="private">
+            Алгоритм поиска в глубину для поиска мостов. 
+            </summary>
+            <param name="v"> Текущая вершина. </param>
+            <param name="par"> Вершина предка. </param>
+        </member>
+        <member name="M:MainForm.GlobalMembers.Animate(MainForm.Graph,System.Collections.Generic.List{MainForm.Act},MainForm.MainWindow,System.Int32)">
+            <summary type="void" dos="public">
+            Метод для запуска непрерывной анимации на главном окне.
+            </summary>
+            <param name="g"> Граф, на котором можелируется алгоритм. </param>
+            <param name="lst"> Список анимируемых действий типа Act. </param>
+            <param name="window"> Ссылка на окно на котором происходит анимация. </param>
+            <param name="delta"> Задержка между действиями. </param>
+        </member>
+        <member name="M:MainForm.GlobalMembers.StopAnimation(MainForm.Graph,MainForm.MainWindow)">
+            <summary type="void" dos="public">
+            Метод останавливает неприрывную анимацию. 
+            </summary>
+            <param name="g"> Граф, на котором можелируется алгоритм. </param>
+            <param name="window"> Ссылка на окно на котором происходит анимация. </param>
+        </member>
+        <member name="M:MainForm.GlobalMembers.AnimateAct(MainForm.Act,MainForm.MainWindow,System.Int32)">
+            <summary type="void" dos="public">
+            Метод анимирует одно действие типа Act.
+            </summary>
+            <param name="action"> Анимируемое действие. </param>
+            <param name="window"> Ссылка на окно на котором происходит анимация. </param>
+            <param name="delta"> Задержка между действиями. </param>
+        </member>
+        <member name="M:MainForm.GlobalMembers.InitStoryboards(System.Collections.Generic.List{MainForm.Act},MainForm.MainWindow,System.Collections.Generic.List{System.Windows.Media.Animation.Storyboard},System.Int32)">
+            <summary type="void" dos="private">
+            Метод для инициализации всех Storyboard-ов для неприрывной анимации.
+            </summary>
+            <param name="lst"> Список анимаируемых действий. </param>
+            <param name="window"> Ссылка на окно на котором происходит анимация. </param>
+            <param name="delta"> Задержка между действиями. </param>
+            <param name="codeStoryboards"> Список Storyboard-ов для строк кода алгоритма. </param>
+        </member>
+        <member name="M:MainForm.GlobalMembers.RepaintCodeLine(MainForm.MainWindow,System.Int32,System.Int32,System.Windows.Controls.ListViewItem,System.Windows.Media.Color,System.Boolean)">
+            <summary type="AnimationTimeline" dos="private">
+            Метод для перекраски строки кода алгоритма. 
+            </summary>
+            <param name="window"> Ссылка на окно на котором происходит анимация. </param>
+            <param name="delta"> Задержка между действиями. </param>
+            <param name="seconds"> Текущий счётчик секунд. </param>
+            <param name="line"> Ссылка на строку кода, которую надо подсветить. </param>
+            <param name="newColor"> Новый цвет строки кода. </param>
+            <param name="reverse"> Флаг, отвечающий должно ли действие автоматически отмениться. </param>
+            <returns> Возвращает анимационное событие типа AnimationTimeLine, привязаное к переданой строке. </returns>
+        </member>
+        <member name="M:MainForm.GlobalMembers.ChangeLabelContent(System.Int32,System.Int32,MainForm.ALabel,System.String)">
+            <summary type="AnimationTimeline" dos="private">
+            Метод для изменения контента Lable-а
+            </summary>
+            <param name="delta"> Задержка между действиями. </param>
+            <param name="seconds"> Текущий счётчик секунд. </param>
+            <param name="label"> Ссылка на объект, который будет анимироваться. </param>
+            <param name="newValue"> Новое занчение для свойства контент. </param>
+            <returns> Возвращает анимационное событие типа AnimationTimeLine, привязаное к переданому Label-у. </returns>
+        </member>
+        <member name="M:MainForm.GlobalMembers.RepaintLabel(System.Int32,System.Int32,System.Windows.Media.Color,MainForm.ALabel,System.Boolean)">
+            <summary type="AnimationTimeline" dos="private">
+            Метод для изменения цвета Lable-а
+            </summary>
+            <param name="newColor"> Новый цвет Label-а. </param>
+            <param name="reverse"> Флаг, отвечающий должно ли действие автоматически отмениться. </param>
+            <param name="delta"> Задержка между действиями. </param>
+            <param name="seconds"> Текущий счётчик секунд. </param>
+            <param name="label"> Ссылка на объект, который будет анимироваться. </param>
+            <returns> Возвращает анимационное событие типа AnimationTimeLine, привязаное к переданому Label-у. </returns>
+        </member>
+        <member name="M:MainForm.GlobalMembers.RepaintEdge(System.Int32,System.Int32,MainForm.Act,System.Windows.Media.Color,System.Boolean)">
+            <summary type="AnimationTimeline" dos="private">
+            Метод для изменения цвета ребра.
+            </summary>
+            <param name="newColor"> Новый цвет ребра. </param>
+            <param name="reverse"> Флаг, отвечающий должно ли действие автоматически отмениться. </param>
+            <param name="delta"> Задержка между действиями. </param>
+            <param name="seconds"> Текущий счётчик секунд. </param>
+            <param name="item"> Ссылка на ребро, которое будет анимировано. </param>
+            <returns> Возвращает анимационное событие типа AnimationTimeLine, привязаное к переданому ребру. </returns>
+        </member>
+        <member name="M:MainForm.GlobalMembers.RepaintVertex(System.Int32,System.Int32,MainForm.Act,System.Windows.Media.Color)">
+            <summary type="AnimationTimelineAnimationTimeline" dos="private">
+            Метод для изменения цвета вершины.
+            </summary>
+            <param name="newColor"> Новый цвет вершины. </param>
+            <param name="delta"> Задержка между действиями. </param>
+            <param name="seconds"> Текущий счётчик секунд. </param>
+            <param name="item"> Ссылка на вершину, которая будет анимирована. </param>
+            <returns> Возвращает анимационное событие типа AnimationTimeLine, привязаное к переданой вершине. </returns>
+        </member>
+        <member name="T:MainForm.PointExtention">
+            <summary type="" dos="">
+            Класс расширения точки.
+            </summary>
+        </member>
+        <member name="M:MainForm.PointExtention.Distance(System.Windows.Point,System.Windows.Point)">
+            <summary type="double" dos="public">
+            Метод возвращает расстояние между точками.
+            </summary>
+            <param name="a"> Первая точка. </param>
+            <param name="b"> Вторая точка. </param>
+            <returns> Возвращает расстояние вычисленное по теореме пофигора. </returns>
+        </member>
+        <member name="T:MainForm.Graph">
+            <summary type="" dos="">
+            Класс описывающий граф для моделирования алгоритмов и визуализации.
+            </summary>
+        </member>
+        <member name="F:MainForm.Graph.width">
+            <summary type="double" dos="private">
+            Ширина окна в котором отрисовывается граф.
+            </summary>
+        </member>
+        <member name="F:MainForm.Graph.height">
+            <summary type="double" dos="private">
+            Высота окна в котором отрисовывается граф.
+            </summary>
+        </member>
+        <member name="F:MainForm.Graph.n">
+            <summary type="int" dos="private">
+            Количество вершин графа.
+            </summary>
+        </member>
+        <member name="F:MainForm.Graph.vertices">
+            <summary type="List{Vertex}" dos="private">
+            Список вершин графа.
+            </summary>
+        </member>
+        <member name="F:MainForm.Graph.edges">
+            <summary type="List{Edge}" dos="private">
+            Список рёбер графа.
+            </summary>
+        </member>
+        <member name="F:MainForm.Graph.rnd">
+            <summary type="Random" dos="private">
+            Генератор случайных чисел.
+            </summary>
+        </member>
+        <member name="M:MainForm.Graph.#ctor(System.Collections.Generic.List{System.Collections.Generic.List{System.Int32}},System.Double,System.Double,System.Windows.Controls.Canvas)">
+            <summary type="" dos="public">
+            Конструктор для создания графа из списка инцидентности.
+            </summary>
+            <param name="incList"> Список инцидентности. </param>
+            <param name="width"> Ширина окна, на котором рисуется граф. </param>
+            <param name="height"> Высота окна, на котором рисуется граф. </param>
+            <param name="canvas"> Холст, на котором отображается граф. </param>
+        </member>
+        <member name="M:MainForm.Graph.PositionedVertexes">
+            <summary type="void" dos="private">
+            Метод выбора координат вершин.
+            </summary>
+        </member>
+        <member name="M:MainForm.Graph.CalcState">
+            <summary type="State" dos="private">
+            Посчитать характеристики структуры State для текущего расположения вершин.
+            </summary>
+            <returns> Возвращает структуру с записанными характеристиками и списком координат вершин. </returns>
+        </member>
+        <member name="M:MainForm.Graph.ThrowVertices">
+            <summary type="void" dos="private">
+            Метод для распределения вершинам случайных координат.
+            </summary>
+        </member>
+        <member name="M:MainForm.Graph.Distance(System.Windows.Point,System.Windows.Point)">
+            <summary type="double" dos="private">
+            Метод назождения расстояния между точками.
+            </summary>
+            <param name="a"> Первая точка. </param>
+            <param name="b"> Вторая точка. </param>
+            <returns> Расстояние вычисленное по теореме пифагора. </returns>
+        </member>
+        <member name="M:MainForm.Graph.Area(System.Windows.Point,System.Windows.Point,System.Windows.Point)">
+            <summary type="double" dos="private">
+            Метод вычисление направленной площади треугольника.
+            </summary>
+            <param name="a"> Первая вершина. </param>
+            <param name="b"> Вторая вершина. </param>
+            <param name="c"> Третья вершина. </param>
+            <returns> </returns>
+        </member>
+        <member name="M:MainForm.Graph.Intersect1(System.Double,System.Double,System.Double,System.Double)">
+            <summary type="bool" dos="private">
+            Вспомогательный метод для вычисления пересечения отрезков.
+            </summary>
+            <param name="a"> Координата X первой точки первого отрезка. </param>
+            <param name="b"> Координата X второй точки первого отрезка. </param>
+            <param name="c"> Координата X первой точки второй отрезка. </param>
+            <param name="d"> Координата X второй точки второй отрезка. </param>
+            <returns> Возвращает вычисленную вспомогательную характеристику. </returns>
+        </member>
+        <member name="M:MainForm.Graph.IntersectLine(System.Windows.Point,System.Windows.Point,System.Windows.Point,System.Windows.Point)">
+            <summary type="bool" dos="private">
+            Метод определения пересечения 2-х отрезков. 
+            </summary>
+            <param name="a"> Первая точка первого отрезка. </param>
+            <param name="b"> Вторая точка первого отрезка. </param>
+            <param name="c"> Первая точка второго отрезка. </param>
+            <param name="d"> Вторая точка второго отрезка. </param>
+            <returns> Возвращает логическую переменную, отвечающую на вопрос, пересекаются ли отрезки. </returns>
+        </member>
+        <member name="M:MainForm.Graph.IntersectCircle(System.Windows.Point,System.Windows.Point,System.Windows.Point,System.Double)">
+            <summary type="bool" dos="private">
+            Метод определения пересечения отрезка и окружности.
+            </summary>
+            <param name="a"> Первая точка отрезка. </param>
+            <param name="b"> Вторая точка отрезка. </param>
+            <param name="c"> Центр окружности. </param>
+            <param name="r"> Радиус окружности. </param>
+            <returns> Возвращает логическую переменную, отвечающую на вопрос, пересекаются ли отрезок и окружность. </returns>
+        </member>
+        <member name="M:MainForm.Graph.Swap``1(``0@,``0@)">
+            <summary type="void" dos="private">
+            Метод меняет значения 2-х переменных местами. 
+            </summary>
+        </member>
+        <member name="M:MainForm.Graph.CreateVertexList(System.Collections.Generic.List{System.Collections.Generic.List{System.Int32}})">
+            <summary type="void" dos="private">
+            Метод формирует список вершин графа и устанавливает между ними связи по списку инцидентности.
+            </summary>
+            <param name="incList"> Список инцидентности графа. </param>
+        </member>
+        <member name="P:MainForm.Graph.Width">
+            <summary type="double" dos="public">
+            Свойство для обращения к ширине холста.
+            </summary>
+        </member>
+        <member name="P:MainForm.Graph.Height">
+            <summary type="double" dos="public">
+            Свойство для обращения к высоте холста. 
+            </summary>
+        </member>
+        <member name="P:MainForm.Graph.Vertices">
+            <summary type="List{Vertex}" dos="public">
+            Свойство для обращения к списку вершин графа.
+            </summary>
+        </member>
+        <member name="P:MainForm.Graph.Edges">
+            <summary type="List{Edge}" dos="public">
+            Свойство для обращения к списку рёбер графа.
+            </summary>
+        </member>
+        <member name="M:MainForm.Graph.Draw">
+            <summary type="void" dos="public">
+            Метод отрисовки графа.
+            </summary>
+        </member>
+        <member name="M:MainForm.Graph.Refresh">
+            <summary type="void" dos="public">
+            Метод перерисовывает граф в исходном состоянии. 
+            </summary>
+        </member>
+        <member name="M:MainForm.Graph.Redraw">
+            <summary type="void" dos="public">
+            Метод выбирает новое положение для точек и перерисовывает их.
+            </summary>
+        </member>
+        <member name="M:MainForm.Graph.Serialize(MainForm.Graph,System.String)">
+            <summary type="void" dos="public">
+            Статический метод сериализует граф в заданый файл.
+            </summary>
+            <param name="g"> Сохраняемый граф. </param>
+            <param name="path"> Путь к файлу для сохранения. </param>
+        </member>
+        <member name="M:MainForm.Graph.Deserialize(MainForm.Graph@,System.String)">
+            <summary type="void" dos="public">
+            Статический метод десериализует граф из заданого файла.
+            </summary>
+            <param name="g"> Переменная в которую происходит распаковка. </param>
+            <param name="path"> Путь к файлу для загрузки. </param>
+        </member>
+        <member name="T:MainForm.GraphBuilderWindow">
+            <summary type="" dos="">
+            Логика взаимодействия для GraphBuilderWindow.xaml
+            </summary>
+            <summary>
+            GraphBuilderWindow
+            </summary>
+        </member>
+        <member name="F:MainForm.GraphBuilderWindow.vertexNum">
+            <summary type="int" dos="private">
+            Количество вершин графа. По умолчанию 3.
+            </summary>
+        </member>
+        <member name="F:MainForm.GraphBuilderWindow.result">
+            <summary type="List{List{int}}" dos="public">
+            Сформированный список инцидентности. 
+            </summary>
+        </member>
+        <member name="M:MainForm.GraphBuilderWindow.#ctor">
+            <summary type="" dos="public">
+            Конструктор для инициализации графа.
+            </summary>
+        </member>
+        <member name="M:MainForm.GraphBuilderWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MainForm.GraphException">
+            <summary>
+            Exception, возникающий в классе Graph.
+            </summary>
+        </member>
+        <member name="T:MainForm.DrawableObject">
+            <summary type="" dos="">
+            Класс от которого будут наследоваться все рисуемые на холсте объекты.
+            </summary>
+        </member>
+        <member name="F:MainForm.DrawableObject.currentColor">
+            <summary type="Color" dos="public">
+            Цвет которым будет подсвечиваться текущий объект.
+            </summary>
+            <type> Color </type>
+        </member>
+        <member name="M:MainForm.DrawableObject.Draw">
+            <summary type="void" dos="public">
+            Метод рисования объекта.
+            </summary>
+        </member>
+        <member name="M:MainForm.DrawableObject.Refresh">
+            <summary type="void" dos="public">
+            Метод перерисовки объекта в начальном состоянии.
+            </summary>
+        </member>
+        <member name="F:MainForm.DrawableObject.me">
+            <summary type="void" dos="private">
+            Ссылка на объект который отрисовывается на холсте.
+            </summary>
+        </member>
+        <member name="F:MainForm.DrawableObject.position">
+            <summary type="Point" dos="private">
+            Кооотдинаты объекта.
+            </summary>
+        </member>
+        <member name="F:MainForm.DrawableObject.canvas">
+            <summary type="Canvas" dos="private">
+            Холст на котором будет отображаться объект.
+            </summary>
+            <type> Color </type>
+        </member>
+        <member name="F:MainForm.DrawableObject.col">
+            <summary type="Color" dos="Protected">
+            Цвет объекта.
+            </summary>
+        </member>
+        <member name="F:MainForm.DrawableObject.storyboard">
+            <summary type="" dos="">
+            Storyboard для неприрывной анимации.
+            </summary>
+        </member>
+        <member name="M:MainForm.DrawableObject.#ctor(System.Windows.Controls.Canvas)">
+            <summary type="" dos="protected">
+            Конструктор для инициализации холста.
+            </summary>
+            <param name="canvas"> Холст, на котором будет отображаться объект. </param>
+        </member>
+        <member name="P:MainForm.DrawableObject.Canvas">
+            <summary type="Canvas" dos="public">
+            Свойство для обращения к холсту.
+            </summary>
+        </member>
+        <member name="P:MainForm.DrawableObject.Position">
+            <summary type="Point" dos="public">
+            Свойство для обращения к координатам объекта.
+            </summary>
+        </member>
+        <member name="P:MainForm.DrawableObject.Me">
+            <summary type="Shape" dos="public">
+            Свойство для обращения к отображаемому объекту.
+            </summary>
+        </member>
+        <member name="P:MainForm.DrawableObject.Storyboard">
+            <summary type="Storyboard" dos="public">
+            Свойство для обращения Storyboard.
+            </summary>
+        </member>
+        <member name="P:MainForm.DrawableObject.Col">
+            <summary type="Color" dos="public">
+            Свойство для обращения к цвету.
+            </summary>
+        </member>
+        <member name="T:MainForm.MenuWindow">
+            <summary>
+            Логика взаимодействия для MenuWindow.xaml
+            </summary>
+            <summary>
+            MenuWindow
+            </summary>
+        </member>
+        <member name="M:MainForm.MenuWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MainForm.Properties.Resources">
+            <summary>
+              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="P:MainForm.Properties.Resources.ResourceManager">
+            <summary>
+              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+            </summary>
+        </member>
+        <member name="P:MainForm.Properties.Resources.Culture">
+            <summary>
+              Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:MainForm.Properties.Resources.de">
+            <summary>
+              Ищет локализованную строку, похожую на .
+            </summary>
+        </member>
+        <member name="P:MainForm.Properties.Resources.diskette">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:MainForm.Properties.Resources.load">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:MainForm.Properties.Resources.pen">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="T:MainForm.State">
+            <summary type="" dos="">
+            Структура отображающая расположение вершин графа на холсте и его информативность.
+            </summary>
+        </member>
+        <member name="F:MainForm.State.lineInt">
+            <summary type="int" dos="public">
+            Количество пересечений линий рёбер. 
+            </summary>
+        </member>
+        <member name="F:MainForm.State.circleInt">
+            <summary type="int" dos="public">
+            Количество пересечений рёбер с вершинами.
+            </summary>
+        </member>
+        <member name="F:MainForm.State.sumDist">
+            <summary type="double" dos="public">
+            Суммарная длина рёбер. 
+            </summary>
+        </member>
+        <member name="F:MainForm.State.ideal">
+            <summary type="double" dos="public">
+            Идельная длина рёбер.
+            </summary>
+        </member>
+        <member name="F:MainForm.State.lstVertex">
+            <summary type="List{Point}" dos="public">
+            Список координат вершин.
+            </summary>
+        </member>
+        <member name="M:MainForm.State.#ctor(System.Int32,System.Int32,System.Double)">
+            <summary type="" dos="public">
+            Конструктор для инициализации основных параметров.
+            </summary>
+            <param name="lineInt"> Количество пересечений линий рёбер. </param>
+            <param name="circleInt"> Количество пересечений рёбер с вершинами. </param>
+            <param name="sumDist"> Суммарная длина рёбер. </param>
+        </member>
+        <member name="M:MainForm.State.CompareTo(MainForm.State)">
+            <summary type="int" dos="public">
+            Метод сравнения информативности 2-х сосотяний.
+            </summary>
+            <param name="obj"> Объект, сравниваемый с текущим. </param>
+            <returns> Возвращает 0, если объеты равны, 1 если текущий объект больше,-1 если текущий объект меньше. </returns>
+        </member>
+        <member name="T:MainForm.Vertex">
+            <summary type="" dos="">
+            Класс, описывающий вершину графа.
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.notUsedColor">
+            <summary type="Color" dos="public">
+            Цвет ещё не тронутой вершины.
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.usedColor">
+            <summary type="Color" dos="public">
+            Цвет вершины, помеченной, как использованной. 
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.textColor">
+            <summary type="Color" dos="public">
+            Цвет текста рядом с вершиной по умолчанию.
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.textHighlightedColor1">
+            <summary type="Color" dos="public">
+            Цвет подстветки текста 1.
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.textHighlightedColor2">
+            <summary type="Color" dos="public">
+            Цвет подстветки текста 2.
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.cutVertexColor">
+            <summary type="Color" dos="public">
+            Цвет вершины, рассматриваемой в данный момент. 
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.labelDistance">
+            <summary type="double" dos="private">
+            Расстояние от вершины до Label-ов рядом с веришной.
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.labelHeight">
+            <summary type="double" dos="private">
+            Высота Label-ов рядом с веришной.
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.labelWidth">
+            <summary type="double" dos="private">
+            Ширина Label-ов рядом с веришной.
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.tinTemplate">
+            <summary type="string" dos="public">
+            Шаблон для Label-а с временем входа.
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.fupTemplate">
+            <summary type="string" dos="public">
+            Шаблон для Label-а с характеристикой fup.
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.edges">
+            <summary type="List{Edge}" dos="private">
+            Список рёбер, выходящих из вершины. 
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.labelTin">
+            <summary type="ALabel" dos="private">
+            Ссылка на Label с характеристикой tin.
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.labelFup">
+            <summary type="ALabel" dos="private">
+            Ссылка на Label с характеристикой fup.
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.tin">
+            <summary type="int" dos="private">
+            Время входа в вершину.
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.fup">
+            <summary type="int" dos="private">
+            максимальная вершина в дереве поиска в глубину до которой можэно добраться. 
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.used">
+            <summary type="bool" dos="private">
+            Пометка уже пройденой вершины поиском в глубину.
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.isCutVertex">
+            <summary type="bool" dos="private">
+            Флаг, отвечающий является ли вершина точкой сочленения.
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.size">
+            <summary type="double" dos="private">
+            Размер вершины. 
+            </summary>
+        </member>
+        <member name="F:MainForm.Vertex.num">
+            <summary type="int" dos="private">
+            Номер вершины в списке инцидентности.
+            </summary>
+        </member>
+        <member name="M:MainForm.Vertex.#ctor(System.Windows.Point,System.Double,System.Int32,System.Windows.Controls.Canvas)">
+            <summary type="" dos="public">
+            Конструктори для инициализации основных полей Вершины.
+            </summary>
+            <param name="position"> Координаты на холсте. </param>
+            <param name="size"> радиус окружности. </param>
+            <param name="num"> Номер вершины. </param>
+            <param name="canvas"> Холст на котором отображается вершина. </param>
+        </member>
+        <member name="M:MainForm.Vertex.InitLabel(System.Windows.Controls.Label)">
+            <summary type="void" dos="private">
+            Метод для инициализации label-ов рядом с веришной.
+            </summary>
+            <param name="label"></param>
+        </member>
+        <member name="P:MainForm.Vertex.Tin">
+            <summary type="int" dos="public">
+            Свойство для обращения к tin.
+            </summary>
+        </member>
+        <member name="P:MainForm.Vertex.Fup">
+            <summary type="int" dos="public">
+            Свойство для обращения к fup.
+            </summary>
+        </member>
+        <member name="P:MainForm.Vertex.Used">
+            <summary type="bool" dos="public">
+            Свойство для обращения к прлю used.
+            </summary>
+        </member>
+        <member name="P:MainForm.Vertex.Size">
+            <summary type="double" dos="public">
+            Свойство для обращения к размеру вершины.
+            </summary>
+        </member>
+        <member name="P:MainForm.Vertex.Edges">
+            <summary type="List{Edge}" dos="public">
+            Свойство для обращения к списку рёбер, исходящих из вершины. 
+            </summary>
+        </member>
+        <member name="P:MainForm.Vertex.Num">
+            <summary type="int" dos="public">
+            Свойство для обращению к номеру вершины.
+            </summary>
+        </member>
+        <member name="P:MainForm.Vertex.LabelTin">
+            <summary type="ALabel" dos="public">
+            Свойство для обращения к Label-у отображаюзему tin.
+            </summary>
+        </member>
+        <member name="P:MainForm.Vertex.LabelFup">
+            <summary type="ALabel" dos="public">
+            Свойство для обращения к Label-у отображаюзему fup`.
+            </summary>
+        </member>
+        <member name="P:MainForm.Vertex.IsCutVertex">
+            <summary type="bool" dos="public">
+            Свойство для обращения к флагу, отвечающему за статус точки сочленения.
+            </summary>
+        </member>
+        <member name="M:MainForm.Vertex.Draw">
+            <summary type="void" dos="public">
+            Метод отрисовки вершины на холсте.
+            </summary>
+        </member>
+        <member name="M:MainForm.Vertex.SetLabels">
+            <summary type="void" dos="private">
+            Метод устанавливает координаты Label-ов с дополнительной информацией.
+            </summary>
+        </member>
+        <member name="M:MainForm.Vertex.CreateEllipse">
+            <summary type="Ellips" dos="private">
+            Метод создаёт Ellipse, инициализирует и привязывает его к холсту.
+            </summary>
+            <returns> Возвращает инициализированный Ellipse</returns>
+        </member>
+        <member name="M:MainForm.Vertex.AddEdgeTo(MainForm.Vertex)">
+            <summary type="void" dos="public">
+            Метод добавляет ребро ведущее к переданой вершине.
+            </summary>
+            <param name="v"> Вершины к которой ведёт новое ребро. </param>
+        </member>
+        <member name="M:MainForm.Vertex.IsConnected(MainForm.Vertex)">
+            <summary type="bool" dos="public">
+            Метод проверяет связаны ли вершины.
+            </summary>
+            <param name="v"> Вершина с которой проверяется связь. </param>
+            <returns> Возвращает логическую переменную отвечающую на посталвенный вопрос.</returns>
+        </member>
+        <member name="M:MainForm.Vertex.Refresh">
+            <summary type="void" dos="public">
+            Метод для перерисовки вершины в исходном состоянии.
+            </summary>
+        </member>
+        <member name="P:MainForm.Vertex.Col">
+            <summary type="Color" dos="public">
+            Свойство для обращения к цвету вершины.
+            </summary>
+        </member>
+        <member name="T:MainForm.App">
+            <summary>
+            Логика взаимодействия для App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:MainForm.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:MainForm.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:MainForm.MainWindow">
+            <summary>
+            Логика взаимодействия для MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:MainForm.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>

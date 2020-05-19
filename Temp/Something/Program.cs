@@ -10,45 +10,18 @@ using System.Threading.Tasks;
 
 
 namespace Something {
-    interface IMyInterface1 {
-        void M1();
-    }
-
-    interface IMyInterface2 {
-        void M1();
-    }
-
-    class myClass : IMyInterface1, IMyInterface2 {
-        void IMyInterface1.M1() {
-            Console.WriteLine(1);
-        }
-
-        void IMyInterface2.M1() {
-            Console.WriteLine(2);
-        }
-        private void M2() {
-            Console.WriteLine(3);
-        }
-    }
 
     public class Program {
         static void Main(string[] args) {
-            myClass mc = new myClass();
-            var t = mc.GetType();
-
-            foreach (var item in t.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static)) {
-                Console.WriteLine(item.Name);
-                try {
-                    item.Invoke(mc, new object[] { });
-                    Console.WriteLine("Success\n");
-                }
-                catch {
-                    Console.WriteLine("Неудача...\n");
-                }
+            int[] m = new int[10];
+            Action[] dm = new Action[10];
+            for (int i = 0; i < 10; i++) {
+                dm[i] = () => { m[10 - i - 1]++; };
             }
-
-            //var m = t.GetMethod("M2", BindingFlags.Instance | BindingFlags.NonPublic);
-            //m.Invoke(mc, new object[] { });
+            dm[1].Invoke();
+            foreach (var item in m) {
+                Console.Write($"{item}, ");
+            }
         }
 
 
