@@ -11,35 +11,47 @@ namespace converter {
 	class Elem {
 		public string name;
 		public string summary;
+		public string mod;
+		public string type;
 
-		public Elem(string name, string summary) {
+		public Elem(string name, string summary, string mod, string type) {
 			this.name = name ?? throw new ArgumentNullException(nameof(name));
 			name = Regex.Replace(name, @"\w+\.", "");
 			name = Regex.Replace(name, @"{", "<");
 			this.name = Regex.Replace(name, @"}", ">");
 			this.summary = summary ?? throw new ArgumentNullException(nameof(summary));
+			this.mod = mod;
+			type = Regex.Replace(type, @"{", "<");
+			this.type = Regex.Replace(type, @"}", ">");
 		}
 	}
 	class Field : Elem {
-		public Field(string name, string summary) : base(name, summary) {
+		public Field(string name, string summary, string mod, string type) : base(name, summary, mod, type) {
 		}
 
 		public override string ToString() =>
-			$"\tПоле : {name}\t" + summary + Environment.NewLine;
+			$"{mod}\t{type}\t{name}\t{summary}";
+	}
+	class Prop : Elem {
+		public Prop(string name, string summary, string mod, string type) : base(name, summary, mod, type) {
+		}
+
+		public override string ToString() =>
+			$"{mod}\t{type}\t{name}\t{summary}";
 	}
 	class Meth : Elem {
 		public List<Elem> param = new List<Elem>();
 
 		public string returns;
 
-		public Meth(string name, string summary, string returns) : base(name, summary) {
+		public Meth(string name, string summary, string returns, string mod, string type) : base(name, summary, mod, type) {
 			this.returns = returns;
 		}
 
 		public override string ToString() {
 			var res = new StringBuilder();
-			
-			res.Append($"\tМетод : {name}\t" + summary + Environment.NewLine + (param.Count == 0? "" : "\tПараметры : " + Environment.NewLine));
+
+			res.Append($"\tМетод : {name}\t" + summary + Environment.NewLine + (param.Count == 0 ? "" : "\tПараметры : " + Environment.NewLine));
 
 			foreach (var item in param) {
 				res.Append($"\t\tПараметр : {item.name}\t{item.summary}" + Environment.NewLine);
@@ -50,25 +62,41 @@ namespace converter {
 			return res.ToString();
 		}
 	}
-	class MyType : Elem{
+	class MyType : Elem {
 		public List<Field> fields = new List<Field>();
 		public List<Meth> meths = new List<Meth>();
+		public List<Prop> props = new List<Prop>();
 
-		public MyType(string name, string summary) : base(name, summary) {
+		public MyType(string name, string summary, string mod, string type) : base(name, summary, mod, type) {
 		}
 
-		public override string ToString() {
+		public string WriteClassFields() {
 			var res = new StringBuilder();
 
-			res.Append($"Класс : {name}\t" + summary + Environment.NewLine);
+			res.Append($"Поля Класса : {name}\t" + Environment.NewLine);
 
 			foreach (var item in fields) {
 				res.Append(item.ToString() + Environment.NewLine);
 			}
 
-			foreach (var item in meths) {
+			//foreach (var item in meths) {
+			//	res.Append(item.ToString() + Environment.NewLine);
+			//}
+
+			return res.ToString();
+		}
+		public string WriteClassProps() {
+			var res = new StringBuilder();
+
+			res.Append($"Свойства Класса : {name}\t" + Environment.NewLine);
+
+			foreach (var item in props) {
 				res.Append(item.ToString() + Environment.NewLine);
 			}
+
+			//foreach (var item in meths) {
+			//	res.Append(item.ToString() + Environment.NewLine);
+			//}
 
 			return res.ToString();
 		}
@@ -77,7 +105,7 @@ namespace converter {
 		static void Main(string[] args) {
 			Dictionary<string, MyType> types = new Dictionary<string, MyType>();
 			var xDoc = new XmlDocument();
-			xDoc.Load("..\\..\\svd.xml");
+			xDoc.Load("..\\..\\MainForm.xml");
 			var save = new List<XmlElement>();
 			foreach (XmlElement item in xDoc.GetElementsByTagName("members")[0].ChildNodes) {
 				var nameNode = item.Attributes.GetNamedItem("name");
@@ -93,14 +121,27 @@ namespace converter {
 						var temp = name.Split('.');
 						name = temp[temp.Length - 1];
 						var sum = item.GetElementsByTagName("summary")[0].InnerText.Trim();
-						types.Add(name, new MyType(name, sum));
+						types.Add(name, new MyType(name, sum, "", ""));
 						break;
 					case 'F':
 						temp = name.Split('.');
 						name = temp[temp.Length - 1];
-						sum = item.GetElementsByTagName("summary")[0].InnerText.Trim();
+						XmlNode sumEl = item.GetElementsByTagName("summary")[0];
+						sum = sumEl.InnerText.Trim();
 						var className = temp[temp.Length - 2];
-						types[className].fields.Add(new Field(name, sum));
+						var modAttr = sumEl.Attributes["dos"];
+						var typeAttr = sumEl.Attributes["type"];
+						types[className].fields.Add(new Field(name, sum, modAttr is null ? "" : modAttr.Value, typeAttr is null ? "" : typeAttr.Value)); ;
+						break;
+					case 'P':
+						temp = name.Split('.');
+						name = temp[temp.Length - 1];
+						sumEl = item.GetElementsByTagName("summary")[0];
+						sum = sumEl.InnerText.Trim();
+						var claName = temp[temp.Length - 2];
+						modAttr = sumEl.Attributes["dos"];
+						typeAttr = sumEl.Attributes["type"];
+						types[claName].fields.Add(new Field(name, sum, modAttr is null? "" : modAttr.Value, typeAttr is null ? "" : typeAttr.Value));
 						break;
 					case 'M':
 						var ttemp = name.Split('(');
@@ -114,13 +155,17 @@ namespace converter {
 						catch {
 							name += "()";
 						}
-						sum = item.GetElementsByTagName("summary")[0].InnerText.Trim();
+						sumEl = item.GetElementsByTagName("summary")[0];
+						sum = sumEl.InnerText.Trim();
+						modAttr = sumEl.Attributes["dos"];
+						typeAttr = sumEl.Attributes["type"];
 						string ret = "";
 						if (item.GetElementsByTagName("returns").Count != 0)
 							ret = item.GetElementsByTagName("returns")[0].InnerText.Trim();
-						var meth = new Meth(name, sum, ret);
+						var meth = new Meth(name, sum, ret, item.GetAttribute("dos"), item.GetAttribute("type"));
 						foreach (XmlElement itemm in item.GetElementsByTagName("param")) {
-							meth.param.Add(new Elem(itemm.Attributes.GetNamedItem("name").Value, itemm.InnerText.Trim()));
+							meth.param.Add(new Elem(itemm.Attributes.GetNamedItem("name").Value, itemm.InnerText.Trim(),
+								modAttr is null ? "" : modAttr.Value, typeAttr is null ? "" : typeAttr.Value));
 						}
 
 						className = temp[temp.Length - 2];
@@ -128,7 +173,7 @@ namespace converter {
 							types[className].meths.Add(meth);
 						}
 						catch (KeyNotFoundException) {
-							types.Add(className, new MyType(className, ""));
+							types.Add(className, new MyType(className, "", "", ""));
 							types[className].meths.Add(meth);
 						}
 
@@ -140,7 +185,8 @@ namespace converter {
 
 			using (StreamWriter sw = new StreamWriter(new FileStream("..\\..\\text.txt", FileMode.Create))) {
 				foreach (var item in types) {
-					sw.WriteLine(item.Value);
+					sw.WriteLine(item.Value.WriteClassFields()+Environment.NewLine);
+					sw.WriteLine(item.Value.WriteClassProps()+Environment.NewLine);
 				}
 			}
 		}
