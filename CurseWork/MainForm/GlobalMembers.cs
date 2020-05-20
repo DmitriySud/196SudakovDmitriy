@@ -490,17 +490,17 @@ namespace MainForm {
 		/// <param name="window"> Ссылка на окно на котором происходит анимация. </param>
 		public static void StopAnimation(Graph g, MainWindow window) {
 			//myStoryBoard.Begin(lst[0].Obj.Me);
-			if (mode == 1) childrenLabel.Storyboard.Stop(window);
+			if (mode == 1) childrenLabel.Storyboard?.Stop(window);
 			foreach (var edge in g.Edges) {
-				edge.Storyboard.Stop(window);
+				edge.Storyboard?.Stop(window);
 			}
 			foreach (var item in codeStoryboards) {
-				item.Stop(window);
+				item?.Stop(window);
 			}
 			foreach (var vertex in g.Vertices) {
-				vertex.Storyboard.Stop(window);
-				vertex.LabelTin.Storyboard.Stop(window);
-				vertex.LabelFup.Storyboard.Stop(window);
+				vertex.Storyboard?.Stop(window);
+				vertex.LabelTin.Storyboard?.Stop(window);
+				vertex.LabelFup.Storyboard?.Stop(window);
 			}
 		}
 
