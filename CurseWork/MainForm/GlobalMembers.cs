@@ -625,6 +625,10 @@ namespace MainForm {
 					item.vertex.Storyboard.Children.Add(RepaintVertex(seconds, delta, item, Vertex.usedColor));
 					item.vertex.Col = Vertex.usedColor;
 				}
+				if ((uint)(ActTypes.highlightCutVertex & item.ActType) != 0) {
+					item.vertex.Storyboard.Children.Add(RepaintVertex(seconds, delta, item, Vertex.cutVertexColor));
+					item.vertex.Col = Vertex.cutVertexColor;
+				}
 				if ((uint)(ActTypes.highlightVertexCurrent & item.ActType) != 0) {
 					item.vertex.Storyboard.Children.Add(RepaintVertex(seconds, delta, item, DrawableObject.currentColor));
 					item.vertex.Col = DrawableObject.currentColor;

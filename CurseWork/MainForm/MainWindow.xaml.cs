@@ -172,7 +172,7 @@ namespace MainForm {
 		public void DfsLines_Item_Clicked(object sender, RoutedEventArgs e) {
 			int numder = dfsLines.SelectedIndex;
 			var act = DfsLinesNum[numder];
-			Refresh();
+			Refresh(false);
 			numerator = -1;
 			while (numerator == -1 || acts[numerator] != act) {
 				numerator++;
@@ -180,13 +180,15 @@ namespace MainForm {
 			}
 		}
 
-		private void Refresh() {
+		private void Refresh(bool restart = true) {
 			canv.Children.Clear();
-			acts = null;
-			numerator = 0;
-			backActs.Clear();
+			if (restart) {
+				acts = null;
+				numerator = 0;
+				backActs.Clear();
+				animated = false;
+			}
 			g.Refresh();
-			animated = false;
 
 
 			foreach (var item in codeLines.Items) {
