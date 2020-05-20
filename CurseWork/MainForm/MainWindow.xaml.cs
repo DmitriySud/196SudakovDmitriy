@@ -65,9 +65,10 @@ namespace MainForm {
 		}
 
 		private void Button_Draw_Click(object sender, RoutedEventArgs e) {
+			Refresh();
 			if (drawn)
 				g.Redraw();
-			else
+			else 
 				g.Draw();
 
 			drawn = true;
@@ -79,11 +80,12 @@ namespace MainForm {
 				return;
 			}
 			if (animated) {
-				GlobalMembers.StopAnimation(g, this);
 				Refresh();
+				GlobalMembers.StopAnimation(g, this);
 				animated = false;
 			}
 			else {
+				Refresh();
 				var lst = GlobalMembers.GetActsList(g.Vertices, mode);
 				GlobalMembers.Animate(g, lst, this, delta);
 				animated = true;
@@ -95,7 +97,10 @@ namespace MainForm {
 				MessageBox.Show("Чтобы запустить анимацию сначала нарисуйте граф.");
 				return;
 			}
-
+			if (animated) {
+				MessageBox.Show("Остановите анимацию или перерисуйте граф.");
+				return;
+			}
 			if (numerator < 1) {
 				MessageBox.Show("Сначала промоделируйте хотя бы 2 шага.");
 				return;
@@ -108,6 +113,10 @@ namespace MainForm {
 		private void Button_Next_Click(object sender, RoutedEventArgs e) {
 			if (!drawn) {
 				MessageBox.Show("Чтобы запустить анимацию сначала нарисуйте граф.");
+				return;
+			}
+			if (animated) {
+				MessageBox.Show("Остановите анимацию или перерисуйте граф.");
 				return;
 			}
 
@@ -173,7 +182,12 @@ namespace MainForm {
 
 		private void Refresh() {
 			canv.Children.Clear();
+			acts = null;
+			numerator = 0;
+			backActs.Clear();
 			g.Refresh();
+			animated = false;
+
 
 			foreach (var item in codeLines.Items) {
 				((ListViewItem)item).Foreground = new SolidColorBrush(Colors.Black);

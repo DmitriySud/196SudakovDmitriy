@@ -302,10 +302,16 @@ namespace MainForm {
 		/// <param name="g"> Сохраняемый граф. </param>
 		/// <param name="path"> Путь к файлу для сохранения. </param>
 		public static void Serialize(Graph g, string path) {
-			using (var fs = new FileStream(path, FileMode.Create)) {
-				var formater = new BinaryFormatter();
-				formater.Serialize(fs, g);
+			try {
+				using (var fs = new FileStream(path, FileMode.Create)) {
+					var formater = new BinaryFormatter();
+					formater.Serialize(fs, g);
+				}
 			}
+			catch (Exception ex) {
+				MessageBox.Show("File Error. " + ex.Message);
+			}
+
 		}
 
 		/// <summary type="void" dos="public">
@@ -314,9 +320,14 @@ namespace MainForm {
 		/// <param name="g"> Переменная в которую происходит распаковка. </param>
 		/// <param name="path"> Путь к файлу для загрузки. </param>
 		public static void Deserialize(ref Graph g, string path) {
-			using (var fs = new FileStream(path, FileMode.Open)) {
-				var formater = new BinaryFormatter();
-				g = (Graph)formater.Deserialize(fs);
+			try {
+				using (var fs = new FileStream(path, FileMode.Open)) {
+					var formater = new BinaryFormatter();
+					g = (Graph)formater.Deserialize(fs);
+				}
+			}
+			catch (Exception ex) {
+				MessageBox.Show("File Error. " + ex.Message);
 			}
 		}
 	}
