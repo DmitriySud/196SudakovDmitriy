@@ -1,329 +1,687 @@
-Поля Класса : ActTypes	
+Поля Класса : Base.CalcEngine	
+ public 	FinishAllMoves	Делегат хранящий методы размножения точек.
+ public 	PrepareVertex	Делегат хранящий методы подготовки вершин.
+ public 	PrepareEdge	Делегат хранящий методы подготовки ребер.
 
 
-Свойства Класса : ActTypes	
+Свойства Класса : Base.CalcEngine	
+ public 	Count	Свойство доступа к количеству итераций.
 
 
-Методы Класса : ActTypes	
+Методы Класса : Base.CalcEngine	
+ public 	Move		Метод передвижения точек.	
+ public 	GetEnergyData	System.String	Метод записи информации о распределении энергии.	
+ public 	GetPointCountData	System.String	Метод записи информации о количестве точек.	
+ public 	Reset		Метод сброса прогресса.	
+ public 	Serialize	System.String	Метод сохранения информации о графе.	
 
 
-Поля Класса : Act	
-private	ActTypes	actType	Число биты которого отвечают за то, какая анимация будет отображаться.
-public	Vertex	vertex	Вершина, которая будет анимирована на данном шаге.
-public	Edge	edge	Ребро, которое будет анимировано на данном шаге.
-public	List<ALabel>	labels	Список Labael-ов, которые будут анимированы на данном шаге.
-public	ActData	data	Дополнительная информация.
+Поля Класса : Base.ImageEngine	
+ public 	FinishAllMoves	Делегат хранящий методы размножения точек.
+ public 	PrepareVertex	Делегат хранящий методы подготовки вершин.
+ public 	PrepareEdge	Делегат хранящий методы подготовки ребер.
 
 
-Свойства Класса : Act	
-public	ActTypes	ActType	Свойство для обращения к типу события.
+Свойства Класса : Base.ImageEngine	
+ public 	Count	Свойство доступа к количеству итераций.
 
 
-Методы Класса : Act	
-public		Конструктор	ActTypes,Object[]	Конструткор для инициализации полей.	
-public		Конструктор	Act	Копирующий конструктор.	
-public	Act	GetReverseAct		Метод для получения обратного события.	Возвращает событие, которое отменяет изменение текущего.
+Методы Класса : Base.ImageEngine	
+ public 	Move		Метод передвижения точек.	
+ public 	DrawGraph	System.Int32	Метод прорисовки графа.	
+ public 	Reset		Метод сброса прогресса.	
 
 
-Поля Класса : ActData	
-public	int?	newTin	Обновлённое время входа в вершину.
-public	int?	newFup	Обновлённая самая высокая вершина в дереве поиска в глубину, до которую можно добраться из текущей.
-public	int?	lineNum	Строка кода, которую надо подстветить на данном шаге.
-public	int?	parentNum	Номер родительской вершины.
-public	int?	newChildren	Новое количество детей текущей вершины.
+Поля Класса : Presentation.Constants	
+ public 	TreeLength	Длинна отрисовки ребра дерева.
+ public 	TreeR	Величина отклонения отрисовки ребра дерева.
+ public 	SquareLength	Длинна отрисовки ребра квадратной решетки.
+ public 	TrangleLength	Длинна отрисовки ребра треугольной решетки.
+ public 	HexagonLength	Длинна отрисовки ребра шестиугольной решетки.
+ public 	size	Размер отрисовки вершины.
+ public 	pointsize	Размер отрисовки точки.
+ public 	drawLevel	Количество уровней отрисовки.
 
 
-Свойства Класса : ActData	
+Свойства Класса : Presentation.Constants	
 
 
-Методы Класса : ActData	
-public		Конструктор	int?,int?,int?,int?,int?	Конструктор для инициализации всех параметров.	
-public		Конструктор	ActData	Копирующий конструктор.	
+Методы Класса : Presentation.Constants	
 
 
-Поля Класса : ALabel	
-private	Storyboard	storyboard	Storyboard для неприрывной анимации.
+Поля Класса : Presentation.Base.GraphWindow	
 
 
-Свойства Класса : ALabel	
-public	Storyboard	Storyboard	Свойство для обращения к полю storyboard.
+Свойства Класса : Presentation.Base.GraphWindow	
 
 
-Методы Класса : ALabel	
-public		Конструктор		Пустой конструктор для инициализации полей Label-а.	
+Методы Класса : Presentation.Base.GraphWindow	
+	InitializeComponent		InitializeComponent	
 
 
-Поля Класса : Edge	
-public	Color	notBridgeColor	Цвет ребра которое не является мостом. Он же цвет по умолчанию.
-public	Color	bridgeColor	Цвет ребра, которое является мостом.
-public	Color	dfsTreeColor	Цвет ребра, которе является ребром дерева поиска в глубину.
-private	Vertex	vertexA	Первая вершина, которую соединяет ребро.
-private	Vertex	vertexB	Вторая вершина, которую соединяет ребро.
-private	bool	isBridge	Флаг, моста.
+Поля Класса : Presentation.Parametrs	
 
 
-Свойства Класса : Edge	
-public	Vertex	VertexA	Свойство для обращения к первой вершине.
-public	Vertex	VertexB	Свойство для обращение ко второй вершине.
-public	bool	IsBridge	Свойство для обращения к флагу, который помечает ребро как мост и меняет цвет.
+Свойства Класса : Presentation.Parametrs	
 
 
-Методы Класса : Edge	
-public		Конструктор	Vertex,Vertex,Canvas	Конструкотр для инициализации ребра.	
-public	void	Draw		Метод отрисовки ребра графа.	
-public	Line	CreateLine		Метод создания линии, которая будет нарисована.	Возвращает инициализированную и добавленную на холс линию.
-public	Vertex	GetOther	Vertex	Метод возвращает вторую вершину ребра.	
-public	void	Refresh		Метод возвращения ребра к исходному состоянию.	
+Методы Класса : Presentation.Parametrs	
+	InitializeComponent		InitializeComponent	
 
 
-Поля Класса : GlobalMembers	
-private	List<Act>	acts	Список событий анимации, промодеоированный для отображённого графа.
-private	bool[]	used	Массив пометок для вершин графа.
-private	int	n	Количество вершин графа.
-private	List<Vertex>	vertices	Список вершин графа.
-private	int	timer	Переменная таймер для поиска в глубину.
-private	int[]	tin	Мессив времени входа в каждую вершину.
-private	int[]	fup	Массив дополнительной характеристики для каждой вершины для поиска в глубину.
-public	ALabel	childrenLabel	Ссылка на Lable отображающий количество детей для текущей вершины.
-private	int	mode	Режим. 0 - поиск мостов, 1 - поиск точек сочленения.
-public	int	prevLine	Номер предыдущей линии кода.
-private	List<Storyboard>	codeStoryboards	Массив Storyboard-ов для каждой строки кода алгоритма.
-public	string[]	bridgesHint	Массив подсказок на каждую строку для алгоритма поиска мостов.
-public	string[]	cutVerticesHint	Массив подсказок на каждую строку для алгоритма поиска точек сочленения.
-public	string[]	bridgeAlgorithm	Массив строк кода алгоритма поиска мостов.
-public	string[]	cutVertexAlgorithm	Массив строк кода алгоритма поиска точек сочленения.
-public	string	childrenTemplate	Шаблон для Label-а отображающего количество детей.
+Поля Класса : Presentation.App	
 
 
-Свойства Класса : GlobalMembers	
+Свойства Класса : Presentation.App	
 
 
-Методы Класса : GlobalMembers	
-public	List<Act>	GetActsList	List<Vertex>,Int32	Метод моделирует алгоритм на графе.	Возвращает список анимационных действий типа Act.
-private	void	dfsCutVertex	Vertex,Vertex	Алгоритм поиска в глубину для поиска точек сочленения.	
-private	void	dfsBridge	Vertex,Vertex	Алгоритм поиска в глубину для поиска мостов.	
-public	void	Animate	Graph,List<Act>,MainWindow,Int32	Метод для запуска непрерывной анимации на главном окне.	
-public	void	StopAnimation	Graph,MainWindow	Метод останавливает неприрывную анимацию.	
-public	void	AnimateAct	Act,MainWindow,Int32	Метод анимирует одно действие типа Act.	
-private	void	InitStoryboards	List<Act>,MainWindow,List<Storyboard>,Int32	Метод для инициализации всех Storyboard-ов для неприрывной анимации.	
-private	AnimationTimeline	RepaintCodeLine	MainWindow,Int32,Int32,ListViewItem,Color,Boolean	Метод для перекраски строки кода алгоритма.	Возвращает анимационное событие типа AnimationTimeLine, привязаное к переданой строке.
-private	AnimationTimeline	ChangeLabelContent	Int32,Int32,ALabel,String	Метод для изменения контента Lable-а	Возвращает анимационное событие типа AnimationTimeLine, привязаное к переданому Label-у.
-private	AnimationTimeline	RepaintLabel	Int32,Int32,Color,ALabel,Boolean	Метод для изменения цвета Lable-а	Возвращает анимационное событие типа AnimationTimeLine, привязаное к переданому Label-у.
-private	AnimationTimeline	RepaintEdge	Int32,Int32,Act,Color,Boolean	Метод для изменения цвета ребра.	Возвращает анимационное событие типа AnimationTimeLine, привязаное к переданому ребру.
-private	AnimationTimelineAnimationTimeline	RepaintVertex	Int32,Int32,Act,Color	Метод для изменения цвета вершины.	Возвращает анимационное событие типа AnimationTimeLine, привязаное к переданой вершине.
+Методы Класса : Presentation.App	
+	InitializeComponent		InitializeComponent	
+	Main		Application Entry Point.	
 
 
-Поля Класса : PointExtention	
+Поля Класса : Presentation.MainWindow	
 
 
-Свойства Класса : PointExtention	
+Свойства Класса : Presentation.MainWindow	
 
 
-Методы Класса : PointExtention	
-public	double	Distance	Point,Point	Метод возвращает расстояние между точками.	Возвращает расстояние вычисленное по теореме пофигора.
+Методы Класса : Presentation.MainWindow	
+	InitializeComponent		InitializeComponent	
 
 
-Поля Класса : Graph	
-private	double	width	Ширина окна в котором отрисовывается граф.
-private	double	height	Высота окна в котором отрисовывается граф.
-private	int	n	Количество вершин графа.
-private	List<Vertex>	vertices	Список вершин графа.
-private	List<Edge>	edges	Список рёбер графа.
-private	Random	rnd	Генератор случайных чисел.
+Поля Класса : Presentation.Properties.Resources	
 
 
-Свойства Класса : Graph	
-public	double	Width	Свойство для обращения к ширине холста.
-public	double	Height	Свойство для обращения к высоте холста.
-public	List<Vertex>	Vertices	Свойство для обращения к списку вершин графа.
-public	List<Edge>	Edges	Свойство для обращения к списку рёбер графа.
+Свойства Класса : Presentation.Properties.Resources	
+	ResourceManager	Возврат кэшированного экземпляра ResourceManager, используемого этим классом.
+	Culture	Переопределяет свойство CurrentUICulture текущего потока для всех
+              подстановки ресурсов с помощью этого класса ресурсов со строгим типом.
 
 
-Методы Класса : Graph	
-public		Конструктор	List<List<Int32>>,Double,Double,Canvas	Конструктор для создания графа из списка инцидентности.	
-private	void	PositionedVertexes		Метод выбора координат вершин.	
-private	State	CalcState		Посчитать характеристики структуры State для текущего расположения вершин.	Возвращает структуру с записанными характеристиками и списком координат вершин.
-private	void	ThrowVertices		Метод для распределения вершинам случайных координат.	
-private	double	Distance	Point,Point	Метод назождения расстояния между точками.	Расстояние вычисленное по теореме пифагора.
-private	double	Area	Point,Point,Point	Метод вычисление направленной площади треугольника.	
-private	bool	Intersect1	Double,Double,Double,Double	Вспомогательный метод для вычисления пересечения отрезков.	Возвращает вычисленную вспомогательную характеристику.
-private	bool	IntersectLine	Point,Point,Point,Point	Метод определения пересечения 2-х отрезков.	Возвращает логическую переменную, отвечающую на вопрос, пересекаются ли отрезки.
-private	bool	IntersectCircle	Point,Point,Point,Double	Метод определения пересечения отрезка и окружности.	Возвращает логическую переменную, отвечающую на вопрос, пересекаются ли отрезок и окружность.
-private	void	Swap``1	``0@,``0@	Метод меняет значения 2-х переменных местами.	
-private	void	CreateVertexList	List<List<Int32>>	Метод формирует список вершин графа и устанавливает между ними связи по списку инцидентности.	
-public	void	Draw		Метод отрисовки графа.	
-public	void	Refresh		Метод перерисовывает граф в исходном состоянии.	
-public	void	Redraw		Метод выбирает новое положение для точек и перерисовывает их.	
-public	void	Serialize	Graph,String	Статический метод сериализует граф в заданый файл.	
-public	void	Deserialize	Graph@,String	Статический метод десериализует граф из заданого файла.	
+Методы Класса : Presentation.Properties.Resources	
 
 
-Поля Класса : GraphBuilderWindow	
-private	int	vertexNum	Количество вершин графа. По умолчанию 3.
-public	List<List<int>>	result	Сформированный список инцидентности.
+Поля Класса : Hexagon.Image.Edge	
+ public 	edges	Массив ребер.
+ public 	ToBegin	Поле начиличия точки, движущейся в начало ребра.
+ public 	ToEnd	Поле начиличия точки, движущейся в конец ребра.
+ public 	pointTB	Поле элемента отрисовки точки, идушей в начало.
+ public 	pointTE	Поле элемента отрисовки точки, идушей в конец.
 
 
-Свойства Класса : GraphBuilderWindow	
+Свойства Класса : Hexagon.Image.Edge	
+ public 	Begin	Свойство доступа к началу ребра.
+ public 	End	Свойство доступа к концу ребра.
 
 
-Методы Класса : GraphBuilderWindow	
-public		Конструктор		Конструктор для инициализации графа.	
-		InitializeComponent		InitializeComponent	
+Методы Класса : Hexagon.Image.Edge	
+ public 	Конструктор	Hexagon.Image.Vertex,Hexagon.Image.Vertex	Констрктор по началу, концу и типу ребра.	
+ public 	VertexPreparer	System.Int32	Метод подготавливает концы ребра к фазе размножения точек.	
+ public 	Draw		Метод отрисовки ребра.	
+ public 	DrawAll		Метод отрисовывает все ребра.	
 
 
-Поля Класса : GraphException	
+Поля Класса : Hexagon.Image.Engine	
 
 
-Свойства Класса : GraphException	
+Свойства Класса : Hexagon.Image.Engine	
 
 
-Методы Класса : GraphException	
+Методы Класса : Hexagon.Image.Engine	
+public	Конструктор		Базовый конструктор класса.	
+public	Move		Метод реализует итерацию размножения точек и прохождения их по ребрам и записывает информацию об их количестве в массив.	
+public	DrawGraph	System.Int32	Отрисовывает существующие вершины и ребра.	
+public	Reset		Метод сбрасывает прогресс моделирования на графе.	
 
 
-Поля Класса : DrawableObject	
-public	Color	currentColor	Цвет которым будет подсвечиваться текущий объект.
-private	void	me	Ссылка на объект который отрисовывается на холсте.
-private	Point	position	Кооотдинаты объекта.
-private	Canvas	canvas	Холст на котором будет отображаться объект.
-Protected	Color	col	Цвет объекта.
-		storyboard	Storyboard для неприрывной анимации.
+Поля Класса : Hexagon.Image.Vertex	
+public	vertexes	Массив всех вершин.
+private	edgecount	Поле степени вершины.
+public	point	Поле двигателя всех вершин.
+	isUp	Поле типа веришины.
+public	Ready	Поле готовности вершины
+	edges	Поле массива ребер вершины.
 
 
-Свойства Класса : DrawableObject	
-public	Canvas	Canvas	Свойство для обращения к холсту.
-public	Point	Position	Свойство для обращения к координатам объекта.
-public	Shape	Me	Свойство для обращения к отображаемому объекту.
-public	Storyboard	Storyboard	Свойство для обращения Storyboard.
-public	Color	Col	Свойство для обращения к цвету.
+Свойства Класса : Hexagon.Image.Vertex	
+	start	Поле точки старта отрисовки.
+public	X	Координата по оси абсцисс холста.
+public	Y	Координата по оси ординат холста.
+public	Level	Свойство доступа к уровеню вершины.
+public	Number	Индекс для определения вершины.
 
 
-Методы Класса : DrawableObject	
-public	void	Draw		Метод рисования объекта.	
-public	void	Refresh		Метод перерисовки объекта в начальном состоянии.	
-protected		Конструктор	Canvas	Конструктор для инициализации холста.	
+Методы Класса : Hexagon.Image.Vertex	
+public	Конструктор	System.Int32,System.Int32,System.Int32	Конструктор по индексу и уровню.	
+public	Конструктор	System.Double,System.Double,Hexagon.Image.Engine	Конструктор по координатам и двигателю.	
+public	PrepareEdges		Метод собирает информацию с ребер и очищающает поля ребра.	
+public	Transmission		Метод распространяет энергию и точки собранную в вершине на ребре.	
+public	Start		Метод подготовки графа для работы.	
+public	AddLevel	System.Int32	Метод добавляет следующий уровень, равноудаленных от начала, вершин графа и соедияет их ребрами с существующими.	
+	CreateVertexAround	System.Int32	Метод создает вершины вокруг данной.	
+	CreateVertex	System.ValueTuple<System.Int32,System.Int32>,System.Int32,System.Int32@,System.Int32	Метод создает вершину и ребро по индексу вершины и типу ребра, увеличивает счетчик количества вершин
+            и добавляет созданные еэлементы в соответствуюшие массивы.	
+	ThrowPoint	System.Int32,System.String	Метод вбрасывает точку на ребро по заданому направлению.	
+public	DrawAll		Метод отрисовывает все вершины.	
+public	Draw		Метод отрисовывает вершину.	
+public	DrawPoint	Hexagon.Image.Edge,System.String	Метод создает точку на холсте и задает ее анимацию.	Возращает проинициализированный Ellipse.
 
 
-Поля Класса : MenuWindow	
+Поля Класса : Hexagon.Calc.Edge	
+public	edges	Массив ребер.
+public	PointData	Массив данных о количестве точек на графе.
+public	ToBegin	Поле начиличия точки, движущейся в начало ребра.
+public	ToEnd	Поле начиличия точки, движущейся в конец ребра.
+public	ToBeginMass	Поле веса, движущегося в начало ребра.
+public	ToEndMass	Поле веса, движущегося в конец ребра.
 
 
-Свойства Класса : MenuWindow	
+Свойства Класса : Hexagon.Calc.Edge	
+public	Begin	Свойство доступа к началу ребра.
+public	End	Свойство доступа к концу ребра.
+public	Type	Свойство доступа к типу ребра.
 
 
-Методы Класса : MenuWindow	
-		InitializeComponent		InitializeComponent	
+Методы Класса : Hexagon.Calc.Edge	
+public	Конструктор	Hexagon.Calc.Vertex,Hexagon.Calc.Vertex,System.Int32	Констрктор по началу, концу и типу ребра.	
+public	VertexPreparer		Метод подготавливает концы ребра к фазе размножения точек.	
+public	CountPoints	System.Boolean	Метод подсчитывает количество точек на ребре в зависимости от того, в середине они или нет.	
+public	Serialize	System.IO.StreamWriter	Метод записывающий информацию о ребре в поток.	
+public	TryParse	System.String,Hexagon.Calc.Edge@	Преобразовывает данные из строки в экземпляр Edge, который передает в out-параметр.	Возращает успешность преобразования
 
 
-Поля Класса : Resources	
+Поля Класса : Hexagon.Calc.Engine	
 
 
-Свойства Класса : Resources	
-		ResourceManager	Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
-		Culture	Перезаписывает свойство CurrentUICulture текущего потока для всех
-              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
-		de	Ищет локализованную строку, похожую на .
-		diskette	Поиск локализованного ресурса типа System.Drawing.Bitmap.
-		load	Поиск локализованного ресурса типа System.Drawing.Bitmap.
-		pen	Поиск локализованного ресурса типа System.Drawing.Bitmap.
+Свойства Класса : Hexagon.Calc.Engine	
 
 
-Методы Класса : Resources	
+Методы Класса : Hexagon.Calc.Engine	
+public	Конструктор		Базовый конструктор класса.	
+public	Конструктор	System.Int32	Конструктор по количеству совершенных итераций.	
+public	Move		Метод реализует итерацию размножения точек и прохождения их по ребрам и записывает информацию об их количестве в массив.	
+public	GetEnergyData	System.String	Метод записывает информацию о распределении энергии в файл.	
+public	GetPointCountData	System.String	Метод записывает информацию о количестве точек в файл.	
+public	Reset		Метод сбрасывает прогресс моделирования на графе.	
+public	Serialize	System.String	Метод создает поток для записи и вызывает методы записи информации о графе.	
+public	TryParseGraph	System.IO.StreamReader	Метод преобразущий данные из файла в даные графа.	Возвращает усепешность перобразования.
 
 
-Поля Класса : State	
-public	int	lineInt	Количество пересечений линий рёбер.
-public	int	circleInt	Количество пересечений рёбер с вершинами.
-public	double	sumDist	Суммарная длина рёбер.
-public	double	ideal	Идельная длина рёбер.
-public	List<Point>	lstVertex	Список координат вершин.
+Поля Класса : Hexagon.Calc.Vertex	
+public	vertexes	Массив всех вершин.
+	edgecount	Поле степени вершины.
+public	engine	Поле двигателя всех вершин.
+	lastlevel	Поле номера последнего уровня.
+	weight	Поле веса вершины.
+	isUp	Поле типа веришины.
+public	Ready	Поле готовности вершины
+	edges	Массив ребер вершины.
 
 
-Свойства Класса : State	
+Свойства Класса : Hexagon.Calc.Vertex	
+public	Weight	Свойство доступа к весу вершины.
+public	Level	Свойство доступа к уровеню вершины.
+public	Number	Индекс для определения вершины.
+public	Edges	Свойство доступа к массиву ребер вершины.
 
 
-Методы Класса : State	
-public		Конструктор	Int32,Int32,Double	Конструктор для инициализации основных параметров.	
-public	int	CompareTo	State	Метод сравнения информативности 2-х сосотяний.	Возвращает 0, если объеты равны, 1 если текущий объект больше,-1 если текущий объект меньше.
+Методы Класса : Hexagon.Calc.Vertex	
+public	Конструктор	System.Int32,System.Int32	Конструктор вершины по координатам.	
+public	Конструктор	Hexagon.Calc.Engine	Конструктор вершины по двигателю для точек.	
+public	PrepareEdges		Метод собирает информацию с ребер и очищающает поля ребра.	
+public	Transmission		Метод распространяет энергию и точки собранную в вершине на ребре.	
+public	Start		Метод подготовки графа для работы.	
+public	ToString		Метод формирует строку информации о вершине.	Возрващает строковое представление вершины.
+public	AddLevel		Метод добавляет следующий уровень, равноудаленных от начала, вершин графа и соедияет их ребрами с существующими.	
+	CreateVertexAround		Метод создает вершины вокруг данной.	
+	CreateVertex	System.ValueTuple<System.Int32,System.Int32>,System.Int32,System.Int32@	Метод создает вершину и ребро по индексу вершины и типу ребра, увеличивает счетчик количества вершин
+            и добавляет созданные еэлементы в соответствуюшие массивы.	
+public	Serialize	System.IO.StreamWriter	Метод записывающий информацию о вершине в поток.	
+public	TryParse	System.String,Hexagon.Calc.Vertex@	Преобразовывает данные из строки в экземпляр Vertex, который передает в out-параметр.	Возращает успешность преобразования
 
 
-Поля Класса : Vertex	
-public	Color	notUsedColor	Цвет ещё не тронутой вершины.
-public	Color	usedColor	Цвет вершины, помеченной, как использованной.
-public	Color	textColor	Цвет текста рядом с вершиной по умолчанию.
-public	Color	textHighlightedColor1	Цвет подстветки текста 1.
-public	Color	textHighlightedColor2	Цвет подстветки текста 2.
-public	Color	cutVertexColor	Цвет вершины, рассматриваемой в данный момент.
-private	double	labelDistance	Расстояние от вершины до Label-ов рядом с веришной.
-private	double	labelHeight	Высота Label-ов рядом с веришной.
-private	double	labelWidth	Ширина Label-ов рядом с веришной.
-public	string	tinTemplate	Шаблон для Label-а с временем входа.
-public	string	fupTemplate	Шаблон для Label-а с характеристикой fup.
-private	List<Edge>	edges	Список рёбер, выходящих из вершины.
-private	ALabel	labelTin	Ссылка на Label с характеристикой tin.
-private	ALabel	labelFup	Ссылка на Label с характеристикой fup.
-private	int	tin	Время входа в вершину.
-private	int	fup	максимальная вершина в дереве поиска в глубину до которой можэно добраться.
-private	bool	used	Пометка уже пройденой вершины поиском в глубину.
-private	bool	isCutVertex	Флаг, отвечающий является ли вершина точкой сочленения.
-private	double	size	Размер вершины.
-private	int	num	Номер вершины в списке инцидентности.
+Поля Класса : Square.Image.Edge	
+public	edges	Массив ребер.
+public	ToBegin	Поле начиличия точки, движущейся в начало ребра.
+public	ToEnd	Поле начиличия точки, движущейся в конец ребра.
+public	pointTB	Поле элемента отрисовки точки, идушей в начало.
+public	pointTE	Поле элемента отрисовки точки, идушей в конец.
 
 
-Свойства Класса : Vertex	
-public	int	Tin	Свойство для обращения к tin.
-public	int	Fup	Свойство для обращения к fup.
-public	bool	Used	Свойство для обращения к прлю used.
-public	double	Size	Свойство для обращения к размеру вершины.
-public	List<Edge>	Edges	Свойство для обращения к списку рёбер, исходящих из вершины.
-public	int	Num	Свойство для обращению к номеру вершины.
-public	ALabel	LabelTin	Свойство для обращения к Label-у отображаюзему tin.
-public	ALabel	LabelFup	Свойство для обращения к Label-у отображаюзему fup`.
-public	bool	IsCutVertex	Свойство для обращения к флагу, отвечающему за статус точки сочленения.
-public	Color	Col	Свойство для обращения к цвету вершины.
+Свойства Класса : Square.Image.Edge	
+public	Begin	Свойство доступа к началу ребра.
+public	End	Свойство доступа к концу ребра.
 
 
-Методы Класса : Vertex	
-public		Конструктор	Point,Double,Int32,Canvas	Конструктори для инициализации основных полей Вершины.	
-private	void	InitLabel	Label	Метод для инициализации label-ов рядом с веришной.	
-public	void	Draw		Метод отрисовки вершины на холсте.	
-private	void	SetLabels		Метод устанавливает координаты Label-ов с дополнительной информацией.	
-private	Ellips	CreateEllipse		Метод создаёт Ellipse, инициализирует и привязывает его к холсту.	Возвращает инициализированный Ellipse
-public	void	AddEdgeTo	Vertex	Метод добавляет ребро ведущее к переданой вершине.	
-public	bool	IsConnected	Vertex	Метод проверяет связаны ли вершины.	Возвращает логическую переменную отвечающую на посталвенный вопрос.
-public	void	Refresh		Метод для перерисовки вершины в исходном состоянии.	
+Методы Класса : Square.Image.Edge	
+public	Конструктор	Square.Image.Vertex,Square.Image.Vertex	Констрктор по началу, концу и типу ребра.	
+public	FinishMoveHandler	System.Int32	Метод подготавливает концы ребра к фазе размножения точек.	
+public	Draw		Метод отрисовки ребра.	
+public	DrawAll		Метод отрисовывает все ребра.	
 
 
-Поля Класса : App	
+Поля Класса : Square.Image.Engine	
 
 
-Свойства Класса : App	
+Свойства Класса : Square.Image.Engine	
 
 
-Методы Класса : App	
-		InitializeComponent		InitializeComponent	
-		Main		Application Entry Point.	
+Методы Класса : Square.Image.Engine	
+public	Конструктор		Базовый конструктор класса.	
+public	Move		Метод реализует итерацию размножения точек и прохождения их по ребрам и записывает информацию об их количестве в массив.	
+public	DrawGraph	System.Int32	Отрисовывает существующие вершины и ребра.	
+public	Reset		Метод сбрасывает прогресс моделирования на графе.	
 
 
-Поля Класса : MainWindow	
+Поля Класса : Square.Image.Vertex	
+public	vertexes	Массив всех вершин.
+	edgecount	Поле степени вершины.
+public	point	Поле двигателя всех вершин.
+public	Ready	Поле готовности вершины
+	edges	Поле массива ребер вершины.
 
 
-Свойства Класса : MainWindow	
+Свойства Класса : Square.Image.Vertex	
+	start	Поле точки старта отрисовки.
+public	X	Координата по оси абсцисс холста.
+public	Y	Координата по оси ординат холста.
+public	Level	Свойство доступа к уровеню вершины.
+public	Number	Индекс для определения вершины.
 
 
-Методы Класса : MainWindow	
-		InitializeComponent		InitializeComponent	
+Методы Класса : Square.Image.Vertex	
+public	Конструктор	System.Int32,System.Int32	Конструктор по индексу.	
+public	Конструктор	System.Double,System.Double,Square.Image.Engine	Конструктор по координатам и двигателю.	
+public	PrepareEdges		Метод собирает информацию с ребер и очищающает поля ребра.	
+public	Transmission		Метод распространяет энергию и точки собранную в вершине на ребре.	
+public	AddLevel	System.Int32	Метод добавляет следующий уровень, равноудаленных от начала, вершин графа и соедияет их ребрами с существующими.	
+	CreateEdge	Square.Image.Vertex,Square.Image.Vertex,System.Int32	Метод создает ребро по вершинам и типу ребра.	
+public	Draw		Метод отрисовывает вершину.	
+public	Start			
+public	DrawAll		Метод отрисовывает все вершины.	
+public	DrawPoint	Square.Image.Edge,System.Boolean	Метод создает точку на холсте и задает ее анимацию.	Возращает проинициализированный Ellipse.
 
 
-Поля Класса : GeneratedInternalTypeHelper	
+Поля Класса : Square.Calc.Edge	
+public	edges	Массив ребер.
+public	PointData	Массив данных о количестве точек на графе.
+public	ToBegin	Поле начиличия точки, движущейся в начало ребра.
+public	ToEnd	Поле начиличия точки, движущейся в конец ребра.
+public	ToBeginMass	Поле веса, движущегося в начало ребра.
+public	ToEndMass	Поле веса, движущегося в конец ребра.
 
 
-Свойства Класса : GeneratedInternalTypeHelper	
+Свойства Класса : Square.Calc.Edge	
+public	Begin	Свойство доступа к началу ребра.
+public	End	Свойство доступа к концу ребра.
+public	Type	Свойство доступа к типу ребра.
 
 
-Методы Класса : GeneratedInternalTypeHelper	
-		CreateInstance	Type,CultureInfo	CreateInstance	
-		GetPropertyValue	PropertyInfo,Object,CultureInfo	GetPropertyValue	
-		SetPropertyValue	PropertyInfo,Object,Object,CultureInfo	SetPropertyValue	
-		CreateDelegate	Type,Object,String	CreateDelegate	
-		AddEventHandler	EventInfo,Object,Delegate	AddEventHandler	
+Методы Класса : Square.Calc.Edge	
+public	Конструктор	Square.Calc.Vertex,Square.Calc.Vertex,System.Int32	Констрктор по началу, концу и типу ребра.	
+public	VertexPreparer	System.Int32	Метод подготавливает концы ребра к фазе размножения точек.	
+public	CountPoints	System.Boolean	Метод подсчитывает количество точек на ребре в зависимости от того, в середине они или нет.	
+public	Serialize	System.IO.StreamWriter	Метод записывающий информацию о ребре в поток.	
+public	TryParse	System.String,Square.Calc.Edge@	Преобразовывает данные из строки в экземпляр Edge, который передает в out-параметр.	Возращает успешность преобразования
+
+
+Поля Класса : Square.Calc.Engine	
+
+
+Свойства Класса : Square.Calc.Engine	
+
+
+Методы Класса : Square.Calc.Engine	
+public	Конструктор		Базовый конструктор класса.	
+public	Конструктор	System.Int32	Конструктор по количеству совершенных итераций.	
+public	Move		Метод реализует итерацию размножения точек и прохождения их по ребрам и записывает информацию об их количестве в массив.	
+public	GetEnergyData	System.String	Метод записывает информацию о распределении энергии в файл.	
+public	GetPointCountData	System.String	Метод записывает информацию о количестве точек в файл.	
+public	Reset		Метод сбрасывает прогресс моделирования на графе.	
+public	Serialize	System.String	Метод создает поток для записи и вызывает методы записи информации о графе.	
+public	TryParseGraph	System.IO.StreamReader	Метод преобразущий данные из файла в даные графа.	Возвращает усепешность перобразования.
+
+
+Поля Класса : Square.Calc.Vertex	
+public	vertexes	Массив всех вершин.
+	edgecount	Поле степени вершины.
+public	engine	Поле двигателя всех вершин.
+	weight	Поле веса вершины.
+public	Ready	Поле готовности вершины
+	edges	Массив ребер вершины.
+
+
+Свойства Класса : Square.Calc.Vertex	
+public	Weight	Свойство доступа к весу вершины.
+public	Level	Свойство доступа к уровеню вершины.
+public	Number	Индекс для определения вершины.
+public	Edges	Свойство доступа к массиву ребер вершины.
+
+
+Методы Класса : Square.Calc.Vertex	
+public	Конструктор	System.Int32,System.Int32	Конструктор вершины по координатам.	
+public	Конструктор	Square.Calc.Engine	Конструктор вершины по двигателю для точек.	
+public	PrepareEdges		Метод собирает информацию с ребер и очищающает поля ребра.	
+public	Transmission		Метод распространяет энергию и точки собранную в вершине на ребре.	
+public	Start		Метод подготовки графа для работы.	
+public	ToString		Метод формирует строку информации о вершине.	Возрващает строковое представление вершины.
+public	AddLevel	System.Int32	Метод добавляет следующий уровень, равноудаленных от начала, вершин графа и соедияет их ребрами с существующими.	
+	CreateEdge	Square.Calc.Vertex,Square.Calc.Vertex,System.Int32	Метод создает ребро по вершинам и типу ребра.	
+public	Serialize	System.IO.StreamWriter	Метод записывающий информацию о вершине в поток.	
+public	TryParse	System.String,Square.Calc.Vertex@	Преобразовывает данные из строки в экземпляр Vertex, который передает в out-параметр.	Возращает успешность преобразования
+
+
+Поля Класса : Tree.Image.Edge	
+public	edges	Массив ребер.
+public	ToBegin	Поле начиличия точки, движущейся в начало ребра.
+public	ToEnd	Поле начиличия точки, движущейся в конец ребра.
+public	pointTB	Поле элемента отрисовки точки, идушей в начало.
+public	pointTE	Поле элемента отрисовки точки, идушей в конец.
+
+
+Свойства Класса : Tree.Image.Edge	
+public	Begin	Свойство доступа к началу ребра.
+public	End	Свойство доступа к концу ребра.
+
+
+Методы Класса : Tree.Image.Edge	
+public	Конструктор	Tree.Image.Vertex,Tree.Image.Vertex	Констрктор по началу, концу и типу ребра.	
+public	VertexPreparer	System.Int32	Метод подготавливает концы ребра к фазе размножения точек.	
+public	Draw		Метод отрисовки ребра.	
+public	DrawAll	System.Int32	Метод отрисовывает все ребра.	
+
+
+Поля Класса : Tree.Image.Engine	
+
+
+Свойства Класса : Tree.Image.Engine	
+
+
+Методы Класса : Tree.Image.Engine	
+public	Конструктор		Базовый конструктор класса.	
+public	Move		Метод реализует итерацию размножения точек и прохождения их по ребрам и записывает информацию об их количестве в массив.	
+public	DrawGraph	System.Int32	Отрисовывает существующие вершины и ребра.	
+public	Reset		Метод сбрасывает прогресс моделирования на графе.	
+
+
+Поля Класса : Tree.Image.Vertex	
+	vertexes	Массив всех вершин.
+	Engine	Поле двигателя всех вершин.
+	Ready	Поле готовности вершины
+	countedge	Поле степени вершины.
+	edges	Поле массива ребер вершины.
+
+
+Свойства Класса : Tree.Image.Vertex	
+	Level	Свойство доступа к уровеню вершины.
+	X	Координата по оси абсцисс холста.
+	Y	Координата по оси ординат холста.
+	Number	Индекс для определения вершины.
+
+
+Методы Класса : Tree.Image.Vertex	
+	Конструктор	System.Double,System.Double,System.Int32,System.Int32	Конструктор по координатам, индексу и уровню.	
+	Конструктор	System.Double,System.Double,Tree.Image.Engine	Конструктор по координатам и двигателю.	
+	PrepareEdges		Метод собирает информацию с ребер и очищающает поля ребра.	
+	Transmission		Метод распространяет энергию и точки собранную в вершине на ребре.	
+	AddLevel	System.Int32	Метод добавляет следующий уровень, равноудаленных от начала, вершин графа и соедияет их ребрами с существующими.	
+	CreateVertexOnLevel	Tree.Image.Vertex,System.Int32,System.Int32	Метод создает вершину и добавляет её в словарь вершин.	
+	DrawAll	System.Int32	Метод отрисовывает все вершины.	
+	Start		Метод подготовки графа для работы.	
+	Draw		Метод отрисовывает вершину.	
+	DrawPoint	System.Double,System.Double,System.Double,System.Double	Метод создает точку на холсте и задает ее анимацию.	
+
+
+Поля Класса : Tree.Calc.Edge	
+	edges	Массив ребер.
+	PointData	Массив данных о количестве точек на графе.
+	ToBegin	Поле начиличия точки, движущейся в начало ребра.
+	ToEnd	Поле начиличия точки, движущейся в конец ребра.
+	ToBeginMass	Поле веса, движущегося в начало ребра.
+	ToEndMass	Поле веса, движущегося в конец ребра.
+
+
+Свойства Класса : Tree.Calc.Edge	
+	Begin	Свойство доступа к началу ребра.
+	End	Свойство доступа к концу ребра.
+	Type	Свойство доступа к типу ребра.
+
+
+Методы Класса : Tree.Calc.Edge	
+	Конструктор	Tree.Calc.Vertex,Tree.Calc.Vertex,System.Int32	Констрктор по началу, концу и типу ребра.	
+	VertexPreparer	System.Int32	Метод подготавливает концы ребра к фазе размножения точек.	
+	CountPoints	System.Boolean	Метод подсчитывает количество точек на ребре в зависимости от того, в середине они или нет.	
+	Serialize	System.IO.StreamWriter	Метод записывающий информацию о ребре в поток.	
+	TryParse	System.String,Tree.Calc.Edge@	Преобразовывает данные из строки в экземпляр Edge, который передает в out-параметр.	Возращает успешность преобразования
+
+
+Поля Класса : Tree.Calc.Engine	
+
+
+Свойства Класса : Tree.Calc.Engine	
+
+
+Методы Класса : Tree.Calc.Engine	
+	Конструктор		Базовый конструктор класса.	
+	Конструктор	System.Int32	Конструктор по количеству совершенных итераций.	
+	Move		Метод реализует итерацию размножения точек и прохождения их по ребрам и записывает информацию об их количестве в массив.	
+	GetEnergyData	System.String	Метод записывает информацию о распределении энергии в файл.	
+	GetPointCountData	System.String	Метод записывает информацию о количестве точек в файл.	
+	Reset		Метод сбрасывает прогресс моделирования на графе.	
+	Serialize	System.String	Метод создает поток для записи и вызывает методы записи информации о графе.	
+	TryParseGraph	System.IO.StreamReader	Метод преобразущий данные из файла в даные графа.	Возвращает усепешность перобразования.
+
+
+Поля Класса : Tree.Calc.Vertex	
+	vertexes	Массив всех вершин.
+	countedge	Поле степени вершины.
+	weight	Поле веса вершины.
+	Ready	Поле готовности вершины
+	edges	Массив ребер вершины.
+
+
+Свойства Класса : Tree.Calc.Vertex	
+	Weight	Свойство доступа к весу вершины.
+	Level	Свойство доступа к уровеню вершины.
+	Number	Индекс для определения вершины.
+	Edges	Свойство доступа к массиву ребер вершины.
+
+
+Методы Класса : Tree.Calc.Vertex	
+	Конструктор	System.Int32,System.Int32	Конструктор вершины по индексу и уровню.	
+	Конструктор	Tree.Calc.Engine	Конструктор вершины по двигателю для точек.	
+	PrepareEdges		Метод собирает информацию с ребер и очищающает поля ребра.	
+	Transmission		Метод распространяет энергию и точки собранную в вершине на ребре.	
+	AddLevel	System.Int32	Метод добавляет следующий уровень, равноудаленных от начала, вершин графа и соедияет их ребрами с существующими.	
+	CreateVertexOnLevel	Tree.Calc.Vertex,System.Int32,System.Int32	Метод создает вершину и добавляет её в словарь вершин.	
+	Start		Метод подготовки графа для работы.	
+	ToString		Метод формирует строку информации о вершине.	Возрващает строковое представление вершины.
+	Serialize	System.IO.StreamWriter	Метод записывающий информацию о вершине в поток.	
+	TryParse	System.String,Tree.Calc.Vertex@	Преобразовывает данные из строки в экземпляр Vertex, которую передает в out-параметр.	Возращает успешность преобразования
+
+
+Поля Класса : Utilits	
+ public 	calcEngine	Поле дивгателя точек для подсчета.
+ public 	imageEngine	Поле двигателя точек для анимации.
+ public 	Length	Поле длинны ребра.
+ public 	Velocity	Поле скорость точек.
+ public 	energyDataPath	Поле имени файла с информаций об энергии.
+ public 	pointCountDataPath	Поле имени файла с информацией о количестве точек.
+ public 	field	Поле холста отрисовки.
+ public 	animation	Массив анимаций точек.
+ public 	delay	Поле времени движения точки.
+
+
+Свойства Класса : Utilits	
+ public 	Data	Поле хранящее информацию о графике.
+
+
+Методы Класса : Utilits	
+ public 	SaveData		Метод сохранения информации о графе.	Возращает успех операции.
+
+
+Поля Класса : Utilits.FinishMove	
+
+
+Свойства Класса : Utilits.FinishMove	
+
+
+Методы Класса : Utilits.FinishMove	
+
+
+Поля Класса : Utilits.VertexActions	
+
+
+Свойства Класса : Utilits.VertexActions	
+
+
+Методы Класса : Utilits.VertexActions	
+
+
+Поля Класса : Utilits.EdgeActions	
+
+
+Свойства Класса : Utilits.EdgeActions	
+
+
+Методы Класса : Utilits.EdgeActions	
+
+
+Поля Класса : Triangle.Image.Edge	
+	edges	Массив ребер.
+	ToBegin	Поле начиличия точки, движущейся в начало ребра.
+	ToEnd	Поле начиличия точки, движущейся в конец ребра.
+	pointTB	Поле элемента отрисовки точки, идушей в начало.
+	pointTE	Поле элемента отрисовки точки, идушей в конец.
+
+
+Свойства Класса : Triangle.Image.Edge	
+	Begin	Свойство доступа к началу ребра.
+	End	Свойство доступа к концу ребра.
+
+
+Методы Класса : Triangle.Image.Edge	
+	Конструктор	Triangle.Image.Vertex,Triangle.Image.Vertex	Констрктор по началу, концу и типу ребра.	
+	VertexPreparer	System.Int32	Метод подготавливает концы ребра к фазе размножения точек.	
+	DrawAll		Метод отрисовывает все ребра.	
+	Draw		Метод отрисовки ребра.	
+
+
+Поля Класса : Triangle.Image.Engine	
+
+
+Свойства Класса : Triangle.Image.Engine	
+
+
+Методы Класса : Triangle.Image.Engine	
+	Конструктор		Базовый конструктор класса.	
+	Move		Метод реализует итерацию размножения точек и прохождения их по ребрам и записывает информацию об их количестве в массив.	
+	DrawGraph	System.Int32	Отрисовывает существующие вершины и ребра.	
+	Reset		Метод сбрасывает прогресс моделирования на графе.	
+
+
+Поля Класса : Triangle.Image.Vertex	
+	vertexes	Массив всех вершин.
+	edgecount	Поле степени вершины.
+	engine	Поле двигателя всех вершин.
+	I	Поле смещения по оси абсцисс.
+	J	Поле смещения по оси ординат.
+	Ready	Поле готовности вершины
+	edges	Поле массива ребер вершины.
+
+
+Свойства Класса : Triangle.Image.Vertex	
+	start	Поле точки старта отрисовки.
+	X	Координата по оси абсцисс холста.
+	Y	Координата по оси ординат холста.
+	Level	Свойство доступа к уровеню вершины.
+	Number	Индекс для определения вершины.
+
+
+Методы Класса : Triangle.Image.Vertex	
+	Конструктор	System.Int32,System.Int32,System.Int32	Конструктор по индексу и уровню.	
+	Конструктор	System.Double,System.Double,Triangle.Image.Engine	Конструктор по координатам и двигателю.	
+	PrepareEdges		Метод собирает информацию с ребер и очищающает поля ребра.	
+	Transmission		Метод распространяет энергию и точки собранную в вершине на ребре.	
+	Start		Метод подготовки графа для работы.	
+	ThrowPoint	System.Int32,System.String	Метод выбрасывает на ребро точку по заданому направлению.	
+	CreateVertexOnLevel	System.Int32,System.Int32,System.Int32	Метод создает вершину и добавляет её в словарь вершин.	Возвращает инициализированную Vertex
+	CreateEdgesOnLevel	System.Collections.Generic.List<Triangle.Image.Vertex>,System.Int32	Метод создает ребра между старыми и только добавленными вершинами и добавляет их в массив ребер.	
+	CreateEdge	Triangle.Image.Vertex,System.Int32	Метод создает ребро по вершине и типу ребра.	
+	AddLevel	System.Int32	Метод добавляет следующий уровень, равноудаленных от начала, вершин графа и соедияет их ребрами с существующими.	
+	DrawAll		Метод отрисовывает все вершины.	
+	Draw		Метод отрисовывает вершину.	
+	DrawPoint	Triangle.Image.Edge,System.String	Метод создает точку на холсте и задает ее анимацию.	Возращает проинициализированный Ellipse.
+
+
+Поля Класса : Triangle.Calc.Edge	
+	edges	Массив ребер.
+	PointData	Массив данных о количестве точек на графе.
+	ToBegin	Поле начиличия точки, движущейся в начало ребра.
+	ToEnd	Поле начиличия точки, движущейся в конец ребра.
+	ToBeginMass	Поле веса, движущегося в начало ребра.
+	ToEndMass	Поле веса, движущегося в конец ребра.
+
+
+Свойства Класса : Triangle.Calc.Edge	
+	Begin	Свойство доступа к началу ребра.
+	End	Свойство доступа к концу ребра.
+	Type	Свойство доступа к типу ребра.
+
+
+Методы Класса : Triangle.Calc.Edge	
+	Конструктор	Triangle.Calc.Vertex,Triangle.Calc.Vertex,System.Int32	Констрктор по началу, концу и типу ребра.	
+	VertexPreparer	System.Int32	Метод подготавливает концы ребра к фазе размножения точек.	
+	Serialize	System.IO.StreamWriter	Метод записывающий информацию о ребре в поток.	
+	TryParse	System.String,Triangle.Calc.Edge@	Преобразовывает данные из строки в экземпляр Edge, который передает в out-параметр.	Возращает успешность преобразования
+
+
+Поля Класса : Triangle.Calc.Engine	
+
+
+Свойства Класса : Triangle.Calc.Engine	
+
+
+Методы Класса : Triangle.Calc.Engine	
+public	Конструктор		Базовый конструктор класса.	
+public	Конструктор	System.Int32	Конструктор по количеству совершенных итераций.	
+public	Move		Метод реализует итерацию размножения точек и прохождения их по ребрам и записывает информацию об их количестве в массив.	
+public	GetEnergyData	System.String	Метод записывает информацию о распределении энергии в файл.	
+public	GetPointCountData	System.String	Метод записывает информацию о количестве точек в файл.	
+public	Reset		Метод сбрасывает прогресс моделирования на графе.	
+public	Serialize	System.String	Метод создает поток для записи и вызывает методы записи информации о графе.	
+public	TryParseGraph	System.IO.StreamReader	Метод преобразущий данные из файла в даные графа.	Возвращает усепешность перобразования.
+
+
+Поля Класса : Triangle.Calc.Vertex	
+	vertexes	Массив всех вершин.
+	edgecount	Поле степени вершины.
+	engine	Поле двигателя всех вершин.
+	weight	Поле веса вершины.
+	Ready	Поле готовности вершины
+	edges	Массив ребер вершины.
+
+
+Свойства Класса : Triangle.Calc.Vertex	
+	Weight	Свойство доступа к весу вершины.
+	Level	Свойство доступа к уровеню вершины.
+	Number	Индекс для определения вершины.
+	Edges	Свойство доступа к массиву ребер вершины.
+
+
+Методы Класса : Triangle.Calc.Vertex	
+	Конструктор	System.Int32,System.Int32,System.Int32	Констркуктор вершины по координатам и уровню.	
+	Конструктор	Triangle.Calc.Engine	Конструктор вершины по двигателю для точек.	
+	PrepareEdges		Метод собирает информацию с ребер и очищающает поля ребра.	
+	Transmission		Метод распространяет энергию и точки собранную в вершине на ребре.	
+	Start		Метод подготовки графа для работы.	
+	ToString		Метод формирует строку информации о вершине.	Возрващает строковое представление вершины.
+	AddLevel	System.Int32	Метод добавляет следующий уровень, равноудаленных от начала, вершин графа и соедияет их ребрами с существующими.	
+	CreateVertexOnLevel	System.Int32,System.Int32,System.Int32	Метод создает вершину и добавляет её в словарь вершин.	Возвращает инициализированную Vertex
+	CreateEdgesOnLevel	System.Collections.Generic.List<Triangle.Calc.Vertex>,System.Int32	Метод создает ребра между старыми и только добавленными вершинами и добавляет их в массив ребер.	
+	CreateEdge	Triangle.Calc.Vertex,System.Int32	Метод создает ребро по вершине и типу ребра.	
+	Serialize	System.IO.StreamWriter	Метод записывающий информацию о вершине в поток.	
+	TryParse	System.String,Triangle.Calc.Vertex@	Преобразовывает данные из строки в экземпляр Vertex, который передает в out-параметр.	Возращает успешность преобразования
 
 

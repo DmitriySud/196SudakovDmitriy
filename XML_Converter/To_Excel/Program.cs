@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace converter {
 
 		public Elem(string name, string summary, string mod, string type) {
 			this.name = name ?? throw new ArgumentNullException(nameof(name));
-			name = Regex.Replace(name, @"\w+\.", "");
+			//name = Regex.Replace(name, @"\w+\.", "");
 			name = Regex.Replace(name, @"{", "<");
 			this.name = Regex.Replace(name, @"}", ">");
 			this.summary = summary ?? throw new ArgumentNullException(nameof(summary));
@@ -30,14 +31,14 @@ namespace converter {
 		}
 
 		public override string ToString() =>
-			$"{mod}\t{type}\t{name}\t{summary}";
+			$"{mod}\t{name}\t{summary}";
 	}
 	class Prop : Elem {
 		public Prop(string name, string summary, string mod, string type) : base(name, summary, mod, type) {
 		}
 
 		public override string ToString() =>
-			$"{mod}\t{type}\t{name}\t{summary}";
+			$"{mod}\t{name}\t{summary}";
 	}
 	class Meth : Elem {
 		public List<Elem> param = new List<Elem>();
@@ -54,7 +55,7 @@ namespace converter {
 			string shortName = name.Split('(')[0];
 			string paramList = name.Split('(')[1].Trim(')');
 
-			res.Append($"{mod}\t{type}\t{shortName}\t{paramList}\t{summary}\t{returns}");
+			res.Append($"{mod}\t{shortName}\t{paramList}\t{summary}\t{returns}");
 
 
 			return res.ToString();
@@ -118,7 +119,7 @@ namespace converter {
 		static void Main(string[] args) {
 			Dictionary<string, MyType> types = new Dictionary<string, MyType>();
 			var xDoc = new XmlDocument();
-			xDoc.Load("..\\..\\MainForm.xml");
+			xDoc.Load("..\\..\\Presentation.xml");
 			var save = new List<XmlElement>();
 			foreach (XmlElement item in xDoc.GetElementsByTagName("members")[0].ChildNodes) {
 				var nameNode = item.Attributes.GetNamedItem("name");
@@ -131,56 +132,58 @@ namespace converter {
 				char type = name[0];
 				switch (type) {
 					case 'T':
-						var temp = name.Split('.');
+						var temp = name.Split(':');
 						name = temp[temp.Length - 1];
+						
 						var sum = item.GetElementsByTagName("summary")[0].InnerText.Trim();
 						types.Add(name, new MyType(name, sum, "", ""));
 						break;
 					case 'F':
 						temp = name.Split('.');
-						name = temp[temp.Length - 1];
+						var Fname = temp[temp.Length - 1];
 						XmlNode sumEl = item.GetElementsByTagName("summary")[0];
 						sum = sumEl.InnerText.Trim();
-						var className = temp[temp.Length - 2];
-						var modAttr = sumEl.Attributes["dos"];
+						var className = String.Join(".", name.Split(':')[1].Split('.').Where(x => x != Fname));
+						var modAttr = item.GetElementsByTagName("dos")[0];
 						var typeAttr = sumEl.Attributes["type"];
-						types[className].fields.Add(new Field(name, sum, modAttr is null ? "" : modAttr.Value, typeAttr is null ? "" : typeAttr.Value)); ;
+						types[className].fields.Add(new Field(Fname, sum, modAttr is null ? "" : modAttr.FirstChild.Value, typeAttr is null ? "" : typeAttr.Value)); ;
 						break;
 					case 'P':
 						temp = name.Split('.');
-						name = temp[temp.Length - 1];
+						var Pname = temp[temp.Length - 1];
 						sumEl = item.GetElementsByTagName("summary")[0];
 						sum = sumEl.InnerText.Trim();
-						var claName = temp[temp.Length - 2];
-						modAttr = sumEl.Attributes["dos"];
+						className = String.Join(".", name.Split(':')[1].Split('.').Where(x => x != Pname));
+						modAttr = item.GetElementsByTagName("dos")[0];
 						typeAttr = sumEl.Attributes["type"];
-						types[claName].props.Add(new Prop(name, sum, modAttr is null? "" : modAttr.Value, typeAttr is null ? "" : typeAttr.Value));
+						types[className].props.Add(new Prop(Pname, sum, modAttr is null? "" : modAttr.FirstChild.Value, typeAttr is null ? "" : typeAttr.Value));
 						break;
 					case 'M':
+						name = Regex.Replace(name, "#ctor", "Конструктор");
+						if (!name.Contains('('))
+							name += "()";
 						var ttemp = name.Split('(');
 						temp = ttemp[0].Split('.');
-						name = temp[temp.Length - 1];
-						if (name == "#ctor")
-							name = "Конструктор";
+						var Mname = temp[temp.Length - 1];
 						try {
-							name += "(" + ttemp[1];
+							Mname += "(" + ttemp[1];
 						}
 						catch {
-							name += "()";
+							Mname += "()";
 						}
 						sumEl = item.GetElementsByTagName("summary")[0];
-						sum = sumEl.InnerText.Trim();
-						modAttr = sumEl.Attributes["dos"];
-						typeAttr = sumEl.Attributes["type"];
+						sum = sumEl?.InnerText.Trim()?? "";
+						modAttr = item.GetElementsByTagName("dos")[0];
+						typeAttr = sumEl?.Attributes["type"];
 						string ret = "";
 						if (item.GetElementsByTagName("returns").Count != 0)
 							ret = item.GetElementsByTagName("returns")[0].InnerText.Trim();
-						var meth = new Meth(name, sum, ret, modAttr is null ? "" : modAttr.Value, typeAttr is null ? "" : typeAttr.Value);
+						var meth = new Meth(Mname, sum, ret, modAttr is null ? "" : modAttr.FirstChild.Value, typeAttr is null ? "" : typeAttr.Value);
 						foreach (XmlElement itemm in item.GetElementsByTagName("param")) {
 							meth.param.Add(new Elem(itemm.Attributes.GetNamedItem("name").Value, itemm.InnerText.Trim(),"",""));
 						}
 
-						className = temp[temp.Length - 2];
+						className = String.Join(".", name.Split('(')[0].Split(':')[1].Split('.').Where(x => x != Mname.Split('(')[0]));
 						try {
 							types[className].meths.Add(meth);
 						}

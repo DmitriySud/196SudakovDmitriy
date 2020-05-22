@@ -296,6 +296,21 @@ namespace MainForm {
 			Draw();
 		}
 
+		private static List<List<int>> ToIncList(Graph g) {
+			if (g is null)
+				return new List<List<int>>();
+			var result = new List<List<int>>();
+			foreach (var v in g.Vertices) {
+				var cur = new List<int>();
+				result.Add(cur);
+
+				foreach (var e in v.Edges) {
+					cur.Add(e.GetOther(v).Num);
+				}
+			}
+			return result;
+		}
+
 		/// <summary type="void" dos="public">
 		/// Статический метод сериализует граф в заданый файл.
 		/// </summary>
@@ -303,13 +318,14 @@ namespace MainForm {
 		/// <param name="path"> Путь к файлу для сохранения. </param>
 		public static void Serialize(Graph g, string path) {
 			try {
+				var save = ToIncList(g);
 				using (var fs = new FileStream(path, FileMode.Create)) {
 					var formater = new BinaryFormatter();
-					formater.Serialize(fs, g);
+					formater.Serialize(fs, save);
 				}
 			}
 			catch (Exception ex) {
-				MessageBox.Show("File Error. " + ex.Message);
+				MessageBox.Show("File save Error. " + ex.Message);
 			}
 
 		}
@@ -323,11 +339,11 @@ namespace MainForm {
 			try {
 				using (var fs = new FileStream(path, FileMode.Open)) {
 					var formater = new BinaryFormatter();
-					g = (Graph)formater.Deserialize(fs);
+					g = new Graph((List<List<int>>)formater.Deserialize(fs), g.Width, g.Height, g.Canvas);
 				}
 			}
 			catch (Exception ex) {
-				MessageBox.Show("File Error. " + ex.Message);
+				MessageBox.Show("File load Error. " + ex.Message);
 			}
 		}
 	}

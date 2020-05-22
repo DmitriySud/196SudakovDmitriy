@@ -1,0 +1,2399 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Presentation</name>
+    </assembly>
+    <members>
+        <member name="T:Base.CalcEngine">
+            <summary>
+            Класс родитель двгателей для подсчета.
+            </summary>
+        </member>
+        <member name="F:Base.CalcEngine.FinishAllMoves">
+            <summary>
+            Делегат хранящий методы размножения точек.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Base.CalcEngine.PrepareVertex">
+            <summary>
+            Делегат хранящий методы подготовки вершин.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Base.CalcEngine.PrepareEdge">
+            <summary>
+            Делегат хранящий методы подготовки ребер.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="P:Base.CalcEngine.Count">
+            <summary>
+            Свойство доступа к количеству итераций.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="M:Base.CalcEngine.Move">
+            <summary>
+            Метод передвижения точек.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="M:Base.CalcEngine.GetEnergyData(System.String)">
+            <summary>
+            Метод записи информации о распределении энергии.
+            </summary>
+            <param name="path"></param>
+            <dos> public </dos>
+        </member>
+        <member name="M:Base.CalcEngine.GetPointCountData(System.String)">
+            <summary>
+            Метод записи информации о количестве точек.
+            </summary>
+            <param name="path"></param>
+            <dos> public </dos>
+        </member>
+        <member name="M:Base.CalcEngine.Reset">
+            <summary>
+            Метод сброса прогресса.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="M:Base.CalcEngine.Serialize(System.String)">
+            <summary>
+            Метод сохранения информации о графе.
+            </summary>
+            <param name="path"></param>
+            <dos> public </dos>
+        </member>
+        <member name="T:Base.ImageEngine">
+            <summary>
+            Класс родитель двгателей для анимации.
+            </summary>
+        </member>
+        <member name="M:Base.ImageEngine.Move">
+            <summary>
+            Метод передвижения точек.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="M:Base.ImageEngine.DrawGraph(System.Int32)">
+            <summary>
+            Метод прорисовки графа.
+            </summary>
+            <param name="last"></param>
+            <dos> public </dos>
+        </member>
+        <member name="M:Base.ImageEngine.Reset">
+            <summary>
+            Метод сброса прогресса.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="P:Base.ImageEngine.Count">
+            <summary>
+            Свойство доступа к количеству итераций.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Base.ImageEngine.FinishAllMoves">
+            <summary>
+            Делегат хранящий методы размножения точек.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Base.ImageEngine.PrepareVertex">
+            <summary>
+            Делегат хранящий методы подготовки вершин.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Base.ImageEngine.PrepareEdge">
+            <summary>
+            Делегат хранящий методы подготовки ребер.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="T:Presentation.Constants">
+            <summary>
+            Класс констант.
+            </summary>
+        </member>
+        <member name="F:Presentation.Constants.TreeLength">
+            <summary>
+            Длинна отрисовки ребра дерева.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Presentation.Constants.TreeR">
+            <summary>
+            Величина отклонения отрисовки ребра дерева.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Presentation.Constants.SquareLength">
+            <summary>
+            Длинна отрисовки ребра квадратной решетки.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Presentation.Constants.TrangleLength">
+            <summary>
+            Длинна отрисовки ребра треугольной решетки.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Presentation.Constants.HexagonLength">
+            <summary>
+            Длинна отрисовки ребра шестиугольной решетки.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Presentation.Constants.size">
+            <summary>
+            Размер отрисовки вершины.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Presentation.Constants.pointsize">
+            <summary>
+            Размер отрисовки точки.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Presentation.Constants.drawLevel">
+            <summary>
+            Количество уровней отрисовки.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="T:Presentation.Base.GraphWindow">
+            <summary>
+            GraphWindow
+            </summary>
+        </member>
+        <member name="M:Presentation.Base.GraphWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Presentation.Parametrs">
+            <summary>
+            Логика взаимодействия для Window2.xaml
+            </summary>
+            <summary>
+            Parametrs
+            </summary>
+        </member>
+        <member name="M:Presentation.Parametrs.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Presentation.App">
+            <summary>
+            Логика взаимодействия для App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:Presentation.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Presentation.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:Presentation.MainWindow">
+            <summary>
+            Логика взаимодействия для MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:Presentation.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Presentation.Properties.Resources">
+            <summary>
+              Класс ресурсов со строгим типом для поиска локализованных строк и пр.
+            </summary>
+        </member>
+        <member name="P:Presentation.Properties.Resources.ResourceManager">
+            <summary>
+              Возврат кэшированного экземпляра ResourceManager, используемого этим классом.
+            </summary>
+        </member>
+        <member name="P:Presentation.Properties.Resources.Culture">
+            <summary>
+              Переопределяет свойство CurrentUICulture текущего потока для всех
+              подстановки ресурсов с помощью этого класса ресурсов со строгим типом.
+            </summary>
+        </member>
+        <member name="T:Hexagon.Image.Edge">
+            <summary>
+            Класс ребра графа для анимации.
+            </summary>
+        </member>
+        <member name="F:Hexagon.Image.Edge.edges">
+            <summary>
+            Массив ребер.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Hexagon.Image.Edge.ToBegin">
+            <summary>
+            Поле начиличия точки, движущейся в начало ребра.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Hexagon.Image.Edge.ToEnd">
+            <summary>
+            Поле начиличия точки, движущейся в конец ребра.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Hexagon.Image.Edge.pointTB">
+            <summary>
+            Поле элемента отрисовки точки, идушей в начало.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Hexagon.Image.Edge.pointTE">
+            <summary>
+            Поле элемента отрисовки точки, идушей в конец.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="P:Hexagon.Image.Edge.Begin">
+            <summary>
+            Свойство доступа к началу ребра.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="P:Hexagon.Image.Edge.End">
+            <summary>
+            Свойство доступа к концу ребра.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="M:Hexagon.Image.Edge.#ctor(Hexagon.Image.Vertex,Hexagon.Image.Vertex)">
+            <summary>
+            Констрктор по началу, концу и типу ребра. 
+            </summary>
+            <param name="begin"></param>
+            <param name="end"></param>
+            <dos> public </dos>
+        </member>
+        <member name="M:Hexagon.Image.Edge.VertexPreparer(System.Int32)">
+            <summary>
+            Метод подготавливает концы ребра к фазе размножения точек.
+            </summary>
+            <param name="i"></param>
+            <dos> public </dos>
+        </member>
+        <member name="M:Hexagon.Image.Edge.Draw">
+            <summary>
+            Метод отрисовки ребра.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="M:Hexagon.Image.Edge.DrawAll">
+            <summary>
+            Метод отрисовывает все ребра.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="T:Hexagon.Image.Engine">
+            <summary>
+            Класс двигатель точек графа для анимации.
+            </summary>
+        </member>
+        <member name="M:Hexagon.Image.Engine.#ctor">
+            <summary>
+            Базовый конструктор класса.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Image.Engine.Move">
+            <summary>
+            Метод реализует итерацию размножения точек и прохождения их по ребрам и записывает информацию об их количестве в массив.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Image.Engine.DrawGraph(System.Int32)">
+            <summary>
+            Отрисовывает существующие вершины и ребра.
+            </summary>
+            <param name="last"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Image.Engine.Reset">
+            <summary>
+            Метод сбрасывает прогресс моделирования на графе.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="T:Hexagon.Image.Vertex">
+            <summary>
+            Класс вершины графа для анимации.
+            </summary>
+        </member>
+        <member name="F:Hexagon.Image.Vertex.vertexes">
+            <summary>
+            Массив всех вершин.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Hexagon.Image.Vertex.edgecount">
+            <summary>
+            Поле степени вершины.
+            </summary>
+            <dos>private</dos>
+        </member>
+        <member name="F:Hexagon.Image.Vertex.point">
+            <summary>
+            Поле двигателя всех вершин.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Hexagon.Image.Vertex.start">
+            <summary>
+            Поле точки старта отрисовки.
+            </summary>
+        </member>
+        <member name="P:Hexagon.Image.Vertex.X">
+            <summary>
+            Координата по оси абсцисс холста.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Hexagon.Image.Vertex.Y">
+            <summary>
+            Координата по оси ординат холста.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Hexagon.Image.Vertex.isUp">
+            <summary>
+            Поле типа веришины.
+            </summary>
+        </member>
+        <member name="P:Hexagon.Image.Vertex.Level">
+            <summary>
+            Свойство доступа к уровеню вершины.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Hexagon.Image.Vertex.Ready">
+            <summary>
+            Поле готовности вершины
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Hexagon.Image.Vertex.edges">
+            <summary>
+            Поле массива ребер вершины.
+            </summary>
+        </member>
+        <member name="P:Hexagon.Image.Vertex.Number">
+            <summary>
+            Индекс для определения вершины.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Image.Vertex.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Конструктор по индексу и уровню.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="Level"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Image.Vertex.#ctor(System.Double,System.Double,Hexagon.Image.Engine)">
+            <summary>
+            Конструктор по координатам и двигателю.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="engine"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Image.Vertex.PrepareEdges">
+            <summary>
+            Метод собирает информацию с ребер и очищающает поля ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Image.Vertex.Transmission">
+            <summary>
+            Метод распространяет энергию и точки собранную в вершине на ребре. 
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Image.Vertex.Start">
+            <summary>
+            Метод подготовки графа для работы.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Image.Vertex.AddLevel(System.Int32)">
+            <summary>
+            Метод добавляет следующий уровень, равноудаленных от начала, вершин графа и соедияет их ребрами с существующими.
+            </summary>
+            <param name="Level"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Image.Vertex.CreateVertexAround(System.Int32)">
+            <summary>
+            Метод создает вершины вокруг данной.
+            </summary>
+            <param name="level"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hexagon.Image.Vertex.CreateVertex(System.ValueTuple{System.Int32,System.Int32},System.Int32,System.Int32@,System.Int32)">
+            <summary>
+            Метод создает вершину и ребро по индексу вершины и типу ребра, увеличивает счетчик количества вершин
+            и добавляет созданные еэлементы в соответствуюшие массивы.
+            </summary>
+            <param name="number"></param>
+            <param name="edgetype"></param>
+            <param name="count"></param>
+        </member>
+        <member name="M:Hexagon.Image.Vertex.ThrowPoint(System.Int32,System.String)">
+            <summary>
+            Метод вбрасывает точку на ребро по заданому направлению.
+            </summary>
+            <param name="edgetype"></param>
+            <param name="vector"></param>
+        </member>
+        <member name="M:Hexagon.Image.Vertex.DrawAll">
+            <summary>
+            Метод отрисовывает все вершины.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Image.Vertex.Draw">
+            <summary>
+            Метод отрисовывает вершину.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Image.Vertex.DrawPoint(Hexagon.Image.Edge,System.String)">
+            <summary>
+            Метод создает точку на холсте и задает ее анимацию.
+            </summary>
+            <param name="edge"></param>
+            <param name="vector"></param>
+            <returns> Возращает проинициализированный Ellipse. </returns>
+            <dos>public</dos>
+        </member>
+        <member name="T:Hexagon.Calc.Edge">
+            <summary>
+            Класс ребра графа для подсчета.
+            </summary>
+        </member>
+        <member name="F:Hexagon.Calc.Edge.edges">
+            <summary>
+            Массив ребер.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Hexagon.Calc.Edge.PointData">
+            <summary>
+            Массив данных о количестве точек на графе.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Hexagon.Calc.Edge.ToBegin">
+            <summary>
+            Поле начиличия точки, движущейся в начало ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Hexagon.Calc.Edge.ToEnd">
+            <summary>
+            Поле начиличия точки, движущейся в конец ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Hexagon.Calc.Edge.ToBeginMass">
+            <summary>
+            Поле веса, движущегося в начало ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Hexagon.Calc.Edge.ToEndMass">
+            <summary>
+            Поле веса, движущегося в конец ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Hexagon.Calc.Edge.Begin">
+            <summary>
+            Свойство доступа к началу ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Hexagon.Calc.Edge.End">
+            <summary>
+            Свойство доступа к концу ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Hexagon.Calc.Edge.Type">
+            <summary>
+            Свойство доступа к типу ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Edge.#ctor(Hexagon.Calc.Vertex,Hexagon.Calc.Vertex,System.Int32)">
+            <summary>
+            Констрктор по началу, концу и типу ребра. 
+            </summary>
+            <param name="begin"></param>
+            <param name="end"></param>
+            <param name="type"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Edge.VertexPreparer">
+            <summary>
+            Метод подготавливает концы ребра к фазе размножения точек.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Edge.CountPoints(System.Boolean)">
+            <summary>
+            Метод подсчитывает количество точек на ребре в зависимости от того, в середине они или нет.
+            </summary>
+            <param name="isMiddle"></param>
+            <returns></returns>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Edge.Serialize(System.IO.StreamWriter)">
+            <summary>
+            Метод записывающий информацию о ребре в поток.
+            </summary>
+            <param name="fs"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Edge.TryParse(System.String,Hexagon.Calc.Edge@)">
+            <summary>
+            Преобразовывает данные из строки в экземпляр Edge, который передает в out-параметр.
+            </summary>
+            <param name="data"></param>
+            <param name="edge"></param>
+            <returns>Возращает успешность преобразования</returns>
+            <dos>public</dos>
+        </member>
+        <member name="T:Hexagon.Calc.Engine">
+            <summary>
+            Класс двигателя точек графа для подсчета.
+            </summary>
+        </member>
+        <member name="M:Hexagon.Calc.Engine.#ctor">
+            <summary>
+            Базовый конструктор класса.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Engine.#ctor(System.Int32)">
+            <summary>
+            Конструктор по количеству совершенных итераций.
+            </summary>
+            <param name="count"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Engine.Move">
+            <summary>
+            Метод реализует итерацию размножения точек и прохождения их по ребрам и записывает информацию об их количестве в массив.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Engine.GetEnergyData(System.String)">
+            <summary>
+            Метод записывает информацию о распределении энергии в файл.
+            </summary>
+            <param name="path"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Engine.GetPointCountData(System.String)">
+            <summary>
+            Метод записывает информацию о количестве точек в файл.
+            </summary>
+            <param name="path"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Engine.Reset">
+            <summary>
+            Метод сбрасывает прогресс моделирования на графе.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Engine.Serialize(System.String)">
+            <summary>
+            Метод создает поток для записи и вызывает методы записи информации о графе.
+            </summary>
+            <param name="path"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Engine.TryParseGraph(System.IO.StreamReader)">
+            <summary>
+            Метод преобразущий данные из файла в даные графа.
+            </summary>
+            <param name="reader"></param>
+            <returns>Возвращает усепешность перобразования.</returns>
+            <dos>public</dos>
+        </member>
+        <member name="T:Hexagon.Calc.Vertex">
+            <summary>
+            Вершина графа для подсчета.
+            </summary>
+        </member>
+        <member name="F:Hexagon.Calc.Vertex.vertexes">
+            <summary>
+            Массив всех вершин.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Hexagon.Calc.Vertex.edgecount">
+            <summary>
+            Поле степени вершины.
+            </summary>
+        </member>
+        <member name="F:Hexagon.Calc.Vertex.engine">
+            <summary>
+            Поле двигателя всех вершин.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Hexagon.Calc.Vertex.lastlevel">
+            <summary>
+            Поле номера последнего уровня.
+            </summary>
+        </member>
+        <member name="F:Hexagon.Calc.Vertex.weight">
+            <summary>
+            Поле веса вершины.
+            </summary>
+        </member>
+        <member name="F:Hexagon.Calc.Vertex.isUp">
+            <summary>
+            Поле типа веришины.
+            </summary>
+        </member>
+        <member name="P:Hexagon.Calc.Vertex.Weight">
+            <summary>
+            Свойство доступа к весу вершины.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Hexagon.Calc.Vertex.Level">
+            <summary>
+            Свойство доступа к уровеню вершины.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Hexagon.Calc.Vertex.Ready">
+            <summary>
+            Поле готовности вершины
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Hexagon.Calc.Vertex.edges">
+            <summary>
+            Массив ребер вершины.
+            </summary>
+        </member>
+        <member name="P:Hexagon.Calc.Vertex.Number">
+            <summary>
+            Индекс для определения вершины.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Hexagon.Calc.Vertex.Edges">
+            <summary>
+            Свойство доступа к массиву ребер вершины.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Vertex.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Конструктор вершины по координатам.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Vertex.#ctor(Hexagon.Calc.Engine)">
+            <summary>
+            Конструктор вершины по двигателю для точек.
+            </summary>
+            <param name="engine"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Vertex.PrepareEdges">
+            <summary>
+            Метод собирает информацию с ребер и очищающает поля ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Vertex.Transmission">
+            <summary>
+            Метод распространяет энергию и точки собранную в вершине на ребре. 
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Vertex.Start">
+            <summary>
+            Метод подготовки графа для работы.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Vertex.ToString">
+            <summary>
+            Метод формирует строку информации о вершине.
+            </summary>
+            <returns>Возрващает строковое представление вершины.</returns>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Vertex.AddLevel">
+            <summary>
+            Метод добавляет следующий уровень, равноудаленных от начала, вершин графа и соедияет их ребрами с существующими.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Vertex.CreateVertexAround">
+            <summary>
+            Метод создает вершины вокруг данной.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Hexagon.Calc.Vertex.CreateVertex(System.ValueTuple{System.Int32,System.Int32},System.Int32,System.Int32@)">
+            <summary>
+            Метод создает вершину и ребро по индексу вершины и типу ребра, увеличивает счетчик количества вершин
+            и добавляет созданные еэлементы в соответствуюшие массивы.
+            </summary>
+            <param name="number"></param>
+            <param name="edgetype"></param>
+            <param name="count"></param>
+        </member>
+        <member name="M:Hexagon.Calc.Vertex.Serialize(System.IO.StreamWriter)">
+            <summary>
+            Метод записывающий информацию о вершине в поток.
+            </summary>
+            <param name="fs"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Hexagon.Calc.Vertex.TryParse(System.String,Hexagon.Calc.Vertex@)">
+            <summary>
+            Преобразовывает данные из строки в экземпляр Vertex, который передает в out-параметр.
+            </summary>
+            <param name="data"></param>
+            <param name="vertex"></param>
+            <returns>Возращает успешность преобразования</returns>
+            <dos>public</dos>
+        </member>
+        <member name="T:Square.Image.Edge">
+            <summary>
+            Класс ребра графа для анимации.
+            </summary>
+        </member>
+        <member name="F:Square.Image.Edge.edges">
+            <summary>
+            Массив ребер.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Square.Image.Edge.ToBegin">
+            <summary>
+            Поле начиличия точки, движущейся в начало ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Square.Image.Edge.ToEnd">
+            <summary>
+            Поле начиличия точки, движущейся в конец ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Square.Image.Edge.pointTB">
+            <summary>
+            Поле элемента отрисовки точки, идушей в начало.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Square.Image.Edge.pointTE">
+            <summary>
+            Поле элемента отрисовки точки, идушей в конец.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Square.Image.Edge.Begin">
+            <summary>
+            Свойство доступа к началу ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Square.Image.Edge.End">
+            <summary>
+            Свойство доступа к концу ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Image.Edge.#ctor(Square.Image.Vertex,Square.Image.Vertex)">
+            <summary>
+            Констрктор по началу, концу и типу ребра. 
+            </summary>
+            <param name="begin"></param>
+            <param name="end"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Image.Edge.FinishMoveHandler(System.Int32)">
+            <summary>
+            Метод подготавливает концы ребра к фазе размножения точек.
+            </summary>
+            <param name="i"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Image.Edge.Draw">
+            <summary>
+            Метод отрисовки ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Image.Edge.DrawAll">
+            <summary>
+            Метод отрисовывает все ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="T:Square.Image.Engine">
+            <summary>
+            Класс двигателя точек графа для анимации.
+            </summary>
+        </member>
+        <member name="M:Square.Image.Engine.#ctor">
+            <summary>
+            Базовый конструктор класса.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Image.Engine.Move">
+            <summary>
+            Метод реализует итерацию размножения точек и прохождения их по ребрам и записывает информацию об их количестве в массив.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Image.Engine.DrawGraph(System.Int32)">
+            <summary>
+            Отрисовывает существующие вершины и ребра.
+            </summary>
+            <param name="last"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Image.Engine.Reset">
+            <summary>
+            Метод сбрасывает прогресс моделирования на графе.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="T:Square.Image.Vertex">
+            <summary>
+            Класс вершины графа для анимации.
+            </summary>
+        </member>
+        <member name="P:Square.Image.Vertex.start">
+            <summary>
+            Поле точки старта отрисовки.
+            </summary>
+        </member>
+        <member name="F:Square.Image.Vertex.vertexes">
+            <summary>
+            Массив всех вершин.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Square.Image.Vertex.edgecount">
+            <summary>
+            Поле степени вершины.
+            </summary>
+        </member>
+        <member name="F:Square.Image.Vertex.point">
+            <summary>
+            Поле двигателя всех вершин.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Square.Image.Vertex.X">
+            <summary>
+            Координата по оси абсцисс холста.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Square.Image.Vertex.Y">
+            <summary>
+            Координата по оси ординат холста.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Square.Image.Vertex.Level">
+            <summary>
+            Свойство доступа к уровеню вершины.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Square.Image.Vertex.Ready">
+            <summary>
+            Поле готовности вершины
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Square.Image.Vertex.edges">
+            <summary>
+            Поле массива ребер вершины.
+            </summary>
+        </member>
+        <member name="P:Square.Image.Vertex.Number">
+            <summary>
+            Индекс для определения вершины.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Image.Vertex.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Конструктор по индексу.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Image.Vertex.#ctor(System.Double,System.Double,Square.Image.Engine)">
+            <summary>
+            Конструктор по координатам и двигателю.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="engine"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Image.Vertex.PrepareEdges">
+            <summary>
+            Метод собирает информацию с ребер и очищающает поля ребра.
+            </summary>
+            <returs>void</returs>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Image.Vertex.Transmission">
+            <summary>
+            Метод распространяет энергию и точки собранную в вершине на ребре. 
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Image.Vertex.AddLevel(System.Int32)">
+            <summary>
+            Метод добавляет следующий уровень, равноудаленных от начала, вершин графа и соедияет их ребрами с существующими.
+            </summary>
+            <param name="length"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Image.Vertex.CreateEdge(Square.Image.Vertex,Square.Image.Vertex,System.Int32)">
+            <summary>
+            Метод создает ребро по вершинам и типу ребра. 
+            </summary>
+            <param name="begin"></param>
+            <param name="end"></param>
+            <param name="type"></param>
+        </member>
+        <member name="M:Square.Image.Vertex.Draw">
+            <summary>
+            Метод отрисовывает вершину.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Image.Vertex.Start">
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Image.Vertex.DrawAll">
+            <summary>
+            Метод отрисовывает все вершины.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Image.Vertex.DrawPoint(Square.Image.Edge,System.Boolean)">
+            <summary>
+            Метод создает точку на холсте и задает ее анимацию.
+            </summary>
+            <param name="edge"></param>
+            <param name="vector"></param>
+            <returns> Возращает проинициализированный Ellipse. </returns>
+            <dos>public</dos>
+        </member>
+        <member name="T:Square.Calc.Edge">
+            <summary>
+            Класс ребра графа для подсчета.
+            </summary>
+        </member>
+        <member name="F:Square.Calc.Edge.edges">
+            <summary>
+            Массив ребер.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Square.Calc.Edge.PointData">
+            <summary>
+            Массив данных о количестве точек на графе.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Square.Calc.Edge.ToBegin">
+            <summary>
+            Поле начиличия точки, движущейся в начало ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Square.Calc.Edge.ToEnd">
+            <summary>
+            Поле начиличия точки, движущейся в конец ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Square.Calc.Edge.ToBeginMass">
+            <summary>
+            Поле веса, движущегося в начало ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Square.Calc.Edge.ToEndMass">
+            <summary>
+            Поле веса, движущегося в конец ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Square.Calc.Edge.Begin">
+            <summary>
+            Свойство доступа к началу ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Square.Calc.Edge.End">
+            <summary>
+            Свойство доступа к концу ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Square.Calc.Edge.Type">
+            <summary>
+            Свойство доступа к типу ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Edge.#ctor(Square.Calc.Vertex,Square.Calc.Vertex,System.Int32)">
+            <summary>
+            Констрктор по началу, концу и типу ребра. 
+            </summary>
+            <param name="begin"></param>
+            <param name="end"></param>
+            <param name="type"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Edge.VertexPreparer(System.Int32)">
+            <summary>
+            Метод подготавливает концы ребра к фазе размножения точек.
+            </summary>
+            <param name="i"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Edge.CountPoints(System.Boolean)">
+            <summary>
+            Метод подсчитывает количество точек на ребре в зависимости от того, в середине они или нет.
+            </summary>
+            <param name="isMiddle"></param>
+            <returns></returns>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Edge.Serialize(System.IO.StreamWriter)">
+            <summary>
+            Метод записывающий информацию о ребре в поток.
+            </summary>
+            <param name="fs"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Edge.TryParse(System.String,Square.Calc.Edge@)">
+            <summary>
+            Преобразовывает данные из строки в экземпляр Edge, который передает в out-параметр.
+            </summary>
+            <param name="data"></param>
+            <param name="edge"></param>
+            <returns>Возращает успешность преобразования</returns>
+            <dos>public</dos>
+        </member>
+        <member name="T:Square.Calc.Engine">
+            <summary>
+            Класс двигателя точек графа для подсчета.
+            </summary>
+        </member>
+        <member name="M:Square.Calc.Engine.#ctor">
+            <summary>
+            Базовый конструктор класса.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Engine.#ctor(System.Int32)">
+            <summary>
+            Конструктор по количеству совершенных итераций.
+            </summary>
+            <param name="count"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Engine.Move">
+            <summary>
+            Метод реализует итерацию размножения точек и прохождения их по ребрам и записывает информацию об их количестве в массив.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Engine.GetEnergyData(System.String)">
+            <summary>
+            Метод записывает информацию о распределении энергии в файл.
+            </summary>
+            <param name="path"></param>
+            <param name="path"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Engine.GetPointCountData(System.String)">
+            <summary>
+            Метод записывает информацию о количестве точек в файл.
+            </summary>
+            <param name="path"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Engine.Reset">
+            <summary>
+            Метод сбрасывает прогресс моделирования на графе.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Engine.Serialize(System.String)">
+            <summary>
+            Метод создает поток для записи и вызывает методы записи информации о графе.
+            </summary>
+            <param name="path"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Engine.TryParseGraph(System.IO.StreamReader)">
+            <summary>
+            Метод преобразущий данные из файла в даные графа.
+            </summary>
+            <param name="reader"></param>
+            <returns>Возвращает усепешность перобразования.</returns>
+            <dos>public</dos>
+        </member>
+        <member name="T:Square.Calc.Vertex">
+            <summary>
+            Класс вершины графа для подсчета.
+            </summary>
+        </member>
+        <member name="F:Square.Calc.Vertex.vertexes">
+            <summary>
+            Массив всех вершин.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Square.Calc.Vertex.edgecount">
+            <summary>
+            Поле степени вершины.
+            </summary>
+        </member>
+        <member name="F:Square.Calc.Vertex.engine">
+            <summary>
+            Поле двигателя всех вершин.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Square.Calc.Vertex.weight">
+            <summary>
+            Поле веса вершины.
+            </summary>
+        </member>
+        <member name="P:Square.Calc.Vertex.Weight">
+            <summary>
+            Свойство доступа к весу вершины.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Square.Calc.Vertex.Level">
+            <summary>
+            Свойство доступа к уровеню вершины.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Square.Calc.Vertex.Ready">
+            <summary>
+            Поле готовности вершины
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Square.Calc.Vertex.edges">
+            <summary>
+            Массив ребер вершины.
+            </summary>
+        </member>
+        <member name="P:Square.Calc.Vertex.Number">
+            <summary>
+            Индекс для определения вершины.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Square.Calc.Vertex.Edges">
+            <summary>
+            Свойство доступа к массиву ребер вершины.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Vertex.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Конструктор вершины по координатам.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Vertex.#ctor(Square.Calc.Engine)">
+            <summary>
+            Конструктор вершины по двигателю для точек.
+            </summary>
+            <param name="engine"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Vertex.PrepareEdges">
+            <summary>
+            Метод собирает информацию с ребер и очищающает поля ребра.
+            </summary>
+            <returs>void</returs>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Vertex.Transmission">
+            <summary>
+            Метод распространяет энергию и точки собранную в вершине на ребре. 
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Vertex.Start">
+            <summary>
+            Метод подготовки графа для работы.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Vertex.ToString">
+            <summary>
+            Метод формирует строку информации о вершине.
+            </summary>
+            <returns>Возрващает строковое представление вершины.</returns>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Vertex.AddLevel(System.Int32)">
+            <summary>
+            Метод добавляет следующий уровень, равноудаленных от начала, вершин графа и соедияет их ребрами с существующими.
+            </summary>
+            <param name="length"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Vertex.CreateEdge(Square.Calc.Vertex,Square.Calc.Vertex,System.Int32)">
+            <summary>
+            Метод создает ребро по вершинам и типу ребра. 
+            </summary>
+            <param name="begin"></param>
+            <param name="end"></param>
+            <param name="begintype"></param>
+        </member>
+        <member name="M:Square.Calc.Vertex.Serialize(System.IO.StreamWriter)">
+            <summary>
+            Метод записывающий информацию о вершине в поток.
+            </summary>
+            <param name="fs"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Square.Calc.Vertex.TryParse(System.String,Square.Calc.Vertex@)">
+            <summary>
+            Преобразовывает данные из строки в экземпляр Vertex, который передает в out-параметр.
+            </summary>
+            <param name="data"></param>
+            <param name="vertex"></param>
+            <returns>Возращает успешность преобразования</returns>
+            <dos>public</dos>
+        </member>
+        <member name="T:Tree.Image.Edge">
+            <summary>
+            Класс ребра графа для анимации.
+            </summary>
+        </member>
+        <member name="F:Tree.Image.Edge.edges">
+            <summary>
+            Массив ребер.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Tree.Image.Edge.ToBegin">
+            <summary>
+            Поле начиличия точки, движущейся в начало ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Tree.Image.Edge.ToEnd">
+            <summary>
+            Поле начиличия точки, движущейся в конец ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Tree.Image.Edge.pointTB">
+            <summary>
+            Поле элемента отрисовки точки, идушей в начало.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="F:Tree.Image.Edge.pointTE">
+            <summary>
+            Поле элемента отрисовки точки, идушей в конец.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Tree.Image.Edge.Begin">
+            <summary>
+            Свойство доступа к началу ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="P:Tree.Image.Edge.End">
+            <summary>
+            Свойство доступа к концу ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Tree.Image.Edge.#ctor(Tree.Image.Vertex,Tree.Image.Vertex)">
+            <summary>
+            Констрктор по началу, концу и типу ребра. 
+            </summary>
+            <param name="begin"></param>
+            <param name="end"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Tree.Image.Edge.VertexPreparer(System.Int32)">
+            <summary>
+            Метод подготавливает концы ребра к фазе размножения точек.
+            </summary>
+            <param name="val"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Tree.Image.Edge.Draw">
+            <summary>
+            Метод отрисовки ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Tree.Image.Edge.DrawAll(System.Int32)">
+            <summary>
+            Метод отрисовывает все ребра.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="T:Tree.Image.Engine">
+            <summary>
+            Класс двигателя точек графа для анимации.
+            </summary>
+        </member>
+        <member name="M:Tree.Image.Engine.#ctor">
+            <summary>
+            Базовый конструктор класса.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Tree.Image.Engine.Move">
+            <summary>
+            Метод реализует итерацию размножения точек и прохождения их по ребрам и записывает информацию об их количестве в массив.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Tree.Image.Engine.DrawGraph(System.Int32)">
+            <summary>
+            Отрисовывает существующие вершины и ребра.
+            </summary>
+            <param name="last"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Tree.Image.Engine.Reset">
+            <summary>
+            Метод сбрасывает прогресс моделирования на графе.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="T:Tree.Image.Vertex">
+            <summary>
+            Класс вершины графа для подсчета.
+            </summary>
+        </member>
+        <member name="F:Tree.Image.Vertex.vertexes">
+            <summary>
+            Массив всех вершин.
+            </summary>
+        </member>
+        <member name="P:Tree.Image.Vertex.Level">
+            <summary>
+            Свойство доступа к уровеню вершины.
+            </summary>
+        </member>
+        <member name="F:Tree.Image.Vertex.Engine">
+            <summary>
+            Поле двигателя всех вершин.
+            </summary>
+        </member>
+        <member name="F:Tree.Image.Vertex.Ready">
+            <summary>
+            Поле готовности вершины
+            </summary>
+        </member>
+        <member name="F:Tree.Image.Vertex.countedge">
+            <summary>
+            Поле степени вершины.
+            </summary>
+        </member>
+        <member name="P:Tree.Image.Vertex.X">
+            <summary>
+            Координата по оси абсцисс холста.
+            </summary>
+        </member>
+        <member name="P:Tree.Image.Vertex.Y">
+            <summary>
+            Координата по оси ординат холста.
+            </summary>
+        </member>
+        <member name="F:Tree.Image.Vertex.edges">
+            <summary>
+            Поле массива ребер вершины.
+            </summary>
+        </member>
+        <member name="P:Tree.Image.Vertex.Number">
+            <summary>
+            Индекс для определения вершины.
+            </summary>
+        </member>
+        <member name="M:Tree.Image.Vertex.#ctor(System.Double,System.Double,System.Int32,System.Int32)">
+            <summary>
+            Конструктор по координатам, индексу и уровню.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="num"></param>
+            <param name="level"></param>
+        </member>
+        <member name="M:Tree.Image.Vertex.#ctor(System.Double,System.Double,Tree.Image.Engine)">
+            <summary>
+            Конструктор по координатам и двигателю.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="engine"></param>
+        </member>
+        <member name="M:Tree.Image.Vertex.PrepareEdges">
+            <summary>
+            Метод собирает информацию с ребер и очищающает поля ребра.
+            </summary>
+        </member>
+        <member name="M:Tree.Image.Vertex.Transmission">
+            <summary>
+            Метод распространяет энергию и точки собранную в вершине на ребре. 
+            </summary>
+        </member>
+        <member name="M:Tree.Image.Vertex.AddLevel(System.Int32)">
+            <summary>
+            Метод добавляет следующий уровень, равноудаленных от начала, вершин графа и соедияет их ребрами с существующими.
+            </summary>
+            <param name="level"></param>
+        </member>
+        <member name="M:Tree.Image.Vertex.CreateVertexOnLevel(Tree.Image.Vertex,System.Int32,System.Int32)">
+            <summary>
+            Метод создает вершину и добавляет её в словарь вершин.
+            </summary>
+            <param name="parent"></param>
+            <param name="type"></param>
+            <param name="level"></param>
+        </member>
+        <member name="M:Tree.Image.Vertex.DrawAll(System.Int32)">
+            <summary>
+            Метод отрисовывает все вершины.
+            </summary>
+        </member>
+        <member name="M:Tree.Image.Vertex.Start">
+            <summary>
+            Метод подготовки графа для работы.
+            </summary>
+        </member>
+        <member name="M:Tree.Image.Vertex.Draw">
+            <summary>
+            Метод отрисовывает вершину.
+            </summary>
+        </member>
+        <member name="M:Tree.Image.Vertex.DrawPoint(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Метод создает точку на холсте и задает ее анимацию.
+            </summary>
+            <param name="x1"></param>
+            <param name="y1"></param>
+            <param name="x2"></param>
+            <param name="y2"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Tree.Calc.Edge">
+            <summary>
+            Класс ребра графа для подсчета.
+            </summary>
+        </member>
+        <member name="F:Tree.Calc.Edge.edges">
+            <summary>
+            Массив ребер.
+            </summary>
+        </member>
+        <member name="F:Tree.Calc.Edge.PointData">
+            <summary>
+            Массив данных о количестве точек на графе.
+            </summary>
+        </member>
+        <member name="F:Tree.Calc.Edge.ToBegin">
+            <summary>
+            Поле начиличия точки, движущейся в начало ребра.
+            </summary>
+        </member>
+        <member name="F:Tree.Calc.Edge.ToEnd">
+            <summary>
+            Поле начиличия точки, движущейся в конец ребра.
+            </summary>
+        </member>
+        <member name="F:Tree.Calc.Edge.ToBeginMass">
+            <summary>
+            Поле веса, движущегося в начало ребра.
+            </summary>
+        </member>
+        <member name="F:Tree.Calc.Edge.ToEndMass">
+            <summary>
+            Поле веса, движущегося в конец ребра.
+            </summary>
+        </member>
+        <member name="P:Tree.Calc.Edge.Begin">
+            <summary>
+            Свойство доступа к началу ребра.
+            </summary>
+        </member>
+        <member name="P:Tree.Calc.Edge.End">
+            <summary>
+            Свойство доступа к концу ребра.
+            </summary>
+        </member>
+        <member name="P:Tree.Calc.Edge.Type">
+            <summary>
+            Свойство доступа к типу ребра.
+            </summary>
+        </member>
+        <member name="M:Tree.Calc.Edge.#ctor(Tree.Calc.Vertex,Tree.Calc.Vertex,System.Int32)">
+            <summary>
+            Констрктор по началу, концу и типу ребра. 
+            </summary>
+            <param name="begin"></param>
+            <param name="end"></param>
+            <param name="type"></param>
+        </member>
+        <member name="M:Tree.Calc.Edge.VertexPreparer(System.Int32)">
+            <summary>
+            Метод подготавливает концы ребра к фазе размножения точек.
+            </summary>
+            <param name="val"></param>
+        </member>
+        <member name="M:Tree.Calc.Edge.CountPoints(System.Boolean)">
+            <summary>
+            Метод подсчитывает количество точек на ребре в зависимости от того, в середине они или нет.
+            </summary>
+            <param name="isMiddle"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tree.Calc.Edge.Serialize(System.IO.StreamWriter)">
+            <summary>
+            Метод записывающий информацию о ребре в поток.
+            </summary>
+            <param name="fs"></param>
+        </member>
+        <member name="M:Tree.Calc.Edge.TryParse(System.String,Tree.Calc.Edge@)">
+            <summary>
+            Преобразовывает данные из строки в экземпляр Edge, который передает в out-параметр.
+            </summary>
+            <param name="data"></param>
+            <param name="edge"></param>
+            <returns>Возращает успешность преобразования</returns>
+        </member>
+        <member name="T:Tree.Calc.Engine">
+            <summary>
+            Класс двигателя точек графа для подсчета.
+            </summary>
+        </member>
+        <member name="M:Tree.Calc.Engine.#ctor">
+            <summary>
+            Базовый конструктор класса.
+            </summary>
+        </member>
+        <member name="M:Tree.Calc.Engine.#ctor(System.Int32)">
+            <summary>
+            Конструктор по количеству совершенных итераций.
+            </summary>
+            <param name="count"></param>
+        </member>
+        <member name="M:Tree.Calc.Engine.Move">
+            <summary>
+            Метод реализует итерацию размножения точек и прохождения их по ребрам и записывает информацию об их количестве в массив.
+            </summary>
+        </member>
+        <member name="M:Tree.Calc.Engine.GetEnergyData(System.String)">
+            <summary>
+            Метод записывает информацию о распределении энергии в файл.
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:Tree.Calc.Engine.GetPointCountData(System.String)">
+            <summary>
+            Метод записывает информацию о количестве точек в файл.
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:Tree.Calc.Engine.Reset">
+            <summary>
+            Метод сбрасывает прогресс моделирования на графе.
+            </summary>
+        </member>
+        <member name="M:Tree.Calc.Engine.Serialize(System.String)">
+            <summary>
+            Метод создает поток для записи и вызывает методы записи информации о графе.
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:Tree.Calc.Engine.TryParseGraph(System.IO.StreamReader)">
+            <summary>
+            Метод преобразущий данные из файла в даные графа.
+            </summary>
+            <param name="reader"></param>
+            <returns>Возвращает усепешность перобразования.</returns>
+        </member>
+        <member name="T:Tree.Calc.Vertex">
+            <summary>
+            Класс вершины графа для подсчета.
+            </summary>
+        </member>
+        <member name="F:Tree.Calc.Vertex.vertexes">
+            <summary>
+            Массив всех вершин.
+            </summary>
+        </member>
+        <member name="F:Tree.Calc.Vertex.countedge">
+            <summary>
+            Поле степени вершины.
+            </summary>
+        </member>
+        <member name="F:Tree.Calc.Vertex.weight">
+            <summary>
+            Поле веса вершины.
+            </summary>
+        </member>
+        <member name="P:Tree.Calc.Vertex.Weight">
+            <summary>
+            Свойство доступа к весу вершины.
+            </summary>
+        </member>
+        <member name="P:Tree.Calc.Vertex.Level">
+            <summary>
+            Свойство доступа к уровеню вершины.
+            </summary>
+        </member>
+        <member name="F:Tree.Calc.Vertex.Ready">
+            <summary>
+            Поле готовности вершины
+            </summary>
+        </member>
+        <member name="F:Tree.Calc.Vertex.edges">
+            <summary>
+            Массив ребер вершины.
+            </summary>
+        </member>
+        <member name="P:Tree.Calc.Vertex.Number">
+            <summary>
+            Индекс для определения вершины.
+            </summary>
+        </member>
+        <member name="P:Tree.Calc.Vertex.Edges">
+            <summary>
+            Свойство доступа к массиву ребер вершины.
+            </summary>
+        </member>
+        <member name="M:Tree.Calc.Vertex.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Конструктор вершины по индексу и уровню.
+            </summary>
+            <param name="num"></param>
+            <param name="level"></param>
+        </member>
+        <member name="M:Tree.Calc.Vertex.#ctor(Tree.Calc.Engine)">
+            <summary>
+            Конструктор вершины по двигателю для точек.
+            </summary>
+            <param name="engine"></param>
+        </member>
+        <member name="M:Tree.Calc.Vertex.PrepareEdges">
+            <summary>
+            Метод собирает информацию с ребер и очищающает поля ребра.
+            </summary>
+        </member>
+        <member name="M:Tree.Calc.Vertex.Transmission">
+            <summary>
+            Метод распространяет энергию и точки собранную в вершине на ребре. 
+            </summary>
+        </member>
+        <member name="M:Tree.Calc.Vertex.AddLevel(System.Int32)">
+            <summary>
+            Метод добавляет следующий уровень, равноудаленных от начала, вершин графа и соедияет их ребрами с существующими.
+            </summary>
+            <param name="level"></param>
+        </member>
+        <member name="M:Tree.Calc.Vertex.CreateVertexOnLevel(Tree.Calc.Vertex,System.Int32,System.Int32)">
+            <summary>
+            Метод создает вершину и добавляет её в словарь вершин.
+            </summary>
+            <param name="parent"></param>
+            <param name="type"></param>
+            <param name="level"></param>
+        </member>
+        <member name="M:Tree.Calc.Vertex.Start">
+            <summary>
+            Метод подготовки графа для работы.
+            </summary>
+        </member>
+        <member name="M:Tree.Calc.Vertex.ToString">
+            <summary>
+            Метод формирует строку информации о вершине.
+            </summary>
+            <returns>Возрващает строковое представление вершины.</returns>
+        </member>
+        <member name="M:Tree.Calc.Vertex.Serialize(System.IO.StreamWriter)">
+            <summary>
+            Метод записывающий информацию о вершине в поток.
+            </summary>
+            <param name="fs"></param>
+        </member>
+        <member name="M:Tree.Calc.Vertex.TryParse(System.String,Tree.Calc.Vertex@)">
+            <summary>
+            Преобразовывает данные из строки в экземпляр Vertex, которую передает в out-параметр.
+            </summary>
+            <param name="data"></param>
+            <param name="vertex"></param>
+            <returns>Возращает успешность преобразования</returns>
+        </member>
+        <member name="T:Utilits">
+            <summary>
+            Класс опциональных значений.
+            </summary>
+        </member>
+        <member name="T:Utilits.FinishMove">
+            <summary>
+            Делегат-тип окончания движения точек.
+            </summary>
+        </member>
+        <member name="T:Utilits.VertexActions">
+            <summary>
+            Делегат-тип действий с вершинами.
+            </summary>
+            <param name="level"></param>
+        </member>
+        <member name="T:Utilits.EdgeActions">
+            <summary>
+            Делегат-тип действий с ребрами.
+            </summary>
+        </member>
+        <member name="F:Utilits.calcEngine">
+            <summary>
+            Поле дивгателя точек для подсчета.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Utilits.imageEngine">
+            <summary>
+            Поле двигателя точек для анимации.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Utilits.Length">
+            <summary>
+             Поле длинны ребра.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Utilits.Velocity">
+            <summary>
+            Поле скорость точек.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Utilits.energyDataPath">
+            <summary>
+            Поле имени файла с информаций об энергии. 
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Utilits.pointCountDataPath">
+            <summary>
+            Поле имени файла с информацией о количестве точек.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Utilits.field">
+            <summary>
+            Поле холста отрисовки.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Utilits.animation">
+            <summary>
+            Массив анимаций точек.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="F:Utilits.delay">
+            <summary>
+            Поле времени движения точки.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="P:Utilits.Data">
+            <summary>
+            Поле хранящее информацию о графике.
+            </summary>
+            <dos> public </dos>
+        </member>
+        <member name="M:Utilits.SaveData">
+            <summary>
+            Метод сохранения информации о графе.
+            </summary>
+            <returns>Возращает успех операции.</returns>
+            <dos> public </dos>
+        </member>
+        <member name="T:Triangle.Image.Edge">
+            <summary>
+            Класс ребра графа для анимации.
+            </summary>
+        </member>
+        <member name="F:Triangle.Image.Edge.edges">
+            <summary>
+            Массив ребер.
+            </summary>
+        </member>
+        <member name="F:Triangle.Image.Edge.ToBegin">
+            <summary>
+            Поле начиличия точки, движущейся в начало ребра.
+            </summary>
+        </member>
+        <member name="F:Triangle.Image.Edge.ToEnd">
+            <summary>
+            Поле начиличия точки, движущейся в конец ребра.
+            </summary>
+        </member>
+        <member name="F:Triangle.Image.Edge.pointTB">
+            <summary>
+            Поле элемента отрисовки точки, идушей в начало.
+            </summary>
+        </member>
+        <member name="F:Triangle.Image.Edge.pointTE">
+            <summary>
+            Поле элемента отрисовки точки, идушей в конец.
+            </summary>
+        </member>
+        <member name="P:Triangle.Image.Edge.Begin">
+            <summary>
+            Свойство доступа к началу ребра.
+            </summary>
+        </member>
+        <member name="P:Triangle.Image.Edge.End">
+            <summary>
+            Свойство доступа к концу ребра.
+            </summary>
+        </member>
+        <member name="M:Triangle.Image.Edge.#ctor(Triangle.Image.Vertex,Triangle.Image.Vertex)">
+            <summary>
+            Констрктор по началу, концу и типу ребра. 
+            </summary>
+            <param name="begin"></param>
+            <param name="end"></param>
+        </member>
+        <member name="M:Triangle.Image.Edge.VertexPreparer(System.Int32)">
+            <summary>
+            Метод подготавливает концы ребра к фазе размножения точек.
+            </summary>
+            <param name="i"></param>
+        </member>
+        <member name="M:Triangle.Image.Edge.DrawAll">
+            <summary>
+            Метод отрисовывает все ребра.
+            </summary>
+        </member>
+        <member name="M:Triangle.Image.Edge.Draw">
+            <summary>
+            Метод отрисовки ребра.
+            </summary>
+        </member>
+        <member name="T:Triangle.Image.Engine">
+            <summary>
+            Класс двигателя точек графа для анимации.
+            </summary>
+        </member>
+        <member name="M:Triangle.Image.Engine.#ctor">
+            <summary>
+            Базовый конструктор класса.
+            </summary>
+        </member>
+        <member name="M:Triangle.Image.Engine.Move">
+            <summary>
+            Метод реализует итерацию размножения точек и прохождения их по ребрам и записывает информацию об их количестве в массив.
+            </summary>
+        </member>
+        <member name="M:Triangle.Image.Engine.DrawGraph(System.Int32)">
+            <summary>
+            Отрисовывает существующие вершины и ребра.
+            </summary>
+            <param name="last"></param>
+        </member>
+        <member name="M:Triangle.Image.Engine.Reset">
+            <summary>
+            Метод сбрасывает прогресс моделирования на графе.
+            </summary>
+        </member>
+        <member name="T:Triangle.Image.Vertex">
+            <summary>
+            Класс вершины графа для анимацииы.
+            </summary>
+        </member>
+        <member name="P:Triangle.Image.Vertex.start">
+            <summary>
+            Поле точки старта отрисовки.
+            </summary>
+        </member>
+        <member name="F:Triangle.Image.Vertex.vertexes">
+            <summary>
+            Массив всех вершин.
+            </summary>
+        </member>
+        <member name="F:Triangle.Image.Vertex.edgecount">
+            <summary>
+            Поле степени вершины.
+            </summary>
+        </member>
+        <member name="F:Triangle.Image.Vertex.engine">
+            <summary>
+            Поле двигателя всех вершин.
+            </summary>
+        </member>
+        <member name="F:Triangle.Image.Vertex.I">
+            <summary>
+            Поле смещения по оси абсцисс.
+            </summary>
+        </member>
+        <member name="F:Triangle.Image.Vertex.J">
+            <summary>
+            Поле смещения по оси ординат.
+            </summary>
+        </member>
+        <member name="P:Triangle.Image.Vertex.X">
+            <summary>
+            Координата по оси абсцисс холста.
+            </summary>
+        </member>
+        <member name="P:Triangle.Image.Vertex.Y">
+            <summary>
+            Координата по оси ординат холста.
+            </summary>
+        </member>
+        <member name="P:Triangle.Image.Vertex.Level">
+            <summary>
+            Свойство доступа к уровеню вершины.
+            </summary>
+        </member>
+        <member name="F:Triangle.Image.Vertex.Ready">
+            <summary>
+            Поле готовности вершины
+            </summary>
+        </member>
+        <member name="F:Triangle.Image.Vertex.edges">
+            <summary>
+            Поле массива ребер вершины.
+            </summary>
+        </member>
+        <member name="P:Triangle.Image.Vertex.Number">
+            <summary>
+            Индекс для определения вершины.
+            </summary>
+        </member>
+        <member name="M:Triangle.Image.Vertex.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Конструктор по индексу и уровню. 
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="level"></param>
+        </member>
+        <member name="M:Triangle.Image.Vertex.#ctor(System.Double,System.Double,Triangle.Image.Engine)">
+            <summary>
+            Конструктор по координатам и двигателю.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="engine"></param>
+        </member>
+        <member name="M:Triangle.Image.Vertex.PrepareEdges">
+            <summary>
+            Метод собирает информацию с ребер и очищающает поля ребра.
+            </summary>
+        </member>
+        <member name="M:Triangle.Image.Vertex.Transmission">
+            <summary>
+            Метод распространяет энергию и точки собранную в вершине на ребре. 
+            </summary>
+        </member>
+        <member name="M:Triangle.Image.Vertex.Start">
+            <summary>
+            Метод подготовки графа для работы.
+            </summary>
+        </member>
+        <member name="M:Triangle.Image.Vertex.ThrowPoint(System.Int32,System.String)">
+            <summary>
+            Метод выбрасывает на ребро точку по заданому направлению.
+            </summary>
+            <param name="edgetype"></param>
+            <param name="vector"></param>
+        </member>
+        <member name="M:Triangle.Image.Vertex.CreateVertexOnLevel(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Метод создает вершину и добавляет её в словарь вершин.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="level"></param>
+            <returns>Возвращает инициализированную Vertex</returns>
+        </member>
+        <member name="M:Triangle.Image.Vertex.CreateEdgesOnLevel(System.Collections.Generic.List{Triangle.Image.Vertex},System.Int32)">
+            <summary>
+            Метод создает ребра между старыми и только добавленными вершинами и добавляет их в массив ребер.
+            </summary>
+            <param name="vertexes"></param>
+            <param name="edgetype"></param>
+        </member>
+        <member name="M:Triangle.Image.Vertex.CreateEdge(Triangle.Image.Vertex,System.Int32)">
+            <summary>
+            Метод создает ребро по вершине и типу ребра. 
+            </summary>
+            <param name="vertex"></param>
+            <param name="type"></param>
+        </member>
+        <member name="M:Triangle.Image.Vertex.AddLevel(System.Int32)">
+            <summary>
+            Метод добавляет следующий уровень, равноудаленных от начала, вершин графа и соедияет их ребрами с существующими.
+            </summary>
+            <param name="currLevel"></param>
+        </member>
+        <member name="M:Triangle.Image.Vertex.DrawAll">
+            <summary>
+            Метод отрисовывает все вершины.
+            </summary>
+        </member>
+        <member name="M:Triangle.Image.Vertex.Draw">
+            <summary>
+            Метод отрисовывает вершину.
+            </summary>
+        </member>
+        <member name="M:Triangle.Image.Vertex.DrawPoint(Triangle.Image.Edge,System.String)">
+            <summary>
+            Метод создает точку на холсте и задает ее анимацию.
+            </summary>
+            <param name="edge"></param>
+            <param name="vector"></param>
+            <returns> Возращает проинициализированный Ellipse. </returns>
+        </member>
+        <member name="T:Triangle.Calc.Edge">
+            <summary>
+            Класс ребра графа для подсчета.
+            </summary>
+        </member>
+        <member name="F:Triangle.Calc.Edge.edges">
+            <summary>
+            Массив ребер.
+            </summary>
+        </member>
+        <member name="F:Triangle.Calc.Edge.PointData">
+            <summary>
+            Массив данных о количестве точек на графе.
+            </summary>
+        </member>
+        <member name="F:Triangle.Calc.Edge.ToBegin">
+            <summary>
+            Поле начиличия точки, движущейся в начало ребра.
+            </summary>
+        </member>
+        <member name="F:Triangle.Calc.Edge.ToEnd">
+            <summary>
+            Поле начиличия точки, движущейся в конец ребра.
+            </summary>
+        </member>
+        <member name="F:Triangle.Calc.Edge.ToBeginMass">
+            <summary>
+            Поле веса, движущегося в начало ребра.
+            </summary>
+        </member>
+        <member name="F:Triangle.Calc.Edge.ToEndMass">
+            <summary>
+            Поле веса, движущегося в конец ребра.
+            </summary>
+        </member>
+        <member name="P:Triangle.Calc.Edge.Begin">
+            <summary>
+            Свойство доступа к началу ребра.
+            </summary>
+        </member>
+        <member name="P:Triangle.Calc.Edge.End">
+            <summary>
+            Свойство доступа к концу ребра.
+            </summary>
+        </member>
+        <member name="P:Triangle.Calc.Edge.Type">
+            <summary>
+            Свойство доступа к типу ребра.
+            </summary>
+        </member>
+        <member name="M:Triangle.Calc.Edge.#ctor(Triangle.Calc.Vertex,Triangle.Calc.Vertex,System.Int32)">
+            <summary>
+            Констрктор по началу, концу и типу ребра. 
+            </summary>
+            <param name="begin"></param>
+            <param name="end"></param>
+            <param name="type"></param>
+        </member>
+        <member name="M:Triangle.Calc.Edge.VertexPreparer(System.Int32)">
+            <summary>
+            Метод подготавливает концы ребра к фазе размножения точек.
+            </summary>
+            <param name="i"></param>
+        </member>
+        <member name="M:Triangle.Calc.Edge.Serialize(System.IO.StreamWriter)">
+            <summary>
+            Метод записывающий информацию о ребре в поток.
+            </summary>
+            <param name="fs"></param>
+        </member>
+        <member name="M:Triangle.Calc.Edge.TryParse(System.String,Triangle.Calc.Edge@)">
+            <summary>
+            Преобразовывает данные из строки в экземпляр Edge, который передает в out-параметр.
+            </summary>
+            <param name="data"></param>
+            <param name="edge"></param>
+            <returns>Возращает успешность преобразования</returns>
+        </member>
+        <member name="T:Triangle.Calc.Engine">
+            <summary>
+            Класс двигателя точек для подсчета.
+            </summary>
+        </member>
+        <member name="M:Triangle.Calc.Engine.#ctor">
+            <summary>
+            Базовый конструктор класса.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Triangle.Calc.Engine.#ctor(System.Int32)">
+            <summary>
+            Конструктор по количеству совершенных итераций.
+            </summary>
+            <param name="count"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Triangle.Calc.Engine.Move">
+            <summary>
+            Метод реализует итерацию размножения точек и прохождения их по ребрам и записывает информацию об их количестве в массив.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Triangle.Calc.Engine.GetEnergyData(System.String)">
+            <summary>
+            Метод записывает информацию о распределении энергии в файл.
+            </summary>
+            <param name="path"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Triangle.Calc.Engine.GetPointCountData(System.String)">
+            <summary>
+            Метод записывает информацию о количестве точек в файл.
+            </summary>
+            <param name="path"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Triangle.Calc.Engine.Reset">
+            <summary>
+            Метод сбрасывает прогресс моделирования на графе.
+            </summary>
+            <dos>public</dos>
+        </member>
+        <member name="M:Triangle.Calc.Engine.Serialize(System.String)">
+            <summary>
+            Метод создает поток для записи и вызывает методы записи информации о графе.
+            </summary>
+            <param name="path"></param>
+            <dos>public</dos>
+        </member>
+        <member name="M:Triangle.Calc.Engine.TryParseGraph(System.IO.StreamReader)">
+            <summary>
+            Метод преобразущий данные из файла в даные графа.
+            </summary>
+            <param name="reader"></param>
+            <returns>Возвращает усепешность перобразования.</returns>
+            <dos>public</dos>
+        </member>
+        <member name="T:Triangle.Calc.Vertex">
+            <summary>
+            Класс двигателя точек для подсчета. 
+            </summary>
+        </member>
+        <member name="F:Triangle.Calc.Vertex.vertexes">
+            <summary>
+            Массив всех вершин.
+            </summary>
+        </member>
+        <member name="F:Triangle.Calc.Vertex.edgecount">
+            <summary>
+            Поле степени вершины.
+            </summary>
+        </member>
+        <member name="F:Triangle.Calc.Vertex.engine">
+            <summary>
+            Поле двигателя всех вершин.
+            </summary>
+        </member>
+        <member name="F:Triangle.Calc.Vertex.weight">
+            <summary>
+            Поле веса вершины.
+            </summary>
+        </member>
+        <member name="P:Triangle.Calc.Vertex.Weight">
+            <summary>
+            Свойство доступа к весу вершины.
+            </summary>
+        </member>
+        <member name="P:Triangle.Calc.Vertex.Level">
+            <summary>
+            Свойство доступа к уровеню вершины.
+            </summary>
+        </member>
+        <member name="F:Triangle.Calc.Vertex.Ready">
+            <summary>
+            Поле готовности вершины
+            </summary>
+        </member>
+        <member name="F:Triangle.Calc.Vertex.edges">
+            <summary>
+            Массив ребер вершины.
+            </summary>
+        </member>
+        <member name="P:Triangle.Calc.Vertex.Number">
+            <summary>
+            Индекс для определения вершины.
+            </summary>
+        </member>
+        <member name="P:Triangle.Calc.Vertex.Edges">
+            <summary>
+            Свойство доступа к массиву ребер вершины.
+            </summary>
+        </member>
+        <member name="M:Triangle.Calc.Vertex.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Констркуктор вершины по координатам и уровню.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="level"></param>
+        </member>
+        <member name="M:Triangle.Calc.Vertex.#ctor(Triangle.Calc.Engine)">
+            <summary>
+            Конструктор вершины по двигателю для точек.
+            </summary>
+            <param name="engine"></param>
+        </member>
+        <member name="M:Triangle.Calc.Vertex.PrepareEdges">
+            <summary>
+            Метод собирает информацию с ребер и очищающает поля ребра.
+            </summary>
+        </member>
+        <member name="M:Triangle.Calc.Vertex.Transmission">
+            <summary>
+            Метод распространяет энергию и точки собранную в вершине на ребре. 
+            </summary>
+        </member>
+        <member name="M:Triangle.Calc.Vertex.Start">
+            <summary>
+            Метод подготовки графа для работы.
+            </summary>
+        </member>
+        <member name="M:Triangle.Calc.Vertex.ToString">
+            <summary>
+            Метод формирует строку информации о вершине.
+            </summary>
+            <returns>Возрващает строковое представление вершины.</returns>
+        </member>
+        <member name="M:Triangle.Calc.Vertex.AddLevel(System.Int32)">
+            <summary>
+            Метод добавляет следующий уровень, равноудаленных от начала, вершин графа и соедияет их ребрами с существующими.
+            </summary>
+            <param name="length"></param>
+        </member>
+        <member name="M:Triangle.Calc.Vertex.CreateVertexOnLevel(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Метод создает вершину и добавляет её в словарь вершин.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="level"></param>
+            <returns>Возвращает инициализированную Vertex</returns>
+        </member>
+        <member name="M:Triangle.Calc.Vertex.CreateEdgesOnLevel(System.Collections.Generic.List{Triangle.Calc.Vertex},System.Int32)">
+            <summary>
+            Метод создает ребра между старыми и только добавленными вершинами и добавляет их в массив ребер.
+            </summary>
+            <param name="vertexes"></param>
+            <param name="edgetype"></param>
+        </member>
+        <member name="M:Triangle.Calc.Vertex.CreateEdge(Triangle.Calc.Vertex,System.Int32)">
+            <summary>
+            Метод создает ребро по вершине и типу ребра. 
+            </summary>
+            <param name="vertex"></param>
+            <param name="type"></param>
+        </member>
+        <member name="M:Triangle.Calc.Vertex.Serialize(System.IO.StreamWriter)">
+            <summary>
+            Метод записывающий информацию о вершине в поток.
+            </summary>
+            <param name="fs"></param>
+        </member>
+        <member name="M:Triangle.Calc.Vertex.TryParse(System.String,Triangle.Calc.Vertex@)">
+            <summary>
+            Преобразовывает данные из строки в экземпляр Vertex, который передает в out-параметр.
+            </summary>
+            <param name="data"></param>
+            <param name="vertex"></param>
+            <returns>Возращает успешность преобразования</returns>
+        </member>
+    </members>
+</doc>

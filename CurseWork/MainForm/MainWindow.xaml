@@ -31,7 +31,7 @@
         </Button>
         <Button x:Name="Load_button" HorizontalAlignment="Left"
                 Height="40" Width="40" Margin="100,0,0,9" VerticalAlignment="Bottom"
-                Grid.Column="0" Grid.Row="2">
+                Grid.Column="0" Grid.Row="2" Click="Button_Load_Click">
             <Image x:Name="pic1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0"
                    Source="Resources\load.png" />
         </Button>
