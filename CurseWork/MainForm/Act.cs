@@ -6,21 +6,21 @@ namespace MainForm {
 	/// Перечисление с типами анимируемых действий. Каждый элемент - уникальный флаг-бит. 
 	/// </summary>
 	public enum ActTypes {
-		highlightEdgeCurrent = 0b0000000000000001,
+		highlightEdgeCurrent	= 0b0000000000000001,
 		highlightEdgeNotCurrent = 0b0000000000000010,
-		highlightVertexUsed = 0b0000000000000100,
-		highlightVertexCurrent = 0b0000000000001000,
-		highlightVertexDef = 0b0000000000010000,
-		highlightEdgeAsBridge = 0b0000000000100000,
-		highlightEdgeAsDfsTree = 0b0000000001000000,
-		highlightCutVertex = 0b0000000010000000,
-		updateTin = 0b0000000100000000,
-		updateFup = 0b0000001000000000,
-		updateChildren = 0b0000010000000000,
-		highlightLabels = 0b0000100000000000,
-		highlightCodeLine = 0b0001000000000000,
-		createNewDfsLine = 0b0010000000000000,
-		removeNewDfsLine = 0b0100000000000000,
+		highlightVertexUsed		= 0b0000000000000100,
+		highlightVertexCurrent	= 0b0000000000001000,
+		highlightVertexDef		= 0b0000000000010000,
+		highlightEdgeAsBridge	= 0b0000000000100000,
+		highlightEdgeAsDfsTree	= 0b0000000001000000,
+		highlightCutVertex		= 0b0000000010000000,
+		updateTin				= 0b0000000100000000,
+		updateFup				= 0b0000001000000000,
+		updateChildren			= 0b0000010000000000,
+		highlightLabels			= 0b0000100000000000,
+		highlightCodeLine		= 0b0001000000000000,
+		createNewDfsLine		= 0b0010000000000000,
+		removeNewDfsLine		= 0b0100000000000000,
 	}
 
 	/// <summary type="" dos="">
